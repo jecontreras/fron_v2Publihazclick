@@ -35,6 +35,7 @@ export class RetirosComponent implements OnInit {
   notscrolly:boolean=true;
   notEmptyPost:boolean = true;
   dataUser:any = {};
+  paquete:any = {};
 
   constructor(
     private _tools: ToolsService,
@@ -52,6 +53,7 @@ export class RetirosComponent implements OnInit {
       if(!store) return false;
       this.dataUser = store.user || {};
       this.query.where.user = this.dataUser.id;
+      if( this.dataUser.id ) this.paquete = this.dataUser.miPaquete.disableretiro;
     });
 
   }

@@ -34,6 +34,7 @@
             <div class="form-group col-xs-4 col-sm-4 col-6">
                 <label for="exampleInputEmail1">Cantidad a Retirar</label>
                 <input currencyMask class="form-control form-control-sm" [disabled]="data.id" [(ngModel)]="data.cantidad" [options]="formatoMoneda" />
+                <!-- <input type="number" class="form-control" [disabled]="data.id" [(ngModel)]="data.cantidad"> -->
             </div>
             <div class="form-group col-12">
                 <label for="exampleInputEmail1">Descripcion</label>

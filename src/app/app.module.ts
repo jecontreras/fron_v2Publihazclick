@@ -31,10 +31,10 @@ import { appReducer } from './redux/app';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgxCurrencyModule } from 'ngx-currency';
+import { NgxCurrencyModule } from "ngx-currency";
 import { PublicoComponent } from './theme/layout/publico/publico.component';
 import { SocketIoModule } from 'ng-socket-io';
-import { ChatModule } from './chat/chat.module';
+//import { ChatModule } from './chat/chat.module';
 import { PortadaComponent } from './theme/layout/portada/portada.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 
@@ -69,7 +69,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     NgbTabsetModule,
     HttpClientModule,
     NgxCurrencyModule,
-    ChatModule,
+    // ChatModule,
     ReactiveFormsModule,
     SocketIoModule.forRoot( environment.socketConfig ),
     //BrowserModule.withServerTransition({ appId: 'serverApp' }),

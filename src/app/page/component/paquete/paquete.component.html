@@ -20,9 +20,18 @@
             </label>
         </div>
         <div class="card-footer">
-            <h4>Precio <input currencyMask class="form-control form-control-sm" [disabled]="true" [(ngModel)]="item.valor" [options]="formatoMoneda" /></h4>
-            <h4>Precio de transaccion <input currencyMask class="form-control form-control-sm" [disabled]="true" [(ngModel)]="item.valorTransaccion" [options]="formatoMoneda" /></h4>
-            <h4>Precio de Total <input currencyMask class="form-control form-control-sm" [disabled]="true" [(ngModel)]="item.valorextra" [options]="formatoMoneda" /></h4>
+            <h4>Precio 
+                <!-- <input type="number" class="form-control" [disabled]="true" [(ngModel)]="item.valor"> -->
+                <input currencyMask class="form-control form-control-sm" [disabled]="true" [(ngModel)]="item.valor" [options]="formatoMoneda" />
+            </h4>
+            <h4>Precio de transaccion 
+                <!-- <input type="number" class="form-control" [disabled]="true" [(ngModel)]="item.valorTransaccion"> -->
+                <input currencyMask class="form-control form-control-sm" [disabled]="true" [(ngModel)]="item.valorTransaccion" [options]="formatoMoneda" />
+            </h4>
+            <h4>Precio de Total 
+                <!-- <input type="number" class="form-control" [disabled]="true" [(ngModel)]="item.valorextra"> -->
+                <input currencyMask class="form-control form-control-sm" [disabled]="true" [(ngModel)]="item.valorextra" [options]="formatoMoneda" />
+            </h4>
             <div class="d-flex justify-content-center">
                 <div>
                     <h4>
