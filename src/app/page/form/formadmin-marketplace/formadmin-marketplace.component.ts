@@ -177,6 +177,7 @@ export class FormadminMarketplaceComponent implements OnInit {
   validador(){
     if( !this.data.titulo ) { this._tools.tooast( { title: "Error falta titulo de la publicacion ", icon: "error"}); return false; }
     if( !this.data.descripcion ) { this._tools.tooast( { title: "Es Necesario que defina una descripcion", icon: "error"}); return false; }
+    if( !this.data.numeroContacto ) { this._tools.tooast( { title: "Es Necesario que defina una Numero de contacto", icon: "error"}); return false; }
     if( !this.data.foto ) { this._tools.tooast( { title: "Error falta Imagen ", icon: "error"}); return false; }
     if( !this.data.departamento ) { this._tools.tooast( { title: "Error falta el departamento", icon: "error"}); return false; }
     if( !this.data.ciudad ) { this._tools.tooast( { title: "Error falta la ciudad ", icon: "error"}); return false; }

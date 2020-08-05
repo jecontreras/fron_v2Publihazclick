@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicoComponent implements OnInit {
 
+  buscador:string;
+  listCart:any = [];
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  buscarArticulo(){
+    
   }
 
 }

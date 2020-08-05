@@ -1,0 +1,42 @@
+.imgFoto{
+    width: 70px !important;
+    height: 70px !important;
+}
+
+.block{
+    text-align:center;
+}
+    
+.list{
+    text-align: left;
+    display:inline-block;
+}
+.colorFondo{
+    background-color: #060606;
+}
+
+div {
+    text-align:center;
+}
+div ul {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    list-style: none;
+    background-color: #060606;
+}
+div li a {
+    display: block;
+    padding: 5px 5px;
+    font-size: 13px;
+    text-decoration: none;
+    color:white;
+}
+#div li a:hover {
+    color: #fff;
+    background-color: #000;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+}

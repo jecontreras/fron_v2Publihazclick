@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 import { NgImageSliderComponent } from 'ng-image-slider';
 import { MerkaplaceService } from 'src/app/servicesComponents/merkaplace.service';
+import { environment } from 'src/environments/environment';
+
+const URL = environment.urlFront;
 
 @Component({
   selector: 'app-producto-view',
@@ -48,8 +51,8 @@ export class ProductosViewComponent implements OnInit {
 
   @ViewChild('nav', {static: true}) ds: NgImageSliderComponent;
   sliderWidth: Number = 1119;
-  sliderImageWidth: Number = 250;
-  sliderImageHeight: Number = 200;
+  sliderImageWidth: Number = 358;
+  sliderImageHeight: Number = 238;
   sliderArrowShow: Boolean = true;
   sliderInfinite: Boolean = true;
   sliderImagePopup: Boolean = false;
@@ -150,22 +153,8 @@ export class ProductosViewComponent implements OnInit {
   }
 
   AgregarCart(){
-    this.suma();
-    let data = {
-      articulo: this.data.id,
-      codigo: this.data.pro_codigo,
-      titulo: this.data.pro_nombre,
-      color: "",
-      talla: this.pedido.talla,
-      foto: this.data.foto,
-      cantidad: this.pedido.cantidad || 1,
-      costo: this.data.pro_uni_venta,
-      costoTotal: this.data.costo,
-      id: this.codigo()
-    };
-    let accion = new CartAction(data, 'post');
-    this._store.dispatch(accion);
-    this._tools.presentToast("Producto agregado al carro");
+    let url:string = `https://web.whatsapp.com/send?phone=57${ this.data.numeroContacto }&text=${ encodeURIComponent(`Hola ando interesado con este producto url: ${ URL+"/publico/productosView/" }${ this.data.id }`) }&source&data&app_absent`
+    window.open( url );
   }
 
   viewProducto( obj:any ){
@@ -202,9 +191,10 @@ export class ProductosViewComponent implements OnInit {
   }
 
   imageOnClick(obj:any) {
-    let data =  this.listProductos.find( (row:any )=> row.id == this.imageObject[obj].id);
-    if( !data ) return false;
-    this.viewProducto( data );
+    return obj;
+    // let data =  this.listProductos.find( (row:any )=> row.id == this.imageObject[obj].id);
+    // if( !data ) return false;
+    // this.viewProducto( data );
   }
 
   arrowOnClick(event) {

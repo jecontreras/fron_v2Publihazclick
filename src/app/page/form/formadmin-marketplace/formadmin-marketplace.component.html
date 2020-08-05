@@ -60,6 +60,10 @@
                     [(ngModel)]="data.urlPersonalizada">
             </div>
             <div class="form-group col-xs-12 col-sm-12 col-12">
+                <label for="exampleInputEmail1">Numero de contacto *</label>
+                <input type="number" class="form-control" [(ngModel)]="data.numeroContacto">
+            </div>
+            <div class="form-group col-xs-12 col-sm-12 col-12">
                 <label>Categorias</label>
                 <select class="custom-select" [(ngModel)]="data.categoria" (ngModelChange)="blurCategorias()">
                     <option [value]="item.titulo" *ngFor="let item of listCategorias">

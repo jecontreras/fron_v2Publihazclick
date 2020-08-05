@@ -6,6 +6,9 @@ import * as _ from 'lodash';
 import { ToolsService } from 'src/app/services/tools.service';
 import { MerkaplaceService } from 'src/app/servicesComponents/merkaplace.service';
 import { CATEGORIAS } from 'src/app/JSON/categoria';
+import { environment } from 'src/environments/environment';
+
+const URL = environment.urlFront;
 
 @Component({
   selector: 'app-productos',
@@ -109,21 +112,10 @@ export class ProductosComponent implements OnInit {
     // this._store.dispatch( accion );
   }
 
-  AgregarCart(item:any){
-    let data:any = {
-      articulo: item.id,
-      codigo: item.pro_codigo,
-      titulo: item.pro_nombre,
-      foto: item.foto,
-      talla: item.talla,
-      cantidad: item.cantidadAdquirir || 1,
-      costo: item.pro_uni_venta,
-      costoTotal: ( item.pro_uni_venta*( item.cantidadAdquirir || 1 ) ),
-      id: this.codigo()
-    };
-    let accion = new CartAction(data, 'post');
-    this._store.dispatch(accion);
-    this._tools.presentToast("Agregado al Carro");
+  AgregarCart( data:any ){
+    let url:string = `https://web.whatsapp.com/send?phone=57${ data.numeroContacto }&text=${ encodeURIComponent(`Hola ando interesado con este producto url: ${ URL+"/publico/productosView/" }${ data.id }`) }&source&data&app_absent`
+    console.log( url );
+    window.open( url );
   }
 
   codigo(){
