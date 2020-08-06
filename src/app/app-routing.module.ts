@@ -8,13 +8,28 @@ import { PortadaComponent } from './theme/layout/portada/portada.component';
 
 const routes: Routes = [
   {
+    path: "",
+    component: PortadaComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'portada/index',
+        pathMatch: 'full'
+      },
+      {
+        path: "portada",
+        loadChildren: () => import('./portada/portada.module').then( module => module.PortadaModule )
+      }
+    ]
+  },
+  {
     path: '',
     component: AdminComponent,
     canActivate: [ AuthService ],
     children: [
       {
         path: '',
-        redirectTo: 'dashboard/home',
+        redirectTo: 'portada/index',
         pathMatch: 'full'
       },
       // {
@@ -52,21 +67,6 @@ const routes: Routes = [
       {
         path: "publico",
         loadChildren: () => import('./publico/publico.module').then(module => module.PublicoModule)
-      }
-    ]
-  },
-  {
-    path: "",
-    component: PortadaComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: 'portada/index',
-        pathMatch: 'full'
-      },
-      {
-        path: "portada",
-        loadChildren: () => import('./portada/portada.module').then( module => module.PortadaModule )
       }
     ]
   }

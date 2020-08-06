@@ -15,19 +15,19 @@ export class AppComponent implements OnInit {
   
   constructor(
     private router: Router,
-    private _Actividad: ActividadService,
-    private _store: Store<STORAGES>
+    // private _Actividad: ActividadService,
+    // private _store: Store<STORAGES>
   ) {
-    this._store.subscribe((store: any) => {
-      //console.log(store);
-      store = store.name;
-      if (!store) return false;
-      this.dataUser = store.user || {};
-    });
+    // this._store.subscribe((store: any) => {
+    //   //console.log(store);
+    //   store = store.name;
+    //   if (!store) return false;
+    //   this.dataUser = store.user || {};
+    // });
   }
 
   ngOnInit() {
-    if( Object.keys( this.dataUser ).length > 0) this._Actividad.generarActividad({ user: this.dataUser.id }).subscribe((res:any)=> console.log(res));
+    //if( Object.keys( this.dataUser ).length > 0) this._Actividad.generarActividad({ user: this.dataUser.id }).subscribe((res:any)=> console.log(res));
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;

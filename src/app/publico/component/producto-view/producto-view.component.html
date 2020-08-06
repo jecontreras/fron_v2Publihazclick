@@ -37,6 +37,9 @@
   <section id="aa-product-details">
     <div class="anchos">
       <div class="row">
+        <div class="col-12">
+          <app-progress *ngIf="!data.id" ></app-progress>
+        </div>
         <div class="col-md-12">
           <div class="aa-product-details-area">
             <div class="aa-product-details-content">
@@ -73,7 +76,7 @@
                        <a href="#" class="aa-color-black"></a>
                        <a href="#" class="aa-color-white"></a>                      
                      </div> -->
-                    <div class="aa-prod-quantity">
+                    <!-- <div class="aa-prod-quantity">
                       <h4>Cantidad</h4>
                       <select [(ngModel)]="pedido.cantidad">
                         <option value="1" selected="1">1</option>
@@ -83,11 +86,11 @@
                         <option value="5">5</option>
                         <option value="6">6</option>
                       </select>
-                      <!-- <p class="aa-prod-category">
+                      <p class="aa-prod-category">
                         Categoria: <a class="pointer"
                           (click)="categoriasVer()">{{ data['pro_categoria']?.cat_nombre }}</a>
-                      </p> -->
-                    </div>
+                      </p>
+                    </div> -->
                     <div class="aa-prod-view-bottom">
                       <a (click)="AgregarCart()" href="" class="aa-add-to-cart-btn pointer"><span
                           class="fa fa-shopping-cart"></span>Chatear con Usuario</a>
@@ -107,8 +110,14 @@
               </div>
 
               <!-- Tab panes -->
-              <div class="container">
-                <p [innerHtml]="data.descripcion"></p>
+              <div class="container content">
+                <div class="container">
+                  <div class="d-flex justify-content-center">
+                    <div>
+                      <p [innerHtml]="data.descripcion"></p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- Related product -->
@@ -119,7 +128,7 @@
                     <h3>Productos Relacionados</h3>
                   </div>
                   <div class="col-12">
-                    <ng-image-slider [images]="imageObject" [infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
+                    <ng-image-slider [images]="imageObject" *ngIf="imageObject.length > 0" [infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
                       [showArrow]="sliderArrowShow" [imageSize]="{width: sliderImageWidth, height: sliderImageHeight}"
                       [autoSlide]="sliderAutoSlide ? 1 : 0" [slideImage]="sliderSlideImage"
                       [animationSpeed]="sliderAnimationSpeed" (imageClick)="imageOnClick($event)"

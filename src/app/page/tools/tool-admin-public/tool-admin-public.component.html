@@ -24,7 +24,7 @@
     <div class="col-12">
         <div class="d-flex justify-content-center row" infiniteScroll [infiniteScrollDistance]="3"
             [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
-            <div class="col-4 col-sm-4 col-xs-4" *ngFor="let item of listRow" [ngClass]="{
+            <div class="col-12 col-sm-4 col-xs-4" *ngFor="let item of listRow" [ngClass]="{
                 'disable':item.estado !== 'activo'}">
                 <div class="marge-card mb-3">
                     <div class="mat-elevation-z5 p-10">

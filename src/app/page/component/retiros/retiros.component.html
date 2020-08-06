@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-12">
         <div class="d-flex flex-row-reverse bd-highlight">
-            <button type="button" class="btn btn-primary" (click)="verView( false )">Crear Retiro</button>
+            <button type="button" class="btn btn-primary" [disabled]="!paquete" (click)="verView( false )">Crear Retiro</button>
             <br><br>
           </div>
     </div>

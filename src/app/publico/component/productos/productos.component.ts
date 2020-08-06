@@ -30,7 +30,7 @@ export class ProductosComponent implements OnInit {
   listProductosRecomendar: any = [];
 
   seartxt:string = '';
-  loader:boolean = false;
+  loader:boolean = true;
   notscrolly:boolean=true;
   notEmptyPost:boolean = true;
   busqueda:any = {};
@@ -65,6 +65,8 @@ export class ProductosComponent implements OnInit {
     this.listProductos = [];
     this.getProductos();
     this.dataSeleccionda = obj.titulo;
+    for( let row of this.listCategorias) row.check = false;
+    obj.check = true;
   }
 
   searchColor( color:string ){
@@ -81,10 +83,11 @@ export class ProductosComponent implements OnInit {
 
   getProductos(){
     //this.spinner.show();
+    this.loader = true;
     this._merkaplace.get(this.query).subscribe((res:any)=>{ 
       this.listProductos = _.unionBy(this.listProductos || [], res.data, 'id');
       //this.spinner.hide();
-      this.loader = false;
+      setTimeout(()=> this.loader = false, 3000);
       if (res.data.length === 0 ) {
         this.notEmptyPost =  false;
       }

@@ -35,7 +35,7 @@ export class RetirosComponent implements OnInit {
   notscrolly:boolean=true;
   notEmptyPost:boolean = true;
   dataUser:any = {};
-  paquete:any = {};
+  paquete:boolean = false;
 
   constructor(
     private _tools: ToolsService,
@@ -53,7 +53,7 @@ export class RetirosComponent implements OnInit {
       if(!store) return false;
       this.dataUser = store.user || {};
       this.query.where.user = this.dataUser.id;
-      if( this.dataUser.id ) this.paquete = this.dataUser.miPaquete.disableretiro;
+      if( this.dataUser.id ) if( Object.keys(this.dataUser.miPaquete).length > 0 ) this.paquete = this.dataUser.miPaquete.disableretiro;
     });
 
   }
@@ -175,7 +175,7 @@ export class RetirosComponent implements OnInit {
 
   verView( item:any ){
     if( item ) this.Router.navigate( [ "dashboard/formretiros", item.id ] );
-    else this.Router.navigate( [ "dashboard/formretiros" ] );
+    else { if( this.paquete ) this.Router.navigate( [ "dashboard/formretiros" ] ); }
   }
 
 

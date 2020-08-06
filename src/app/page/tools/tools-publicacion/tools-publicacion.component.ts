@@ -26,6 +26,7 @@ export class ToolsPublicacionComponent implements OnInit {
   };
 
   progreses:boolean = false;
+  btnDisabled:boolean = false;
 
   constructor(
     private _tools: ToolsService
@@ -43,7 +44,14 @@ export class ToolsPublicacionComponent implements OnInit {
   
   openPublic( item ){
     let url:string = item.content;
-    if( this.config.vista == "tareas" ) { item.estado = "realizado"; url = URL+`/publicacionviews/${ item.id }`;}
+    if( this.config.vista == "tareas" ) { 
+      if( item.estado == "activo"){
+        this.tarea.completado++;
+        this.tarea.restante--;
+        console.log( this.tarea );
+      }
+      item.estado = "realizado"; url = URL+`/publicacionviews/${ item.id }`;
+    }
     //console.log( url );
     window.open( url );
   }
@@ -85,6 +93,11 @@ export class ToolsPublicacionComponent implements OnInit {
       this.notEmptyPost =  false;
     }
     this.notscrolly = true;
+  }
+
+  refActivadades(){
+    this.btnDisabled = true;
+    this._modelo.generarActividad({ user: this.query.where.user }).subscribe((res:any)=> { console.log(res); this.btnDisabled = false; this.getRow();  }, ()=> this.btnDisabled = false );
   }
 
 }

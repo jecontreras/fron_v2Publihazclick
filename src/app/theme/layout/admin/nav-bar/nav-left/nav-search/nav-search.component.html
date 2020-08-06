@@ -6,10 +6,10 @@
     </span>
   </div>
 </div> -->
-<div id="main-search" class="main-search open" *ngIf="dataUser.cantidadPuntos">
+<div id="main-search" class="main-search open">
   <div class="row">
     <div class="input-group col-6">
-      <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="dataUser.cantidadPuntos.valorTotal" [options]="formatoMoneda" />
+      <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="puntosGanados" [options]="formatoMoneda" />
       <!-- <input type="number" class="form-control" [disabled]="true" [(ngModel)]="dataUser.cantidadPuntos.valorTotal"> -->
         <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
           Mis Ganancias

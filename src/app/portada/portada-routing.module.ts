@@ -4,6 +4,10 @@ import { IndexComponent } from './component/index/index.component';
 
 const routes: Routes = [
   {
+    path: "",
+    component: IndexComponent
+  },
+  {
     path: "index",
     component: IndexComponent
   }

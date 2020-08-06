@@ -17,6 +17,7 @@ export class NavSearchComponent implements OnInit {
   formatoMoneda:any = {};
   dataUser:any = {};
   diasFaltantes:number = 0;
+  puntosGanados:number = 0;
 
   constructor(
     private _store: Store<STORAGES>,
@@ -31,6 +32,7 @@ export class NavSearchComponent implements OnInit {
         if( this.dataUser.miPaquete.diasFaltantes ) this.diasFaltantes = this.dataUser.miPaquete.diasFaltantes;
         else  this.diasFaltantes = 0;
       }else  this.diasFaltantes = 0;
+      if( this.dataUser.cantidadPuntos ) this.puntosGanados = this.dataUser.cantidadPuntos.valorTotal;
     });
   }
 

@@ -93,6 +93,7 @@
                 </li>
               </ul>
               <div>
+                <app-progress *ngIf="loader" ></app-progress>
                 <div class="mx-auto" style="width: 200px;" *ngIf="listProductos.length == 0 && !loader">
                   NO SE ENCONTRO PRODUCTOS
                 </div>
@@ -106,7 +107,7 @@
             <div class="aa-sidebar-widget">
               <h3>Categorias</h3>
               <ul class="aa-catg-nav row">
-                <li *ngFor="let item of listCategorias" class=" col-12">
+                <li *ngFor="let item of listCategorias" class=" col-12" [ngClass]="{fondoCam:item.check }">
                   <a class="pointer" (click)="SeleccionCategoria(item)">{{ item.titulo }}</a>
                 </li>
               </ul>

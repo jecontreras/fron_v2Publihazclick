@@ -8,13 +8,15 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { ProductosViewComponent } from './component/producto-view/producto-view.component';
 import { ProductosComponent } from './component/productos/productos.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ProgressComponent } from './component/progress/progress.component';
 
 @NgModule({
   declarations: [
     PublicacionviewsComponent,
     MarkeplaceComponent,
     ProductosViewComponent,
-    ProductosComponent
+    ProductosComponent,
+    ProgressComponent
   ],
   imports: [
     CommonModule,

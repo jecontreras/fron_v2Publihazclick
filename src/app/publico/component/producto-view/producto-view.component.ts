@@ -37,16 +37,7 @@ export class ProductosViewComponent implements OnInit {
   listProductosHistorial:any = [];
   tiendaInfo:any = {};
 
-  imageObject:any = [
-    {
-      image: "./assets/publico/imagenes/1920x700.png",
-      thumbImage: "./assets/publico/imagenes/1920x700.png",
-      alt: '',
-      check: true,
-      id: 1,
-      title: ""
-    }
-  ];
+  imageObject:any = [];
   listGaleria:any = [];
 
   @ViewChild('nav', {static: true}) ds: NgImageSliderComponent;
@@ -113,6 +104,7 @@ export class ProductosViewComponent implements OnInit {
 
   getProductos(){
     //this.spinner.show();
+    //console.log( this.query );
     this._merkaplace.get( this.query ).subscribe((res:any)=>{ 
       if( res.data[0] ) this.imageObject = [];
       for( let row of res.data ){

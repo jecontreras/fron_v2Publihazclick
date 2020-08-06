@@ -63,7 +63,13 @@
           <a href="javascript:" class="dud-logout" title="Logout" (click)="logout()">
             <i class="feather icon-log-out"></i>
           </a><br>
-          <span>Mi Nivel: </span><span *ngIf="dataUser.miNivel" class="separaNivel">{{ dataUser.miNivel['nivel']?.title }}</span>
+          <span>Mi Nivel: </span>
+          <span *ngIf="dataUser.miNivel" class="separaNivel">
+            {{ ( dataUser.miNivel['nivel']?.title ) }}
+          </span>
+          <span *ngIf="!dataUser.miNivel" class="separaNivel">
+            PRINCIPIANTE
+          </span>
         </div>
         <ul class="pro-body">
           <li><a href="javascript:" [routerLink]="['/dashboard/perfil']" class="dropdown-item"><i class="feather icon-user"></i> Perfil</a></li>
