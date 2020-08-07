@@ -1,0 +1,21 @@
+<ng-image-slider [images]="imageObject" [infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
+    [showArrow]="sliderArrowShow" [imageSize]="{width: sliderImageWidth, height: sliderImageHeight}"
+    [autoSlide]="sliderAutoSlide ? 1 : 0" [slideImage]="sliderSlideImage" [animationSpeed]="sliderAnimationSpeed"
+    (imageClick)="imageOnClick($event)" (arrowClick)="arrowOnClick($event)"
+    (lightboxArrowClick)="lightboxArrowClick($event)" #nav>
+</ng-image-slider>
+
+<div role="alert" class="alert alert-primary alert-dismissible" *ngFor="let item of listAlertas">
+    <span>
+        {{ item.titulo }}
+    </span>
+    <span>
+        {{ item.descripcion}}
+        <button *ngIf="item.titulo == 'Paquete Activo Vigente'" type="button" class="btn btn-success"
+            (click)="activarPaquete( item )">Activar</button>
+    </span>
+    <button aria-label="Close" class="close ng-star-inserted" data-dismiss="alert" type="button"
+        (click)="eliminar( item )">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>

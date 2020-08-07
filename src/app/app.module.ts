@@ -37,6 +37,7 @@ import { SocketIoModule } from 'ng-socket-io';
 //import { ChatModule } from './chat/chat.module';
 import { PortadaComponent } from './theme/layout/portada/portada.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { AlertasComponent } from './theme/layout/alertas/alertas.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
     NavRightComponent,
     ConfigurationComponent,
     ToggleFullScreenDirective,
-    PortadaComponent
+    PortadaComponent,
+    AlertasComponent
   ],
   imports: [
     BrowserModule,
