@@ -2,6 +2,12 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, NgZone, OnInit, Out
 import { NavigationItem } from '../navigation';
 import { NextConfig } from '../../../../../app-config';
 import { Location } from '@angular/common';
+import { STORAGES } from 'src/app/interfaces/sotarage';
+import { Store } from '@ngrx/store';
+import { environment } from 'src/environments/environment';
+import { ToolsService } from 'src/app/services/tools.service';
+
+const URL = environment.urlFront;
 
 @Component({
   selector: 'app-nav-content',
@@ -22,8 +28,24 @@ export class NavContentComponent implements OnInit, AfterViewInit {
 
   @ViewChild('navbarContent', {static: false}) navbarContent: ElementRef;
   @ViewChild('navbarWrapper', {static: false}) navbarWrapper: ElementRef;
+  dataUser:any = {};
+  miNivel:string = "JADE";
 
-  constructor(public nav: NavigationItem, private zone: NgZone, private location: Location) {
+  constructor(
+    public nav: NavigationItem, 
+    private zone: NgZone, 
+    private location: Location,
+    private _store: Store<STORAGES>,
+    private _tools: ToolsService
+  ) {
+    this._store.subscribe((store: any) => {
+      //console.log(store);
+      store = store.name;
+      if(!store) return false;
+      this.dataUser = store.user || {};
+      if( this.dataUser.miNivel ) if( this.dataUser.miNivel['nivel'] )  this.miNivel = this.dataUser.miNivel['nivel'].title;
+    });
+
     this.nextConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
 
@@ -42,6 +64,23 @@ export class NavContentComponent implements OnInit, AfterViewInit {
         (document.querySelector('#nav-ps-next') as HTMLElement).style.maxHeight = '100%';
       }, 500);
     }
+  }
+
+  portapapeles() {
+    const val = `${ URL }/auth/registrate/${ this.dataUser.username }`;
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    this._tools.basicIcons({ header: "Recomendando", subheader: 'Copiado:' + ' ' + val });
+
   }
 
   ngAfterViewInit() {
