@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { resolve } from 'url';
 import { ToolsService } from 'src/app/services/tools.service';
 import { NgImageSliderComponent } from 'ng-image-slider';
+import { PublicacionService } from 'src/app/servicesComponents/publicacion.service';
 
 @Component({
   selector: 'app-alertas',
@@ -20,7 +21,9 @@ export class AlertasComponent implements OnInit {
   @ViewChild('nav', { static: true }) ds: NgImageSliderComponent;
   sliderWidth: Number = 1204;
   sliderImageWidth: Number = 618;
+  sliderImageWidth2: Number = 300;
   sliderImageHeight: Number = 44;
+  sliderImageHeight2: Number = 55;
   sliderArrowShow: Boolean = true;
   sliderInfinite: Boolean = true;
   sliderImagePopup: Boolean = true;
@@ -28,12 +31,14 @@ export class AlertasComponent implements OnInit {
   sliderSlideImage: Number = 1;
   sliderAnimationSpeed: any = 2.4;
   imageObject: any = [];
+  imageObject2: any = [];
 
   constructor(
     private _nota: NotasService,
     private _store: Store<STORAGES>,
     private _paquete: PaquetesService,
-    private _tools: ToolsService
+    private _tools: ToolsService,
+    private _publicacion: PublicacionService
   ) { 
     this._store.subscribe((store: any) => {
       //console.log(store);
@@ -55,6 +60,37 @@ export class AlertasComponent implements OnInit {
   ngOnInit() {
     this.listaBanner();
     this.getNotas();
+    this.getBanner();
+  }
+
+  getBanner(){
+    this._publicacion.get( { where:{ type:"banner", estado:"activo" }, sort: "clicks ASC" }).subscribe((res:any)=>{
+      res = res.data;
+      let count:number = 0;
+      for( let row of res ){
+        count++;
+        this.imageObject2.push(
+          {
+            image: row.imgdefault,
+            thumbImage: row.imgdefault,
+            alt: row.content,
+            id: count,
+          }
+        );
+      }
+      this.updateBanner( res );
+    });
+  }
+
+  async updateBanner( data:any ){
+    for(let row of data) await this.putBanner( row );
+  }
+
+  putBanner( data ){
+    return new Promise( resolve => {
+      let query:any = { id: data.id, clicks: data.clicks+1 };
+      this._publicacion.update( query ).subscribe(( res:any )=>resolve(res),(error)=>resolve(false));
+    });
   }
 
   getNotas(){
@@ -62,7 +98,7 @@ export class AlertasComponent implements OnInit {
       let formatiado:any = [];
       for( let row of res.data){
         if( row.titulo == 'Paquete Activo Vigente' ) {
-          console.log("entre", this.dataUser );
+          // console.log("entre", this.dataUser );
           if( Object.keys( this.dataUser.miPaquete ).length > 0 ) {
             if( this.dataUser.miPaquete.diasFaltantes == 0 ) formatiado.push( row );
           }
@@ -70,9 +106,9 @@ export class AlertasComponent implements OnInit {
         }
         else formatiado.push( row );
       }
-      console.log( formatiado );
+      // console.log( formatiado );
       this.listAlertas = formatiado;
-      console.log( this.listAlertas );
+      // console.log( this.listAlertas );
     });
   }
 

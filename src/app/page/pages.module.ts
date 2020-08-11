@@ -31,6 +31,7 @@ import { NgxCurrencyModule } from "ngx-currency";
 import { AdminMarketplaceComponent } from './component/admin-marketplace/admin-marketplace.component';
 import { FormadminMarketplaceComponent } from './form/formadmin-marketplace/formadmin-marketplace.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ComentariosComponent } from './tools/comentarios/comentarios.component';
 
 @NgModule({
   declarations: [ 
@@ -53,7 +54,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     ViewPerfilComponent, 
     BannerComponent, 
     ToolAdminPublicComponent, 
-    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent
+    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, ComentariosComponent
   ],
   imports: [
     CommonModule,

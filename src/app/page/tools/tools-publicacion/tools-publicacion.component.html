@@ -44,7 +44,7 @@
                     <div class="card-body ng-tns-c14-23 p-0 ng-star-inserted mouse" (click)="openPublic( item )">
                         <img *ngIf="item.type == 'img'" alt="Card image cap" class="card-img-top"
                             [src]="item.content || 'https://s3.amazonaws.com/publihazclick/default/fondoTareas.jpg'">
-                        <img *ngIf="item.type == 'url'" alt="Card image cap" class="card-img-top"
+                        <img *ngIf="item.type == 'url'" alt="Card image cap" class="card-img-top altoFijo"
                             [src]="item.imgdefault || 'https://s3.amazonaws.com/publihazclick/default/fondoTareas.jpg'">
                     </div>
                     <div class="card-body ng-tns-c14-24 m-t-15 ng-star-inserted">
@@ -55,6 +55,7 @@
                             <span (click)="item.oculto = 150" *ngIf="item.oculto == 5000">Ver Menos!</span>
                         </label>
                         <p class="card-text"><small class="text-muted">{{ item.createdAt }}</small></p>
+                        <app-comentarios [data]="item"></app-comentarios>
                     </div>
                 </div>
             </app-card>

@@ -1,0 +1,35 @@
+<div class="content">
+    <div class="row">
+        <div class="col-12">
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let link of ListaComentario">
+                    <div class="row container">
+                        <img [src]="link.user.foto" class="rounded-circle perfil-img mouse" height="40px" width="50px"
+                            alt="None" [routerLink]="['/dashboard/view_perfil', link.user.id]"
+                            style="border-radius: 30px;">
+                        <h6 class="font column col" (click)="checkdelete(link)">
+                            <div [routerLink]="['/dashboard/view_perfil', link.user.id]" class="rounded mouse">
+                                {{ link.user.username }}
+                            </div>
+                            <div>
+                                <h6 style="font-size: 11px;">
+                                    {{ link.comentarios.content | slice: 0: 200 }}
+                                </h6>
+                            </div>
+                            <div>
+                                {{ link.createdAt | date }}
+                            </div>
+                        </h6>
+                        <button mat-button type="button" mat-mini-fab color="warn" *ngIf="link.check"
+                            (click)="deletepublicacion(link)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="form-group col-12">
+            <input type="email" class="form-control form-control-sm" placeholder="escribas un comentario" [(ngModel)]="dataForm.texto" (change)="pushComentario()">
+          </div>
+    </div>
+</div>

@@ -60,11 +60,11 @@ export class RetirosComponent implements OnInit {
 
   ngOnInit() {
     this.getRow();
-    //this.procesos();
+    this.procesos();
   }
 
   procesos(){
-    this._user.get( { where: { id: "5cedda91520be0ef68567182"}, limit: 1000 })
+    this._user.get( { where: { id: this.dataUser.id }, limit: 1000 })
     .subscribe(async ( res:any )=> {
       console.log("count User", res.count );
       res = res.data;

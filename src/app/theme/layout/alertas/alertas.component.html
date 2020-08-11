@@ -1,9 +1,22 @@
+<ng-image-slider [images]="imageObject2" *ngIf="imageObject2.length > 0" [infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
+    [showArrow]="sliderArrowShow" [imageSize]="{width: sliderImageWidth2, height: sliderImageHeight2}"
+    [autoSlide]="sliderAutoSlide ? 1 : 0" [slideImage]="sliderSlideImage" [animationSpeed]="sliderAnimationSpeed"
+    (imageClick)="imageOnClick($event)" (arrowClick)="arrowOnClick($event)"
+    (lightboxArrowClick)="lightboxArrowClick($event)" #nav1>
+</ng-image-slider>
+
 <ng-image-slider [images]="imageObject" [infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
     [showArrow]="sliderArrowShow" [imageSize]="{width: sliderImageWidth, height: sliderImageHeight}"
     [autoSlide]="sliderAutoSlide ? 1 : 0" [slideImage]="sliderSlideImage" [animationSpeed]="sliderAnimationSpeed"
     (imageClick)="imageOnClick($event)" (arrowClick)="arrowOnClick($event)"
     (lightboxArrowClick)="lightboxArrowClick($event)" #nav>
 </ng-image-slider>
+
+<div class="d-flex flex-row-reverse bd-highlight">
+    <div class="p-2 bd-highlight">
+        <h5>BANNER PUBLICITARIO</h5>
+    </div>
+</div>
 
 <div role="alert" class="alert alert-primary alert-dismissible" *ngFor="let item of listAlertas">
     <span>
