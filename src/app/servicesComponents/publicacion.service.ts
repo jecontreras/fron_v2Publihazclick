@@ -22,6 +22,9 @@ export class PublicacionService {
   delete(query: any) {
     return this._model.querys('publicacion/' + query.id, query, 'delete');
   }
+  updateMegusta(query: any) {
+    return this._model.querys('megustas/create', query, 'post');
+  }
 
   urlprueba(text: string) {
     return new Promise(resolve => {

@@ -42,12 +42,16 @@
                 <div class="card mb-0 ng-trigger ng-trigger-cardRemove" animatesinitmode="show"
                     style="visibility: visible; opacity: 1;">
                     <div class="card-body ng-tns-c14-23 p-0 ng-star-inserted mouse" (click)="openPublic( item )">
-                        <img *ngIf="item.type == 'img'" alt="Card image cap" class="card-img-top"
+                        <img *ngIf="item.type == 'img' || item.type == 'publicacion'" alt="Card image cap" class="card-img-top"
                             [src]="item.content || 'https://s3.amazonaws.com/publihazclick/default/fondoTareas.jpg'">
                         <img *ngIf="item.type == 'url'" alt="Card image cap" class="card-img-top altoFijo"
                             [src]="item.imgdefault || 'https://s3.amazonaws.com/publihazclick/default/fondoTareas.jpg'">
                     </div>
                     <div class="card-body ng-tns-c14-24 m-t-15 ng-star-inserted">
+                        <h5 class="card-title">
+                            <i class="feather icon-thumbs-up p-1 mouse" [ngClass]="{ colorRed: item.check }" (click)="procesoLikes( item, 'like' )">{{ item.megusta }}</i>
+                            <i class="feather icon-thumbs-down p-1 mouse" [ngClass]="{ colorRed: item.check2 }" (click)="procesoLikes(item, 'nolike')">{{ item.nomegusta }}</i>
+                        </h5>
                         <h5 class="card-title mouse" (click)="openPublic( item )">{{ item.title }}</h5>
                         <p class="card-text" [innerHtml]="item.descripcion | slice: 0: item.oculto || 200"></p>
                         <label class="text-primary">

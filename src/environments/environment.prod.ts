@@ -8,5 +8,5 @@ export const environment = {
   production: true,
   urlSocket: "http://localhost:3000",
   url: "https://backpublihazclickv2.herokuapp.com",
-  urlFront: "https://publihazclick-f5718.firebaseapp.com/"
+  urlFront: "https://publihazclick-f5718.firebaseapp.com"
 };

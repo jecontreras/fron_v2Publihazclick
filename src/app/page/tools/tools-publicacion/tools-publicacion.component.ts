@@ -100,4 +100,48 @@ export class ToolsPublicacionComponent implements OnInit {
     this._modelo.generarActividad({ user: this.query.where.user }).subscribe((res:any)=> { console.log(res); this.btnDisabled = false; this.getRow();  }, ()=> this.btnDisabled = false );
   }
 
+  async procesoLikes( item:any, opt ){
+    if( this.btnDisabled ) return false;
+    this.btnDisabled = true;
+    let data:any = { id: item.id, publicacion: item.id, user: item.user.id };
+    let result:any = await this.getPublicacion( { where: { id: item.id } } );
+    if( !result ) return false;
+    if( opt == 'like' ) { 
+      item.check = true;
+      item.check2 = false;
+      data.megusta = ( result.megusta || 0 ) + 1;
+      data.tipo = "megusta";
+      data.puntos = data.megusta;
+      item.megusta = data.megusta;
+    }
+    else {
+      item.check2 = true;
+      item.check = false;
+      data.nomegusta = ( result.nomegusta || 0 ) + 1;
+      data.tipo = "nomegusta";
+      data.puntos = data.nomegusta;
+      item.nomegusta = data.nomegusta;
+    }
+    await this.nextlikes( data );
+    this.btnDisabled = false;
+  }
+
+  async getPublicacion( data ){
+    return new Promise( resolve =>{
+      this._modelo.get( data ).subscribe(( res:any )=> {
+        res = res.data[0];
+        if( !res ) return resolve( false );
+        resolve( res );
+      },()=>resolve( false ))
+    });
+  }
+
+  async nextlikes( data:any ){
+    return new Promise( resolve =>{
+      this._modelo.updateMegusta( data ).subscribe(( res:any )=>{
+        resolve( true );
+      },( )=> { this._tools.tooast( "Tenemos problemas ..."); resolve( false ); });
+    });
+  }
+
 }
