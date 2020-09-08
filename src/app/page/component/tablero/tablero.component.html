@@ -1,1 +1,56 @@
-<p>tablero works!</p>
+<div _ngcontent-muc-c22="" class="shadow p-3 mb-5 bg-white rounded">
+    <div class="row">
+        <div class="col-6">
+            <div id="chart">
+                <apx-chart
+                  [series]="tareasDiarias.series"
+                  [chart]="tareasDiarias.chart"
+                  [xaxis]="tareasDiarias.xaxis"
+                  [dataLabels]="tareasDiarias.dataLabels"
+                  [grid]="tareasDiarias.grid"
+                  [stroke]="tareasDiarias.stroke"
+                  [title]="tareasDiarias.title"
+                ></apx-chart>
+              </div>        
+        </div>
+        <div class="col-6">
+            <div id="chart">
+                <apx-chart
+                  [series]="gananciasDiarias.series"
+                  [chart]="gananciasDiarias.chart"
+                  [xaxis]="gananciasDiarias.xaxis"
+                  [dataLabels]="gananciasDiarias.dataLabels"
+                  [grid]="gananciasDiarias.grid"
+                  [stroke]="gananciasDiarias.stroke"
+                  [title]="gananciasDiarias.title"
+                ></apx-chart>
+              </div>        
+        </div>
+        <div class="col-6">
+            <div id="chart">
+                <apx-chart
+                  [series]="gananciasDiariasRef.series"
+                  [chart]="gananciasDiariasRef.chart"
+                  [xaxis]="gananciasDiariasRef.xaxis"
+                  [dataLabels]="gananciasDiariasRef.dataLabels"
+                  [grid]="gananciasDiariasRef.grid"
+                  [stroke]="gananciasDiariasRef.stroke"
+                  [title]="gananciasDiariasRef.title"
+                ></apx-chart>
+              </div>        
+        </div>
+        <div class="col-6">
+            <div id="chart">
+                <apx-chart
+                  [series]="cantidadRef.series"
+                  [chart]="cantidadRef.chart"
+                  [xaxis]="cantidadRef.xaxis"
+                  [dataLabels]="cantidadRef.dataLabels"
+                  [grid]="cantidadRef.grid"
+                  [stroke]="cantidadRef.stroke"
+                  [title]="cantidadRef.title"
+                ></apx-chart>
+              </div>        
+        </div>
+    </div>
+</div>

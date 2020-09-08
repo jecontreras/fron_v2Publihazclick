@@ -32,6 +32,7 @@ import { AdminMarketplaceComponent } from './component/admin-marketplace/admin-m
 import { FormadminMarketplaceComponent } from './form/formadmin-marketplace/formadmin-marketplace.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ComentariosComponent } from './tools/comentarios/comentarios.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   declarations: [ 
@@ -63,7 +64,8 @@ import { ComentariosComponent } from './tools/comentarios/comentarios.component'
     InfiniteScrollModule,
     AngularEditorModule,
     NgxCurrencyModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    NgApexchartsModule
   ],
   bootstrap: [ PagesComponent ]
 })
