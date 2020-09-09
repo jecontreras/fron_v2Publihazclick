@@ -25,7 +25,7 @@
                             [src]="item.fotoUser" alt="Perfil user" />
                     </picture>
                     <div class="col">
-                        <p>
+                        <p [routerLink]="['/dashboard/view_perfil', item.userPubli ]" class="mouse">
                             <span *ngIf="item.userName !== 'origin'">
                                 {{item.userName  || 'PublicidadPorInternet'}}
                             </span>

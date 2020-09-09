@@ -73,6 +73,7 @@ export class ToolsPublicacionComponent implements OnInit {
       else this.tarea.faltante++;
       if(!row.publicacion) return {
         fotoUser: row.user.foto,
+        userPubli: row.user.id,
         userName: row.user.username,
         ...row
       };
@@ -87,6 +88,7 @@ export class ToolsPublicacionComponent implements OnInit {
         imgdefault: row.publicacion.imgdefault,
         fotoUser: row.publicacion.user.foto,
         userName: row.publicacion.user.username,
+        userPubli: row.publicacion.user.id,
         ... row
       }
     });
