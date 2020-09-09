@@ -25,6 +25,9 @@ export class PublicacionService {
   updateMegusta(query: any) {
     return this._model.querys('megustas/create', query, 'post');
   }
+  getMegusta(query: any) {
+    return this._model.querys('megustas/querys', query, 'post');
+  }
 
   urlprueba(text: string) {
     return new Promise(resolve => {

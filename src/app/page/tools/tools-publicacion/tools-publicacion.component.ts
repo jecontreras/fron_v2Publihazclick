@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ToolsService } from 'src/app/services/tools.service';
 import * as _ from 'lodash';
 import { environment } from 'src/environments/environment';
+import { PublicacionService } from 'src/app/servicesComponents/publicacion.service';
 const URL = environment.urlFront;
 
 @Component({
@@ -29,7 +30,8 @@ export class ToolsPublicacionComponent implements OnInit {
   btnDisabled:boolean = false;
 
   constructor(
-    private _tools: ToolsService
+    private _tools: ToolsService,
+    private _Publicacion: PublicacionService
   ) { }
 
   ngOnInit() {
@@ -76,6 +78,8 @@ export class ToolsPublicacionComponent implements OnInit {
       };
       else return {
         titulo: row.publicacion.titulo,
+        megusta: row.publicacion.megusta,
+        nomegusta: row.publicacion.nomegusta,
         idPublicacion: row.publicacion.id,
         descripcion: row.publicacion.descripcion,
         type: row.publicacion.type,
@@ -93,6 +97,26 @@ export class ToolsPublicacionComponent implements OnInit {
       this.notEmptyPost =  false;
     }
     this.notscrolly = true;
+    let data:any = {};
+    for( let row of this.listRow ){
+      data = row;
+      if( row.publicacion ) data = row.publicacion;
+      this.getLikesUser( data );
+    }
+  }
+
+  getLikesUser( row:any ){
+    return new Promise( resolve =>{
+      this._Publicacion.getMegusta( { where: { publicacion: row.id, user: this.query.user } } ).subscribe(( res:any )=>{
+        res = res.data[0];
+        if( !res ) return resolve( false );
+        else {
+          if( res.tipo == 'megusta' ) row.check = true;
+          else row.check2 = true;
+        }
+        resolve( res );
+      });
+    })
   }
 
   refActivadades(){
@@ -101,12 +125,18 @@ export class ToolsPublicacionComponent implements OnInit {
   }
 
   async procesoLikes( item:any, opt ){
+    let clon:any = {};
+    if( item.publicacion ) { clon = _.clone( item ); item = item.publicacion;}
+    console.log( item );
     if( this.btnDisabled ) return false;
     this.btnDisabled = true;
     let data:any = { id: item.id, publicacion: item.id, user: item.user.id };
     let result:any = await this.getPublicacion( { where: { id: item.id } } );
+    console.log( result );
     if( !result ) return false;
     if( opt == 'like' ) { 
+      if( item.check ) result.megusta = result.megusta-1;
+      if( item.check2 ) { data.nomegusta--; item.nomegusta--; result.nomegusta = result.nomegusta-1;}
       item.check = true;
       item.check2 = false;
       data.megusta = ( result.megusta || 0 ) + 1;
@@ -115,6 +145,8 @@ export class ToolsPublicacionComponent implements OnInit {
       item.megusta = data.megusta;
     }
     else {
+      if( item.check ) { data.megusta--; item.megusta--; result.megusta = result.megusta-1; }
+      if( item.check2 ) result.nomegusta = result.nomegusta-1;
       item.check2 = true;
       item.check = false;
       data.nomegusta = ( result.nomegusta || 0 ) + 1;
@@ -122,13 +154,24 @@ export class ToolsPublicacionComponent implements OnInit {
       data.puntos = data.nomegusta;
       item.nomegusta = data.nomegusta;
     }
+    if( !data.megusta ) data.megusta = 0;
+    if( !data.nomegusta ) data.nomegusta = 0;
+    
     await this.nextlikes( data );
     this.btnDisabled = false;
+    if( clon.publicacion ) {
+      clon.check = item.check;
+      clon.check2 = item.check2;
+      clon.megusta = item.megusta;
+      clon.nomegusta = item.nomegusta;
+      item = clon;
+      // console.log( clon , item);
+    }
   }
 
   async getPublicacion( data ){
     return new Promise( resolve =>{
-      this._modelo.get( data ).subscribe(( res:any )=> {
+      this._Publicacion.get( data ).subscribe(( res:any )=> {
         res = res.data[0];
         if( !res ) return resolve( false );
         resolve( res );
@@ -138,7 +181,7 @@ export class ToolsPublicacionComponent implements OnInit {
 
   async nextlikes( data:any ){
     return new Promise( resolve =>{
-      this._modelo.updateMegusta( data ).subscribe(( res:any )=>{
+      this._Publicacion.updateMegusta( data ).subscribe(( res:any )=>{
         resolve( true );
       },( )=> { this._tools.tooast( "Tenemos problemas ..."); resolve( false ); });
     });
