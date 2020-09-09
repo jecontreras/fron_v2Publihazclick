@@ -289,7 +289,7 @@ export class TableroComponent implements OnInit {
       };
       this.cantidadRef = {
         ... this.cantidadRef,
-        ... res.cantidadRef,
+        ... res.cantidadRef
       };
       this.cantidadActividades = {
         ... this.cantidadActividades,
@@ -300,6 +300,7 @@ export class TableroComponent implements OnInit {
         ... res.cantidadPaquetes,
       };
       this.progreses = false;
+      console.log( this.cantidadRef );
     },()=> this.progreses = false );
   }
 

@@ -1,32 +1,20 @@
 <div _ngcontent-muc-c22="" class="shadow p-3 mb-5 bg-white rounded" *ngIf="!progreses">
-    <div class="row">
-        <div class="col-6">
-            <div id="chart">
-                <apx-chart
-                  [series]="tareasDiarias.series"
-                  [chart]="tareasDiarias.chart"
-                  [xaxis]="tareasDiarias.xaxis"
-                  [dataLabels]="tareasDiarias.dataLabels"
-                  [grid]="tareasDiarias.grid"
-                  [stroke]="tareasDiarias.stroke"
-                  [title]="tareasDiarias.title"
-                ></apx-chart>
-              </div>        
-        </div>
-        <div class="col-6">
-            <div id="chart">
-                <apx-chart
-                  [series]="gananciasDiarias.series"
-                  [chart]="gananciasDiarias.chart"
-                  [xaxis]="gananciasDiarias.xaxis"
-                  [dataLabels]="gananciasDiarias.dataLabels"
-                  [grid]="gananciasDiarias.grid"
-                  [stroke]="gananciasDiarias.stroke"
-                  [title]="gananciasDiarias.title"
-                ></apx-chart>
-              </div>        
-        </div>
-        <!-- <div class="col-6">
+  <div class="row">
+    <div class="col-6">
+      <div id="chart">
+        <apx-chart [series]="tareasDiarias.series" [chart]="tareasDiarias.chart" [xaxis]="tareasDiarias.xaxis"
+          [dataLabels]="tareasDiarias.dataLabels" [grid]="tareasDiarias.grid" [stroke]="tareasDiarias.stroke"
+          [title]="tareasDiarias.title"></apx-chart>
+      </div>
+    </div>
+    <div class="col-6">
+      <div id="chart">
+        <apx-chart [series]="gananciasDiarias.series" [chart]="gananciasDiarias.chart" [xaxis]="gananciasDiarias.xaxis"
+          [dataLabels]="gananciasDiarias.dataLabels" [grid]="gananciasDiarias.grid" [stroke]="gananciasDiarias.stroke"
+          [title]="gananciasDiarias.title"></apx-chart>
+      </div>
+    </div>
+    <!-- <div class="col-6">
             <div id="chart">
                 <apx-chart
                   [series]="gananciasDiariasRef.series"
@@ -39,67 +27,46 @@
                 ></apx-chart>
               </div>        
         </div> -->
-        <div class="col-6">
-            <div _ngcontent-muc-c22="" class="shadow p-3 mb-5 bg-white rounded">
-                <h5>Referidos</h5>
-            </div>
-            <div id="chart">
-                <apx-chart
-                  [series]="cantidadRef.series"
-                  [chart]="cantidadRef.chart"
-                  [xaxis]="cantidadRef.xaxis"
-                  [dataLabels]="cantidadRef.dataLabels"
-                  [grid]="cantidadRef.grid"
-                  [stroke]="cantidadRef.stroke"
-                  [title]="cantidadRef.title"
-                ></apx-chart>
-              </div>        
-        </div>
-        <div class="col-6">
-            <div _ngcontent-muc-c22="" class="shadow p-3 mb-5 bg-white rounded">
-                <h5>Actividades</h5>
-            </div>
-            <div id="chart">
-                <apx-chart
-                  [series]="cantidadActividades.series"
-                  [chart]="cantidadActividades.chart"
-                  [xaxis]="cantidadActividades.xaxis"
-                  [dataLabels]="cantidadActividades.dataLabels"
-                  [grid]="cantidadActividades.grid"
-                  [stroke]="cantidadActividades.stroke"
-                  [title]="cantidadActividades.title"
-                ></apx-chart>
-              </div>        
-        </div>
-        <div class="col-6">
-            <div _ngcontent-muc-c22="" class="shadow p-3 mb-5 bg-white rounded">
-                <h5>Paquetes</h5>
-            </div>
-            <div id="chart">
-                <apx-chart
-                  [series]="cantidadPaquetes.series"
-                  [chart]="cantidadPaquetes.chart"
-                  [xaxis]="cantidadPaquetes.xaxis"
-                  [dataLabels]="cantidadPaquetes.dataLabels"
-                  [grid]="cantidadPaquetes.grid"
-                  [stroke]="cantidadPaquetes.stroke"
-                  [title]="cantidadPaquetes.title"
-                ></apx-chart>
-              </div>        
-        </div>
+    <div class="col-6">
+      <div _ngcontent-muc-c22="" class="shadow p-3 mb-5 bg-white rounded">
+        <h5>Referidos</h5>
+      </div>
+      <div id="chart">
+        <apx-chart [series]="cantidadRef.series" [chart]="cantidadRef.chart" [labels]="cantidadRef.labels"
+          [responsive]="cantidadRef.responsive"></apx-chart>
+      </div>
     </div>
+    <div class="col-6">
+      <div _ngcontent-muc-c22="" class="shadow p-3 mb-5 bg-white rounded">
+        <h5>Actividades</h5>
+      </div>
+      <div id="chart">
+        <apx-chart [series]="cantidadActividades.series" [chart]="cantidadActividades.chart"
+          [labels]="cantidadActividades.labels" [responsive]="cantidadActividades.responsive"></apx-chart>
+      </div>
+    </div>
+    <div class="col-6">
+      <div _ngcontent-muc-c22="" class="shadow p-3 mb-5 bg-white rounded">
+        <h5>Paquetes</h5>
+      </div>
+      <div id="chart">
+        <apx-chart [series]="cantidadPaquetes.series" [chart]="cantidadPaquetes.chart"
+          [labels]="cantidadPaquetes.labels" [responsive]="cantidadPaquetes.responsive"></apx-chart>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="row" *ngIf="progreses">
-    <div class="col-12">
-        <div class="d-flex justify-content-center row">
-            <div class="spinner-grow text-primary" role="status"><span class="sr-only">Loading...</span></div>
-            <div class="spinner-grow text-secondary" role="status"><span class="sr-only">Loading...</span></div>
-            <div class="spinner-grow text-success" role="status"><span class="sr-only">Loading...</span></div>
-            <div class="spinner-grow text-danger" role="status"><span class="sr-only">Loading...</span></div>
-            <div class="spinner-grow text-warning" role="status"><span class="sr-only">Loading...</span></div>
-            <div class="spinner-grow text-info" role="status"><span class="sr-only">Loading...</span></div>
-            <div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>
-            <div class="spinner-grow text-dark" role="status"><span class="sr-only">Loading...</span></div>
-        </div>
+  <div class="col-12">
+    <div class="d-flex justify-content-center row">
+      <div class="spinner-grow text-primary" role="status"><span class="sr-only">Loading...</span></div>
+      <div class="spinner-grow text-secondary" role="status"><span class="sr-only">Loading...</span></div>
+      <div class="spinner-grow text-success" role="status"><span class="sr-only">Loading...</span></div>
+      <div class="spinner-grow text-danger" role="status"><span class="sr-only">Loading...</span></div>
+      <div class="spinner-grow text-warning" role="status"><span class="sr-only">Loading...</span></div>
+      <div class="spinner-grow text-info" role="status"><span class="sr-only">Loading...</span></div>
+      <div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>
+      <div class="spinner-grow text-dark" role="status"><span class="sr-only">Loading...</span></div>
     </div>
+  </div>
 </div>
