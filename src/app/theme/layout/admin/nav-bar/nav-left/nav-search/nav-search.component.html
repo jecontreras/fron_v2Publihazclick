@@ -19,7 +19,7 @@
     <div class="input-group col-6">
       <input type="text" id="m-search" class="form-control" [(ngModel)]="diasFaltantes" [style.width]="'0px'">
       <!-- <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="diasFaltantes" [options]="formatoMoneda" /> -->
-        <span class="input-group-append search-btn btn btn-primary">
+        <span class="input-group-append search-btn btn btn-primary" (click)="getMiPaquete()">
           Mis Dias de mi paquete
           <!-- <i class="fa fa-usd" aria-hidden="true"></i> -->
         </span>

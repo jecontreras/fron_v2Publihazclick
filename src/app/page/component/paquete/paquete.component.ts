@@ -27,7 +27,7 @@ export class PaqueteComponent implements OnInit {
   dataUser:any = {};
   paquete:any = false;
   ocultar:boolean = true;
-
+  disabledB:boolean = false;
   constructor(
     private _paquetes: PaquetesService,
     private _tools: ToolsService,
@@ -58,7 +58,7 @@ export class PaqueteComponent implements OnInit {
   }
 
   async comprarPaqueteAcomulado(){
-    if( this.paquete ) return this._tools.error( { mensaje: "Error en la activacion", footer: "En estos momento tienes un paquete activo" } );
+    if( this.paquete ) return this._tools.error( { mensaje: "Error En estos momento tienes un paquete activo", footer: "" } );
     let alerta:any = await this._tools.confirm( { title:"Activacion paquete", detalle:" al activar tu paquete se te hara el descuento de una y se activar automatico", confir:"" } );
     if( !alerta ) return false;
     this.ocultar = false;
@@ -94,7 +94,7 @@ export class PaqueteComponent implements OnInit {
         ;
       if ( data.valor !== 30000 && data.valor !== 33000 ) parametros.x_description = 'Paquete Emprendedor';
       this._paquetes.comprandoPaquete( parametros ).subscribe(( res:any )=>{
-        console.log( res );
+        // console.log( res );
         this.restartPuntos();
       },( error:any )=> this._tools.tooast( { title: "Error en la compra del paquete", icon:"error" } ));
   }
@@ -103,6 +103,7 @@ export class PaqueteComponent implements OnInit {
     this._punto.restarPunto( { user: this.dataUser.id, valor: 20100 } ).subscribe( ( res:any )=>{
       console.log( res );
       this._tools.tooast( { title: "Operacion exitosa" } );
+      setTimeout( ()=> location.reload(), 3000 );
     },( error:any )=> this._tools.tooast( { title: "Error de servidor", icon:"error" } ));
   }
 

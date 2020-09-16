@@ -8,6 +8,8 @@ import { STORAGES } from 'src/app/interfaces/sotarage';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
+import { UserPaqueteService } from 'src/app/servicesComponents/user-paquete.service';
+import { UserAction } from 'src/app/redux/app.actions';
 
 @Component({
   selector: 'app-formpublicacion',
@@ -34,7 +36,8 @@ export class FormpublicacionComponent implements OnInit {
     public sanitizer: DomSanitizer,
     private _store: Store<STORAGES>,
     private activate: ActivatedRoute,
-    private Router: Router
+    private Router: Router,
+    private _userPaquete: UserPaqueteService
   ) {
     this._store.subscribe((store: any) => {
       //console.log(store);
@@ -129,6 +132,7 @@ export class FormpublicacionComponent implements OnInit {
       this._tools.tooast({ title: "Publicacion Creada" });
       this.disableFile = false;
       this.Router.navigate( [ 'dashboard/mispublicacion' ]);
+      this.actualizarPaquete();
     }, (error: any) => { this._tools.tooast({ title: "Error de servidor", icon: 'error' }); this.disableFile = false; })
   }
 
@@ -139,6 +143,18 @@ export class FormpublicacionComponent implements OnInit {
       this._tools.tooast({ title: "Publicacion Actualizada" });
       this.disableFile = false;
     }, (error: any) => { this._tools.tooast({ title: "Error de servidor", icon: 'error' }); this.disableFile = false; })
+  }
+
+  actualizarPaquete(){
+    let data: any = { id: this.dataUser.miPaquete.id, cantidaddepublicidad: ( this.dataUser.miPaquete.cantidaddepublicidad -1 ) || 0 };
+    this._userPaquete.update( data ).subscribe((res:any)=>{
+      let dataUser = _.clone( this.dataUser );
+      dataUser.miPaquete = res;
+      // console.log( res , dataUser);
+      let accion:any = new UserAction( dataUser, 'post');
+      this._store.dispatch( accion );
+      return 'ok';
+    });
   }
 
   crearDefecto() {

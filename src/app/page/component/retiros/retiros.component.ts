@@ -17,7 +17,7 @@ import { Store } from '@ngrx/store';
 export class RetirosComponent implements OnInit {
   
   tablet:any = {
-    dataHeader: ["Opciones","Codigo","Titulo","Cantidad","Estado","Tipo Banco","Creado"],
+    dataHeader: ["Opciones","Codigo","Cantidad","Estado","Tipo Banco","Creado"],
     dataRow: [],
     count: 0
   };

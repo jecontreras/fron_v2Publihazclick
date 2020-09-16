@@ -1,13 +1,10 @@
 <div class="d-flex justify-content-center" *ngIf="config.vista == 'tareas'">
     <div class="row">
-        <div class="p-3 mb-2 col-5 bg-success text-white rounded textInf">
-            ({{ tarea.completado }}) Actividades Cumplidas
+        <div class="p-3 mb-2 col-6 bg-success text-white rounded textInf">
+            <h4>({{ tarea.completado }}) Actividades Cumplidas</h4>
         </div>
-        <div class="col-2">
-
-        </div>
-        <div class="p-3 mb-2 col-5 bg-danger text-white rounded textInf">
-            ({{ tarea.restante }}) Actividades Restantes
+        <div class="p-3 mb-2 col-6 bg-danger text-white rounded textInf">
+            <h4>({{ tarea.restante }}) Actividades Restantes</h4>
         </div>
     </div>
 </div>

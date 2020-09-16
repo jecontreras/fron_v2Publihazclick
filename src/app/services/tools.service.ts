@@ -51,7 +51,7 @@ export class ToolsService {
       icon: text.icon || 'success',
       title: text.title || 'Your work has been saved',
       showConfirmButton: text.show || true,
-      timer: 1500
+      timer: 3000
     });
   }
   confirm(text:any){

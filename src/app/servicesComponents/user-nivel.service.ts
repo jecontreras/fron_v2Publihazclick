@@ -25,4 +25,7 @@ export class UserNivelService {
   getDetalles( query:any ){
     return this._model.querys('usernivel/cargarnivel', query, 'post');
   }
+  getMiNivel( query:any ){
+    return this._model.querys('usernivel/lodearMiNivel', query, 'post');
+  }
 }

@@ -11,13 +11,18 @@ export class CategoriaComponent implements OnInit {
   cantidadReferidos: any = 0;
   nivel = '';
   listCategoria:any = [];
+  query:any = {
+    where:{},
+    limit: 100,
+    sort: "referidos ASC"
+  };
   constructor(
     public _nivel: NivelService
   ) { }
 
   ngOnInit() {
     // console.log(this.data)
-    this._nivel.get( { where: { } } ).subscribe(
+    this._nivel.get( this.query ).subscribe(
       (response: any) => {
         this.listCategoria = response.data;
         for(let row of this.listCategoria){

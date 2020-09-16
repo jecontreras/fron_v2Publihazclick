@@ -6,6 +6,8 @@ import { PuntosService } from 'src/app/servicesComponents/puntos.service';
 import { PuntosResumenService } from 'src/app/servicesComponents/puntos-resumen.service';
 import { UserAction } from 'src/app/redux/app.actions';
 import * as _ from 'lodash';
+import { UsuariosService } from 'src/app/servicesComponents/usuarios.service';
+import { UserNivelService } from 'src/app/servicesComponents/user-nivel.service';
 
 @Component({
   selector: 'app-nav-search',
@@ -18,11 +20,14 @@ export class NavSearchComponent implements OnInit {
   dataUser:any = {};
   diasFaltantes:number = 0;
   puntosGanados:number = 0;
+  disabled:boolean = false;
 
   constructor(
     private _store: Store<STORAGES>,
     private _tools: ToolsService,
-    private _puntosResumen: PuntosResumenService
+    private _puntosResumen: PuntosResumenService,
+    private _user: UsuariosService,
+    private _userNivel: UserNivelService
   ) { 
     this._store.subscribe((store: any) => {
       console.log(store);
@@ -41,15 +46,32 @@ export class NavSearchComponent implements OnInit {
   }
 
   getMisPuntos(){
+    if( this.disabled ) return false;
+    this.disabled = true;
     this._puntosResumen.get( { where: { user: this.dataUser.id, state: "valido" } } ).subscribe( ( res:any )=>{
       res = res.data[0];
+      this.disabled = false;
       if ( !res ) return this.dataUser.cantidadPuntos = { valorTotal: 0 };
       else {
         this.dataUser.cantidadPuntos = res;
         let accion:any = new UserAction( this.dataUser, 'post');
         this._store.dispatch( accion );
       }
-    },( error:any )=> this._tools.presentToast("Error de servidor"));
+    },( error:any )=> { this._tools.presentToast("Error de servidor"); this.disabled = false; } );
+  }
+
+  getMiPaquete(){
+    if( this.disabled ) return false;
+    this.disabled = true;
+    this._userNivel.getMiNivel( { user: this.dataUser.id }).subscribe(( res:any )=>{
+      this._tools.tooast( { title: "Completado" });
+      this.disabled = false;
+      this.dataUser.miNivel = res.resultado.miNivel;
+      let accion:any = new UserAction( this.dataUser, 'post');
+      this._store.dispatch( accion );
+    },()=> { this._tools.tooast( { title: "Error", icon: "error" } ); this.disabled = false; } );
+
+    
   }
 
 }

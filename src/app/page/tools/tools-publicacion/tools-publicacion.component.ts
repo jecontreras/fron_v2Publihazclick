@@ -3,6 +3,8 @@ import { ToolsService } from 'src/app/services/tools.service';
 import * as _ from 'lodash';
 import { environment } from 'src/environments/environment';
 import { PublicacionService } from 'src/app/servicesComponents/publicacion.service';
+import { STORAGES } from 'src/app/interfaces/sotarage';
+import { Store } from '@ngrx/store';
 const URL = environment.urlFront;
 
 @Component({
@@ -28,11 +30,25 @@ export class ToolsPublicacionComponent implements OnInit {
 
   progreses:boolean = false;
   btnDisabled:boolean = false;
+  dataUser:any = {};
+  disabledPublic:boolean = false;
 
   constructor(
     private _tools: ToolsService,
-    private _Publicacion: PublicacionService
-  ) { }
+    private _Publicacion: PublicacionService,
+    private _store: Store<STORAGES>
+  ) { 
+    this._store.subscribe((store: any) => {
+      //console.log(store);
+      store = store.name;
+      if(!store) return false;
+      this.dataUser = store.user || {};
+      if( Object.keys( this.dataUser ).length >0 ){
+        if( this.dataUser.miPaquete.cantidaddepublicidad >0 ) this.disabledPublic = false;
+        else this.disabledPublic = true;
+      }
+    });
+  }
 
   ngOnInit() {
     console.log( this.config );
@@ -45,6 +61,7 @@ export class ToolsPublicacionComponent implements OnInit {
   }
   
   openPublic( item ){
+    if( !this.disabledPublic ) return this._tools.tooast( { title: "En estos momento no puedes hacer ninguna actividad hasta que consumas tus publicaciones a crear", icon: "error" } );
     let url:string = item.content;
     if( this.config.vista == "tareas" ) { 
       if( item.estado == "activo"){
