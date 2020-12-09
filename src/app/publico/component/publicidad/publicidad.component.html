@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <h3>Publicidad</h3>
+                    <div class="d-flex">
+                        <h3>Gola</h3>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="col-0 col-sm-2" *ngIf="disabled">
+            Izquierdo
+        </div>
+        <div class="col-12 col-sm-12 col-md-8">
+            <app-tools-publicacion [_modelo]="_publicidad" [query]="query" [config]="config"></app-tools-publicacion>
+        </div>
+        <div class="col-0 col-sm-2" *ngIf="disabled">
+            derecho
+        </div>
+    </div>
+</div>

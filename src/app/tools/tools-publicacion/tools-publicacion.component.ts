@@ -63,8 +63,8 @@ export class ToolsPublicacionComponent implements OnInit {
   openPublic( item ){
     if( !this.disabledPublic ) return this._tools.tooast( { title: "En estos momento no puedes hacer ninguna actividad hasta que consumas tus publicaciones a crear", icon: "error" } );
     let url:string = item.content;
-    if( this.config.vista == "tareas" ) { 
-      if( item.estado == "activo"){
+    if( this.config.vista == "tareas" || this.config.vista == "publicidad"  ) { 
+      if( item.estado == "activo" && this.config.vista == "tareas"){
         this.tarea.completado++;
         this.tarea.restante--;
         console.log( this.tarea );
@@ -149,7 +149,9 @@ export class ToolsPublicacionComponent implements OnInit {
     console.log( item );
     if( this.btnDisabled ) return false;
     this.btnDisabled = true;
-    let data:any = { id: item.id, publicacion: item.id, user: item.user.id };
+    let users:any = item.user.id;
+    if( Object.keys( this.dataUser ).length > 0 ) users = this.dataUser.id;
+    let data:any = { id: item.id, publicacion: item.id, user: users };
     let result:any = await this.getPublicacion( { where: { id: item.id } } );
     console.log( result );
     if( !result ) return false;

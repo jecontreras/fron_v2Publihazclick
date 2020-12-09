@@ -18,10 +18,8 @@ import { SharedModule } from '../theme/shared/shared.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { TareaMiniComponent } from './component/tarea-mini/tarea-mini.component';
 import { TareaMegaComponent } from './component/tarea-mega/tarea-mega.component';
-import { ToolsPublicacionComponent } from './tools/tools-publicacion/tools-publicacion.component';
 import { ViewPerfilComponent } from './component/view-perfil/view-perfil.component';
 import { BannerComponent } from './component/banner/banner.component';
-import { ToolAdminPublicComponent } from './tools/tool-admin-public/tool-admin-public.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { FormpublicacionComponent } from './form/formpublicacion/formpublicacion.component';
 import { FormbannerComponent } from './form/formbanner/formbanner.component';
@@ -31,8 +29,8 @@ import { NgxCurrencyModule } from "ngx-currency";
 import { AdminMarketplaceComponent } from './component/admin-marketplace/admin-marketplace.component';
 import { FormadminMarketplaceComponent } from './form/formadmin-marketplace/formadmin-marketplace.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
-import { ComentariosComponent } from './tools/comentarios/comentarios.component';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { ToolsModule } from '../tools/tools.module';
 
 @NgModule({
   declarations: [ 
@@ -51,11 +49,9 @@ import { NgApexchartsModule } from "ng-apexcharts";
     ServicioClienteComponent, 
     TareaMiniComponent, 
     TareaMegaComponent, 
-    ToolsPublicacionComponent, 
     ViewPerfilComponent, 
     BannerComponent, 
-    ToolAdminPublicComponent, 
-    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, ComentariosComponent
+    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +61,8 @@ import { NgApexchartsModule } from "ng-apexcharts";
     AngularEditorModule,
     NgxCurrencyModule,
     NgxDropzoneModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    ToolsModule,
   ],
   bootstrap: [ PagesComponent ]
 })

@@ -4,6 +4,7 @@ import { PublicacionviewsComponent } from './component/publicacionviews/publicac
 import { MarkeplaceComponent } from './component/markeplace/markeplace.component';
 import { ProductosComponent } from './component/productos/productos.component';
 import { ProductosViewComponent } from './component/producto-view/producto-view.component';
+import { PublicidadComponent } from './component/publicidad/publicidad.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,11 @@ const routes: Routes = [
       {
         path: "productosView/:id",
         component: ProductosViewComponent
-      }
+      },
+      {
+        path: "publicidad",
+        component: PublicidadComponent
+      },
     ]
   }
 ];

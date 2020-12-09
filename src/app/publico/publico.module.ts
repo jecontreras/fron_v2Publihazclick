@@ -9,6 +9,8 @@ import { ProductosViewComponent } from './component/producto-view/producto-view.
 import { ProductosComponent } from './component/productos/productos.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ProgressComponent } from './component/progress/progress.component';
+import { PublicidadComponent } from './component/publicidad/publicidad.component';
+import { ToolsModule } from '../tools/tools.module';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,16 @@ import { ProgressComponent } from './component/progress/progress.component';
     MarkeplaceComponent,
     ProductosViewComponent,
     ProductosComponent,
-    ProgressComponent
+    ProgressComponent,
+    PublicidadComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     PublicoRoutingModule,
     NgImageSliderModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    ToolsModule
   ]
 })
 export class PublicoModule { }

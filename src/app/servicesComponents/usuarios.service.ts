@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { STORAGES } from '../interfaces/sotarage';
+import { UserAction } from '../redux/app.actions';
 import { ServiciosService } from '../services/servicios.service';
 
 declare const window:any;
@@ -10,7 +13,8 @@ declare const FB:any;
 export class UsuariosService {
 
   constructor(
-    private _model: ServiciosService
+    private _model: ServiciosService,
+    private _store: Store<STORAGES>
   ) { }
 
   get(query:any){
@@ -48,6 +52,16 @@ export class UsuariosService {
   delete(query:any){
     return this._model.querys('user/'+query.id, query, 'delete');
   }
+
+  validaorIp(query:any){
+    return this._model.querys('user/validandoip',query, 'post');
+  }
+
+  ProcesoStorages( res:any ){
+    let accion:any = new UserAction(res, 'post');
+    this._store.dispatch(accion);
+  }
+
   procesoFacebook(){
     FB.getLoginStatus(function(response) {
       console.log( response );

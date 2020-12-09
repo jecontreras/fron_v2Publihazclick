@@ -11,8 +11,8 @@
 
 <div class="d-flex justify-content-center row" infiniteScroll [infiniteScrollDistance]="3" [infiniteScrollThrottle]="50"
     (scrolled)="onScroll()">
-    <div class="col-12 col-sm-7 col-xs-8" *ngFor="let item of listRow" [ngClass]="{
-        'disable':item.estado !== 'activo' && config.vista == 'tareas'
+    <div class="col-12 col-sm-8 col-md-8" *ngFor="let item of listRow" [ngClass]="{
+        'disable':item.estado !== 'activo'
      }">
         <div class="marge-card mb-3">
             <app-card blockclass="p-0" cardclass="mb-0" class="ng-tns-c14-23">
@@ -56,7 +56,7 @@
                             <span (click)="item.oculto = 150" *ngIf="item.oculto == 5000">Ver Menos!</span>
                         </label>
                         <p class="card-text"><small class="text-muted">{{ item.createdAt }}</small></p>
-                        <app-comentarios [data]="item"></app-comentarios>
+                        <app-comentarios *ngIf="dataUser.id" [data]="item"></app-comentarios>
                     </div>
                 </div>
             </app-card>
