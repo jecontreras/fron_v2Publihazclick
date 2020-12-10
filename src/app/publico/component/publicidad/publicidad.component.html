@@ -1,23 +1,74 @@
-<div class="container">
+<div class="">
     <div class="row">
         <div class="col-12">
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar navbar-dark bg-primary">
                 <div class="container-fluid">
-                    <h3>Publicidad</h3>
+                    <h3 class="text-muted mb-1 titulos">Publicidad</h3>
                     <div class="d-flex">
-                        <h3>Gola</h3>
+                        <h3>
+                            <button class="btn btn-success" type="button">
+                                Donaciones <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="dineros.miDonacion" [options]="formatoMoneda" />
+                            </button>
+                        </h3>
+                        <h3>
+                            <button class="btn btn-warning" type="button">
+                                Ganancias <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="dineros.miDinero" [options]="formatoMoneda" />
+                            </button>
+                        </h3>
+                    </div>
+                    <div class="d-flex">
+                        <a [routerLink]="['/auth/login']" class="text-muted mb-1 titulos">
+                            Registrarse
+                        </a>
                     </div>
                 </div>
             </nav>
         </div>
+        <div class="col-12">
+            <ng-image-slider [images]="imageObject2" *ngIf="imageObject2.length > 0" [infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
+                [showArrow]="sliderArrowShow" [imageSize]="{width: sliderImageWidth2, height: sliderImageHeight2}"
+                [autoSlide]="sliderAutoSlide ? 1 : 0" [slideImage]="sliderSlideImage" [animationSpeed]="sliderAnimationSpeed"
+                (imageClick)="imageOnClick($event)" (arrowClick)="arrowOnClick($event)"
+                (lightboxArrowClick)="lightboxArrowClick($event)" #nav1>
+            </ng-image-slider>
+        </div>
         <div class="col-0 col-sm-2" *ngIf="disabled">
-            Izquierdo
+            <ng-image-slider *ngIf="imageObject.length > 0" [images]="imageObject" [infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
+                [showArrow]="sliderArrowShow" [imageSize]="{width: sliderImageWidth, height: sliderImageHeight}"
+                [autoSlide]="sliderAutoSlide ? 1 : 0" [slideImage]="sliderSlideImage" [animationSpeed]="sliderAnimationSpeed"
+                (imageClick)="imageOnClick($event)" (arrowClick)="arrowOnClick($event)"
+                (lightboxArrowClick)="lightboxArrowClick($event)" #nav>
+            </ng-image-slider>
         </div>
         <div class="col-12 col-sm-12 col-md-8">
-            <app-tools-publicacion [_modelo]="_publicidad" [query]="query" [config]="config"></app-tools-publicacion>
+            <div class="column container" style="height: 890px; overflow: scroll; overflow-x: hidden">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                            <h4 class="text-body">Publicidad Donacionaciones</h4>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <app-tools-publicacion [_modelo]="_Actividad" [query]="query" [config]="config"></app-tools-publicacion>
+                    </div>
+                    <div class="col-12">
+                        <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                            <h4 class="text-body">Mas Publicidad</h4>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <app-tools-publicacion [_modelo]="_publicidad" [query]="query2" [config]="config2"></app-tools-publicacion>
+                    </div>
+                </div>    
+            </div>
         </div>
         <div class="col-0 col-sm-2" *ngIf="disabled">
-            derecho
+            <ng-image-slider *ngIf="imageObject.length > 0" [images]="imageObject" [infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
+                [showArrow]="sliderArrowShow" [imageSize]="{width: sliderImageWidth, height: sliderImageHeight}"
+                [autoSlide]="sliderAutoSlide ? 1 : 0" [slideImage]="sliderSlideImage" [animationSpeed]="sliderAnimationSpeed"
+                (imageClick)="imageOnClick($event)" (arrowClick)="arrowOnClick($event)"
+                (lightboxArrowClick)="lightboxArrowClick($event)" #nav>
+            </ng-image-slider>
         </div>
     </div>
 </div>

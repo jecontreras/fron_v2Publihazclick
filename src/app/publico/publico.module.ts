@@ -11,6 +11,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ProgressComponent } from './component/progress/progress.component';
 import { PublicidadComponent } from './component/publicidad/publicidad.component';
 import { ToolsModule } from '../tools/tools.module';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ToolsModule } from '../tools/tools.module';
     PublicoRoutingModule,
     NgImageSliderModule,
     InfiniteScrollModule,
-    ToolsModule
+    ToolsModule,
+    NgxCurrencyModule,
   ]
 })
 export class PublicoModule { }
