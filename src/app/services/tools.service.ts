@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2'
 
 @Injectable({
@@ -8,8 +9,12 @@ export class ToolsService {
   
   loading:any;
   formatoMoneda:any = { prefix: 'COP$ ',align: 'left', thousands: '.', decimal: ',', precision: 0 };
+  stop:boolean = false;
+  valoresContador:number = 60;
+  intervalosContador:any;
 
   constructor(
+    public sanitizer: DomSanitizer
   ) { }
  
   async presentToast(mensaje:string, type='completado') {
@@ -19,6 +24,27 @@ export class ToolsService {
   codigo(){
     return (Date.now().toString(20).substr(2, 3) + Math.random().toString(20).substr(2, 3)).toUpperCase();
   }
+
+  seguridadIfrane( url:string ){
+    return this.sanitizer.bypassSecurityTrustResourceUrl( url );
+  }
+
+  contadorActividad( limitador:number ){
+    this.valoresContador = limitador;
+    this.intervalosContador = setInterval( ()=>{
+      limitador = limitador-1;
+      this.valoresContador = limitador;
+      if( limitador === 0 ){
+        this.stopContador();
+      }
+    },1000 );
+  }
+
+  stopContador(){
+    clearInterval( this.intervalosContador );
+  }
+
+  
 
   openSnack(message: string, type: string, config: any) {
     if (config) {

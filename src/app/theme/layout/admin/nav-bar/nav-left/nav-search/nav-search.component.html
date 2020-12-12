@@ -19,14 +19,15 @@
       <!-- <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="diasFaltantes" [options]="formatoMoneda" /> -->
         <span class="input-group-append search-btn btn btn-primary" (click)="getMiPaquete()">
           Dias paquete
-          <!-- <i class="fa fa-usd" aria-hidden="true"></i> -->
         </span>
-    </div>
-    <div class="input-group col-6">
-      <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="puntosGanados" [options]="formatoMoneda" (click)="getMisPuntos()"/>
-        <!-- <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
-          Mis Ganancias
-        </span> -->
+      </div>
+      <!-- <div class="input-group col-6">
+      </div> -->
+      <div class="input-group col-6">
+        <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="puntosGanados" [options]="formatoMoneda"/>
+        <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
+          <i class="fa fa-retweet" aria-hidden="true"></i>
+      </span>
     </div>
   </div>
 </div>
