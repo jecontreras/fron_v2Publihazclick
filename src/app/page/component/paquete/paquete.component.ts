@@ -26,7 +26,7 @@ export class PaqueteComponent implements OnInit {
   formatoMoneda:any = {};
   dataUser:any = {};
   paquete:any = false;
-  ocultar:boolean = true;
+  ocultar:boolean = false;
   disabledB:boolean = false;
   constructor(
     private _paquetes: PaquetesService,

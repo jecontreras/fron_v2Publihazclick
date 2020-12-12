@@ -8,21 +8,25 @@
 </div> -->
 <div id="main-search" class="main-search open">
   <div class="row">
-    <div class="input-group col-6">
-      <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="puntosGanados" [options]="formatoMoneda" />
-      <!-- <input type="number" class="form-control" [disabled]="true" [(ngModel)]="dataUser.cantidadPuntos.valorTotal"> -->
+    <!-- <div class="input-group col-6">
+      <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="donaciones" [options]="formatoMoneda" />
         <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
-          Mis Ganancias
-          <!-- <i class="fa fa-usd" aria-hidden="true"></i> -->
+          Donaciones
         </span>
-    </div>
+    </div> -->
     <div class="input-group col-6">
       <input type="text" id="m-search" class="form-control" [(ngModel)]="diasFaltantes" [style.width]="'0px'">
       <!-- <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="diasFaltantes" [options]="formatoMoneda" /> -->
         <span class="input-group-append search-btn btn btn-primary" (click)="getMiPaquete()">
-          Mis Dias de mi paquete
+          Dias paquete
           <!-- <i class="fa fa-usd" aria-hidden="true"></i> -->
         </span>
+    </div>
+    <div class="input-group col-6">
+      <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="puntosGanados" [options]="formatoMoneda" (click)="getMisPuntos()"/>
+        <!-- <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
+          Mis Ganancias
+        </span> -->
     </div>
   </div>
 </div>

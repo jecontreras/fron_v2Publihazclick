@@ -20,24 +20,29 @@ export class NavSearchComponent implements OnInit {
   dataUser:any = {};
   diasFaltantes:number = 0;
   puntosGanados:number = 0;
+  donaciones:number = 0;
   disabled:boolean = false;
 
   constructor(
     private _store: Store<STORAGES>,
     private _tools: ToolsService,
     private _puntosResumen: PuntosResumenService,
-    private _user: UsuariosService,
     private _userNivel: UserNivelService
   ) { 
     this._store.subscribe((store: any) => {
       console.log(store);
       store = store.name;
       this.dataUser = ( _.clone( store.user ) ) || {};
-      if( this.dataUser.miPaquete ) {
-        if( this.dataUser.miPaquete.diasFaltantes ) this.diasFaltantes = this.dataUser.miPaquete.diasFaltantes;
-        else  this.diasFaltantes = 0;
-      }else  this.diasFaltantes = 0;
-      if( this.dataUser.cantidadPuntos ) this.puntosGanados = this.dataUser.cantidadPuntos.valorTotal;
+      try {
+        if( this.dataUser.miPaquete ) {
+          if( this.dataUser.miPaquete.diasFaltantes ) this.diasFaltantes = this.dataUser.miPaquete.diasFaltantes;
+          else  this.diasFaltantes = 0;
+        }else  this.diasFaltantes = 0;
+        if( this.dataUser.cantidadPuntos ) {
+          this.puntosGanados = this.dataUser.cantidadPuntos.valorTotal || 0;
+          // this.donaciones = this.dataUser.cantidadPuntos.donacion || 0;
+        }
+      } catch (error) { }
     });
   }
 
@@ -66,9 +71,11 @@ export class NavSearchComponent implements OnInit {
     this._userNivel.getMiNivel( { user: this.dataUser.id }).subscribe(( res:any )=>{
       this._tools.tooast( { title: "Completado" });
       this.disabled = false;
-      this.dataUser.miNivel = res.resultado.miNivel;
-      let accion:any = new UserAction( this.dataUser, 'post');
-      this._store.dispatch( accion );
+      try {
+        this.dataUser.miNivel = res.resultado.miNivel;
+        let accion:any = new UserAction( this.dataUser, 'post');
+        this._store.dispatch( accion );
+      } catch (error) { }
     },()=> { this._tools.tooast( { title: "Error", icon: "error" } ); this.disabled = false; } );
 
     

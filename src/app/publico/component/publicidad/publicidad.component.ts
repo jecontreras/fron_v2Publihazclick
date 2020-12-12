@@ -72,7 +72,7 @@ export class PublicidadComponent implements OnInit {
     private _user: UsuariosService,
     private _tools: ToolsService,
     private _store: Store<STORAGES>,
-    private _Actividad: ActividadService,
+    public _Actividad: ActividadService,
   ) { 
     this._store.subscribe((store: any) => {
       //console.log(store);

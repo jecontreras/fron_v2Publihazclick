@@ -53,7 +53,9 @@ export class RetirosComponent implements OnInit {
       if(!store) return false;
       this.dataUser = store.user || {};
       this.query.where.user = this.dataUser.id;
-      if( this.dataUser.id ) if( Object.keys(this.dataUser.miPaquete).length > 0 ) this.paquete = this.dataUser.miPaquete.disableretiro;
+      try {
+        if( this.dataUser.id ) if( Object.keys(this.dataUser.miPaquete).length > 0 ) this.paquete = this.dataUser.miPaquete.disableretiro;
+      } catch (error) { }
     });
 
   }
