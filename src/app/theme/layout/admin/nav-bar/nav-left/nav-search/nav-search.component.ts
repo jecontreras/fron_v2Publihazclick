@@ -39,7 +39,7 @@ export class NavSearchComponent implements OnInit {
           else  this.diasFaltantes = 0;
         }else  this.diasFaltantes = 0;
         if( this.dataUser.cantidadPuntos ) {
-          this.puntosGanados = this.dataUser.cantidadPuntos.valorTotal || 0;
+          // this.puntosGanados = this.dataUser.cantidadPuntos.valorTotal || 0;
           // this.donaciones = this.dataUser.cantidadPuntos.donacion || 0;
         }
       } catch (error) { }
@@ -48,21 +48,6 @@ export class NavSearchComponent implements OnInit {
 
   ngOnInit() { 
     this.formatoMoneda = this._tools.formatoMoneda;
-  }
-
-  getMisPuntos(){
-    if( this.disabled ) return false;
-    this.disabled = true;
-    this._puntosResumen.get( { where: { user: this.dataUser.id, state: "valido" } } ).subscribe( ( res:any )=>{
-      res = res.data[0];
-      this.disabled = false;
-      if ( !res ) return this.dataUser.cantidadPuntos = { valorTotal: 0 };
-      else {
-        this.dataUser.cantidadPuntos = res;
-        let accion:any = new UserAction( this.dataUser, 'post');
-        this._store.dispatch( accion );
-      }
-    },( error:any )=> { this._tools.presentToast("Error de servidor"); this.disabled = false; } );
   }
 
   getMiPaquete(){

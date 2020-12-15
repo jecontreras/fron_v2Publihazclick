@@ -10,18 +10,21 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { RouterModule } from '@angular/router';
+import { ListUserComponent } from './list-user/list-user.component';
 
 
 @NgModule({
   declarations: [
     ToolAdminPublicComponent,
     ToolsPublicacionComponent,
-    ComentariosComponent
+    ComentariosComponent,
+    ListUserComponent
   ],
   exports: [
     ToolAdminPublicComponent,
     ToolsPublicacionComponent,
-    ComentariosComponent
+    ComentariosComponent,
+    ListUserComponent
   ],
   imports: [
     CommonModule,

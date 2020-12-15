@@ -64,6 +64,21 @@ const NavigationItems = [
   },
   {
     id: 'merkaplace',
+    title: 'Comunidad',
+    type: 'group',
+    icon: 'feather icon-monitor',
+    children: [
+      {
+        id: 'amigos',
+        title: 'Amigos',
+        type: 'item',
+        url: '/dashboard/amigos',
+        icon: 'feather icon-home'
+      }
+    ]
+  },
+  {
+    id: 'merkaplace',
     title: 'Marketplace',
     type: 'group',
     icon: 'feather icon-monitor',

@@ -16,20 +16,20 @@ import { PuntosService } from 'src/app/servicesComponents/puntos.service';
 })
 export class PublicacionviewsComponent implements OnInit {
 
-  data:any = {};
+  data: any = {};
 
   // id de la actividad
-  id:string;
+  id: string;
   // compartir params
-  ids:string;
+  ids: string;
   // bloquear ocultar banner
-  disabled:boolean = true;
+  disabled: boolean = true;
   // tamaño pantalla
   breakpoint: number;
   // url de la publicidad
-  url:any;
+  url: any;
   // disableActividadrealizada
-  disablerealizado:boolean = false;
+  disablerealizado: boolean = false;
 
   // slider
   @ViewChild('nav', { static: true }) ds: NgImageSliderComponent;
@@ -52,9 +52,9 @@ export class PublicacionviewsComponent implements OnInit {
     spanis: "",
     titulo: ""
   };
-  dataUser:any = {};
+  dataUser: any = {};
 
-  disabledCont:boolean = false;
+  disabledCont: boolean = false;
 
   constructor(
     public _publicidad: PublicacionService,
@@ -65,51 +65,77 @@ export class PublicacionviewsComponent implements OnInit {
     private _store: Store<STORAGES>
   ) {
 
-    if( (window.innerWidth >= 1000) ) this.sliderImageWidth2 = 700;
-    if( (window.innerWidth <= 1000) ) this.sliderImageWidth2 = 700;
-    if( (window.innerWidth <= 770) ) this.sliderImageWidth2 = 460;
-    if( (window.innerWidth <= 520) ) this.sliderImageWidth2 = 420;
-    if( (window.innerWidth <= 450) ) this.sliderImageWidth2 = 370;
-    if( (window.innerWidth <= 420) ) this.sliderImageWidth2 = 300;
+    if ((window.innerWidth >= 1000)) this.sliderImageWidth2 = 700;
+    if ((window.innerWidth <= 1000)) this.sliderImageWidth2 = 700;
+    if ((window.innerWidth <= 770)) this.sliderImageWidth2 = 460;
+    if ((window.innerWidth <= 520)) this.sliderImageWidth2 = 420;
+    if ((window.innerWidth <= 450)) this.sliderImageWidth2 = 370;
+    if ((window.innerWidth <= 420)) this.sliderImageWidth2 = 300;
 
     this._store.subscribe((store: any) => {
       //console.log(store);
       store = store.name;
-      if(!store) return false;
+      if (!store) return false;
       this.dataUser = store.user || {};
     });
-    
+
   }
 
   ngOnInit() {
-    this.id = ( this.activate.snapshot.paramMap.get('id') );
-    this.ids = ( this.activate.snapshot.paramMap.get('ids') );
-    if( this.ids ){}
-    else if( this.id ) this.getActividad();
+    this.id = (this.activate.snapshot.paramMap.get('id'));
+    this.ids = (this.activate.snapshot.paramMap.get('ids'));
+    if (this.ids) { }
+    else if (this.id) this.getActividad();
     this.getBanner();
-    this.getBannerLayout();  
-    setInterval( ()=>{ this.breakpoint = ( window.innerWidth <= 600 ) ? 1 : 6; if( this.breakpoint == 1 ) this.disabled = false; else this.disabled = true; }, 1000 );
+    this.getBannerLayout();
+    setInterval(() => { this.breakpoint = (window.innerWidth <= 600) ? 1 : 6; if (this.breakpoint == 1) this.disabled = false; else this.disabled = true; }, 1000);
   }
 
-  getActividad(){
-    this._actividad.get( { where: { id: this.id } } ).subscribe( ( res:any )=>{
+  getActividad() {
+    this._actividad.get({ where: { id: this.id } }).subscribe((res: any) => {
       res = res.data[0];
       this.data = res || {};
-      this.Tools.contadorActividad( 10 );
+      this.Tools.contadorActividad(10);
       this.arraydecolor();
-      setInterval(()=>{ 
-        if( this.Tools.intervalosContador == 0 ) this.disablerealizado = true;
-        console.log( this.disablerealizado );
-      },2000 );
+      setInterval(() => {
+        if (this.Tools.intervalosContador == 0) this.disablerealizado = true;
+        console.log(this.disablerealizado);
+      }, 2000);
       try {
-        if( this.data.publicacion.type == 'url' ) this.url = this.Tools.seguridadIfrane( this.data.publicacion.content );
-        console.log( this.url )
+        if (this.data.publicacion.type == 'url') this.url = this.Tools.seguridadIfrane(this.data.publicacion.content);
+        console.log(this.url)
       } catch (error) { }
-      console.log( this.data );
-    },( error:any )=>{ this.Tools.tooast( { title: "Error al cargar la actividad" } ); setTimeout(()=>{ location.reload(); }, 3000)});
+      console.log(this.data);
+    }, (error: any) => { this.Tools.tooast({ title: "Error al cargar la actividad" }); setTimeout(() => { location.reload(); }, 3000) });
   }
 
-  arraydecolor(){
+  resolved(obj: any) {
+    if (obj.id) this.PagarActividad();
+    else { this.Tools.tooast({ title: "Error Al Seleccionar Color", icon: "error" }); this.arraydecolor(); }
+  }
+
+  PagarActividad() {
+    this.disabledCont = true;
+    this._puntos.generarPuntos({
+      codigo: this.Tools.codigo(),
+      valor: this.data.valor,
+      prioridad: this.data.prioridad,
+      user: this.dataUser,
+      actividad: this.data.id
+    }).subscribe((res: any) => {
+      this.Tools.tooast({ title: "Punto Generado" });
+      this.disabledCont = false;
+    }, (error: any) => { console.log(error); this.Tools.tooast({ title: error.error, icon: "error" }); this.disabledCont = false; if (error.error) this.disablerealizado = true; });
+  }
+
+
+
+
+
+
+
+
+  arraydecolor() {
     this.colores = [
       {
         titulo: 'orange',
@@ -132,18 +158,18 @@ export class PublicacionviewsComponent implements OnInit {
         posicion: 4
       }
     ]
-    ;
+      ;
     var
       rand = this.colores[Math.floor(Math.random() * this.colores.length)],
       posicion = _.random(0, 3)
-    ;
+      ;
     var m = _.orderBy(this.colores, ['posicion', 'age']);
     // console.log(posicion, m);
-    if(rand){
+    if (rand) {
       var
-        idx = _.findIndex(this.colores, [ 'titulo', rand.titulo])
-      ;
-      if(idx >-1){
+        idx = _.findIndex(this.colores, ['titulo', rand.titulo])
+        ;
+      if (idx > -1) {
         // console.log(this.colores[idx]);
         this.colores[idx].id = true;
         this.colores[idx].posicion = posicion;
@@ -156,35 +182,7 @@ export class PublicacionviewsComponent implements OnInit {
     }
   }
 
-  resolved(obj: any) {
-    if( obj.id ) this.PagarActividad();
-    else { this.Tools.tooast( { title: "Error Al Seleccionar Color", icon:"error" } ); this.arraydecolor(); }
-  }
-
-  PagarActividad(){
-    this.disabledCont = true;
-    this._puntos.generarPuntos( {
-      codigo: this.Tools.codigo(),
-      valor: this.data.valor,
-      prioridad: this.data.prioridad,
-      user: this.dataUser,
-      actividad: this.data.id
-     } ).subscribe(( res:any )=>{
-      this.Tools.tooast( { title: "Punto Generado" } );
-      this.disabledCont = false;
-    },( error:any )=> { console.log( error ); this.Tools.tooast( { title: error.error, icon: "error" } ); this.disabledCont = false; if( error.error ) this.disablerealizado = true; });
-  }
-
-
-
-
-
-
-
-
-
-
-  getBannerLayout(){
+  getBannerLayout() {
     this.imageObject.push(
       {
         image: "https://www.oohlatam.com/wp-content/uploads/2019/12/C%C3%B3mo-le-ir%C3%A1-a-la-Publicidad-Exterior-en-el-2020.jpg",
@@ -201,11 +199,11 @@ export class PublicacionviewsComponent implements OnInit {
     );
   }
 
-  getBanner(){
-    this._publicidad.get( { where:{ type:"banner", estado:"activo" }, sort: "clicks ASC" }).subscribe((res:any)=>{
+  getBanner() {
+    this._publicidad.get({ where: { type: "banner", estado: "activo" }, sort: "clicks ASC" }).subscribe((res: any) => {
       res = res.data;
-      let count:number = 0;
-      for( let row of res ){
+      let count: number = 0;
+      for (let row of res) {
         count++;
         this.imageObject2.push(
           {
@@ -240,7 +238,7 @@ export class PublicacionviewsComponent implements OnInit {
     this.ds.next();
   }
 
-  imageOnClick(ev:any){
+  imageOnClick(ev: any) {
     // console.log("hey");
     this.openaVenta();
   }

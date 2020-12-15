@@ -54,10 +54,14 @@ export class RetirosComponent implements OnInit {
       this.dataUser = store.user || {};
       this.query.where.user = this.dataUser.id;
       try {
-        if( this.dataUser.id ) if( Object.keys(this.dataUser.miPaquete).length > 0 ) this.paquete = this.dataUser.miPaquete.disableretiro;
+        if( this.dataUser.id ) if( Object.keys(this.dataUser.miPaquete).length > 0 ) this.paquete = this.validandoPuntos();
       } catch (error) { }
     });
 
+  }
+
+  validandoPuntos(): boolean{
+    return ( this.dataUser.miPaquete.disableretiro && ( this.dataUser.cantidadPuntos.valorTotal >= this.dataUser.miNivel.nivel.minretiro ) );
   }
 
   ngOnInit() {
@@ -177,7 +181,10 @@ export class RetirosComponent implements OnInit {
 
   verView( item:any ){
     if( item ) this.Router.navigate( [ "dashboard/formretiros", item.id ] );
-    else { if( this.paquete ) this.Router.navigate( [ "dashboard/formretiros" ] ); }
+    else { 
+      if( this.paquete ) this.Router.navigate( [ "dashboard/formretiros" ] ); 
+      else this._tools.confirm( { title: 'Lo sentimos en estos momentos no puedes retirar intente después' } );
+    }
   }
 
 

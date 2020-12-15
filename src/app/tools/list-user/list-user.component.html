@@ -1,0 +1,37 @@
+<div class="container">
+    <ul class="list-unstyled">
+        <li class="media" *ngFor="let item of lista">
+            <img [src]="item.foto" class="mr-3" alt="...">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1">{{ item.username }}</h5>
+                {{ item.describes }}
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary" type="button" (click)="agregar( item )" *ngIf="item.estados !== 0"><i class="feather icon-thumbs-up"></i>Enviar Solicitud</button>
+                    <button class="btn btn-danger" type="button" (click)="cancelar( item )" *ngIf="item.estados == 0"><i class="feather icon-thumbs-up"></i>Cancelar Solicitud</button>
+                    <button class="btn btn-danger" type="button" (click)="eliminar( item )" *ngIf="item.estados == 1"><i class="feather icon-thumbs-up"></i>Eliminar amigo</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="col-12" *ngIf="progreses">
+        <div class="d-flex justify-content-center row">
+            <div class="spinner-grow text-primary" role="status"><span class="sr-only">Loading...</span></div>
+            <div class="spinner-grow text-secondary" role="status"><span class="sr-only">Loading...</span></div>
+            <div class="spinner-grow text-success" role="status"><span class="sr-only">Loading...</span></div>
+            <div class="spinner-grow text-danger" role="status"><span class="sr-only">Loading...</span></div>
+            <div class="spinner-grow text-warning" role="status"><span class="sr-only">Loading...</span></div>
+            <div class="spinner-grow text-info" role="status"><span class="sr-only">Loading...</span></div>
+            <div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>
+            <div class="spinner-grow text-dark" role="status"><span class="sr-only">Loading...</span></div>
+        </div>
+    </div>
+    
+    <div class="col-12" *ngIf="!progreses && lista.length == 0">
+        <div class="d-flex justify-content-center row">
+            <div role="alert" class="alert alert-primary">
+                No Hay Datos Para Mostrar
+                <button *ngIf="config.vista == 'tareas' || config.vista == 'publicidad'" type="button" class="btn btn-primary" (click)="refActivadades()" [disabled]="btnDisabled">Volver a intentar</button>
+            </div>
+        </div>
+    </div>
+</div>

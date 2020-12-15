@@ -57,6 +57,26 @@ export class UsuariosService {
     return this._model.querys('user/validandoip',query, 'post');
   }
 
+  buscarAmigos(query:any){
+    return this._model.querys('user/buscarAmigos',query, 'post');
+  }
+
+  getAmigos(query:any){
+    return this._model.querys('user/getAmigos',query, 'post');
+  }
+
+  createAmigos(query:any){
+    return this._model.querys('useramigos',query, 'post');
+  }
+
+  putAmigos(query:any){
+    return this._model.querys('useramigos/'+query.id, query, 'put');
+  }
+
+  deleteAmigos(query:any){
+    return this._model.querys('useramigos/'+query.id, query, 'delete');
+  }
+
   ProcesoStorages( res:any ){
     let accion:any = new UserAction(res, 'post');
     this._store.dispatch(accion);

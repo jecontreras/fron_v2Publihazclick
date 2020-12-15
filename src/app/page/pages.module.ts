@@ -31,6 +31,7 @@ import { FormadminMarketplaceComponent } from './form/formadmin-marketplace/form
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { ToolsModule } from '../tools/tools.module';
+import { AmigosComponent } from './component/amigos/amigos.component';
 
 @NgModule({
   declarations: [ 
@@ -51,7 +52,7 @@ import { ToolsModule } from '../tools/tools.module';
     TareaMegaComponent, 
     ViewPerfilComponent, 
     BannerComponent, 
-    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent
+    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, AmigosComponent
   ],
   imports: [
     CommonModule,

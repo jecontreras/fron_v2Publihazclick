@@ -3,10 +3,12 @@ import { NotasService } from 'src/app/servicesComponents/notas.service';
 import { PaquetesService } from 'src/app/servicesComponents/paquetes.service';
 import { STORAGES } from 'src/app/interfaces/sotarage';
 import { Store } from '@ngrx/store';
-import { resolve } from 'url';
 import { ToolsService } from 'src/app/services/tools.service';
 import { NgImageSliderComponent } from 'ng-image-slider';
 import { PublicacionService } from 'src/app/servicesComponents/publicacion.service';
+import * as _ from 'lodash';
+import { PuntosResumenService } from 'src/app/servicesComponents/puntos-resumen.service';
+import { UserAction } from 'src/app/redux/app.actions';
 
 @Component({
   selector: 'app-alertas',
@@ -33,18 +35,29 @@ export class AlertasComponent implements OnInit {
   imageObject: any = [];
   imageObject2: any = [];
 
+  puntosGanados:number = 0;
+  donaciones:number = 0;
+  disabled:boolean = false;
+  formatoMoneda:any = {};
+
   constructor(
     private _nota: NotasService,
     private _store: Store<STORAGES>,
     private _paquete: PaquetesService,
     private _tools: ToolsService,
-    private _publicacion: PublicacionService
+    private _publicacion: PublicacionService,
+    private _puntosResumen: PuntosResumenService
   ) { 
     this._store.subscribe((store: any) => {
-      //console.log(store);
+      console.log(store);
       store = store.name;
-      if(!store) return false;
-      this.dataUser = store.user || {};
+      this.dataUser = ( _.clone( store.user ) ) || {};
+      try {
+        if( this.dataUser.cantidadPuntos ) {
+          this.puntosGanados = this.dataUser.cantidadPuntos.valorTotal || 0;
+          this.donaciones = this.dataUser.cantidadPuntos.donacion || 0;
+        }
+      } catch (error) { }
     });
 
 
@@ -58,6 +71,7 @@ export class AlertasComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.formatoMoneda = this._tools.formatoMoneda;
     this.listaBanner();
     this.getNotas();
     this.getBanner();
@@ -80,6 +94,21 @@ export class AlertasComponent implements OnInit {
       }
       this.updateBanner( res );
     });
+  }
+
+  getMisPuntos(){
+    if( this.disabled ) return false;
+    this.disabled = true;
+    this._puntosResumen.get( { where: { user: this.dataUser.id, state: "valido" } } ).subscribe( ( res:any )=>{
+      res = res.data[0];
+      this.disabled = false;
+      if ( !res ) return this.dataUser.cantidadPuntos = { valorTotal: 0 };
+      else {
+        this.dataUser.cantidadPuntos = res;
+        let accion:any = new UserAction( this.dataUser, 'post');
+        this._store.dispatch( accion );
+      }
+    },( error:any )=> { this._tools.presentToast("Error de servidor"); this.disabled = false; } );
   }
 
   async updateBanner( data:any ){
