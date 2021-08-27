@@ -7,6 +7,6 @@ export const environment = {
   socketConfig: config,
   production: true,
   urlSocket: "http://localhost:3000",
-  url: "https://backpublickv2.herokuapp.com",
+  url: "https://backpublihazclick.herokuapp.com",
   urlFront: "https://publihazclick-f5718.firebaseapp.com"
 };

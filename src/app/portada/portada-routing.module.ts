@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DonarComponent } from './component/donar/donar.component';
 import { IndexComponent } from './component/index/index.component';
 
 const routes: Routes = [
@@ -10,6 +11,10 @@ const routes: Routes = [
   {
     path: "index",
     component: IndexComponent
+  },
+  {
+    path: "donar",
+    component: DonarComponent
   }
 ];
 
