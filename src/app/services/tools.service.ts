@@ -117,6 +117,28 @@ export class ToolsService {
     })
   }
 
+  alertInput( config:any ){
+    return new Promise( resolve =>{
+      Swal.fire({
+        title: config.title,
+        input: config.input,
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Siguiente',
+        showLoaderOnConfirm: true,
+        preConfirm: (text) => {
+          console.log( text )  
+          resolve( text )
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+        resolve( result );
+      })
+    });
+  }
+
   calcularDistancia( params:any ) {
 
     let latitud1:any = params.latitud1;

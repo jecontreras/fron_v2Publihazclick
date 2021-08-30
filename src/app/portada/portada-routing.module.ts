@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ComunidadComponent } from './component/comunidad/comunidad.component';
 import { DonarComponent } from './component/donar/donar.component';
 import { IndexComponent } from './component/index/index.component';
+import { TestimoniosComponent } from './component/testimonios/testimonios.component';
 
 const routes: Routes = [
   {
@@ -15,7 +17,15 @@ const routes: Routes = [
   {
     path: "donar",
     component: DonarComponent
-  }
+  },
+  {
+    path: "comunidad",
+    component: ComunidadComponent
+  },
+  {
+    path: "testimonio",
+    component: TestimoniosComponent
+  },
 ];
 
 @NgModule({
