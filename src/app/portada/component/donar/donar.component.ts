@@ -78,6 +78,7 @@ export class DonarComponent implements OnInit {
         confirpassword: "123456",
         cabeza: "5cf9556198a1087221cd93ff",
         name: codigo+"@gmail.com",
+        registroInc: false,
         ...this.data
       };
       let alert:any = await this._tools.confirm({ title: "Quieres Registrarte", detalle: "Estas como visitante si deseas registrarte podras recibir ganancias y donar a fundaciones!!"});
@@ -87,6 +88,7 @@ export class DonarComponent implements OnInit {
         this.data.email = email;
         this.data.username = email;
         this.data.name = email;
+        this.data.registroInc = true;
         let pass:any = await this._tools.alertInput( { title: "Contraseña", input: "password"});
         this.data.password = pass;
         this.data.confirpassword = pass;

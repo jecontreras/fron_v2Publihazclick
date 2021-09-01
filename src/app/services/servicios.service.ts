@@ -43,12 +43,14 @@ export class ServiciosService {
       this.dataUser = store.user || {};
     });
     if(Object.keys(this.dataUser).length >0 ){
-      this.querys('user/query',{
+      let data1:any = {};
+      this.querys('user/querys',{
         where:{
           id: this.dataUser.id
         }
       }, 'post').subscribe((res:any)=>{
         res = res.data[0];
+        data1 = res || {};
         if(!res) {
           let accion = new UserAction(this.dataUser,'delete')
           this._store.dispatch(accion);
@@ -57,6 +59,13 @@ export class ServiciosService {
           this.Router.navigate(['/login']);
           setTimeout(function(){ location.reload(); }, 3000);
         }
+
+        let andador = setTimeout( () =>{
+          if( data1.registroInc ) clearTimeout( andador );
+          this.querys('user/' + data1.id, { registroInc: true }, 'put').subscribe( ( res:any ) =>{
+            data1 = res;
+          } );
+        }, 3000 );
       });
     }
   }
