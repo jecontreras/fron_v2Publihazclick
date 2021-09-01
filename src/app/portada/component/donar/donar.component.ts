@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { STORAGES } from 'src/app/interfaces/sotarage';
 import { UserAction } from 'src/app/redux/app.actions';
 import { ToolsService } from 'src/app/services/tools.service';
+import { ActividadService } from 'src/app/servicesComponents/actividad.service';
 import { PublicacionService } from 'src/app/servicesComponents/publicacion.service';
 import { UsuariosService } from 'src/app/servicesComponents/usuarios.service';
 
@@ -14,20 +15,33 @@ import { UsuariosService } from 'src/app/servicesComponents/usuarios.service';
 })
 export class DonarComponent implements OnInit {
 
-  public query: any = {
-    where: {
-      estado: ['activo', 'consumido'],
-      autocreo: false,
-      type: ['img', 'url', 'publicacion']
-    },
+  public query:any = { 
+    where:{ 
+     prioridad: "tarea-diaria",
+     user: {},
+     create: true
+    }, 
     sort: "createdAt DESC",
-    limit: 30,
+    limit: 5,
     page: 0
+   };
+   dataUser:any = {};
+   config:any = {
+    vista: "tareas"
   };
-  config: any = {
+
+  public query2:any = { where:{ 
+    estado: ['activo', 'consumido'],
+    autocreo: false,
+    type: ['img', 'url', 'publicacion']
+   }, 
+   sort: "createdAt DESC",
+   limit: 30,
+   page: 0
+  };
+  config2:any = {
     vista: "publicacion"
   };
-  dataUser: any = {};
 
   data: any = {
     indicativo: "57",
@@ -37,10 +51,11 @@ export class DonarComponent implements OnInit {
   disabled: boolean = false;
 
   constructor(
-    public _publicacion: PublicacionService,
+    public _actividad: ActividadService,
     private _store: Store<STORAGES>,
     private _tools: ToolsService,
     private _user: UsuariosService,
+    public _publicacion: PublicacionService,
     private _router: Router
   ) {
     this._store.subscribe((store: any) => {
@@ -48,11 +63,11 @@ export class DonarComponent implements OnInit {
       store = store.name;
       if (!store) return false;
       this.dataUser = store.user || {};
+      this.query.where.user = this.dataUser.id;
     });
   }
 
   async ngOnInit() {
-    console.log( this.dataUser )
     if ( !this.dataUser.id ) {
       let codigo = this._tools.codigo();
       this.data = {
@@ -61,6 +76,8 @@ export class DonarComponent implements OnInit {
         celular: "123456",
         password: "123456",
         confirpassword: "123456",
+        cabeza: "5cf9556198a1087221cd93ff",
+        name: codigo+"@gmail.com",
         ...this.data
       };
       let alert:any = await this._tools.confirm({ title: "Quieres Registrarte", detalle: "Estas como visitante si deseas registrarte podras recibir ganancias y donar a fundaciones!!"});
@@ -69,6 +86,7 @@ export class DonarComponent implements OnInit {
         let email:any = await this._tools.alertInput( { title: "Email", input: "text"});
         this.data.email = email;
         this.data.username = email;
+        this.data.name = email;
         let pass:any = await this._tools.alertInput( { title: "Contraseña", input: "password"});
         this.data.password = pass;
         this.data.confirpassword = pass;

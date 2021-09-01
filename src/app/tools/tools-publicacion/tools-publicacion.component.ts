@@ -45,8 +45,12 @@ export class ToolsPublicacionComponent implements OnInit {
       this.dataUser = store.user || {};
       try {
         if( Object.keys( this.dataUser ).length >0 ){
-          if( this.dataUser.miPaquete.cantidaddepublicidad >0 ) this.disabledPublic = false;
-          else this.disabledPublic = true;
+          if( this.dataUser.miPaquete ){
+            if( this.dataUser.miPaquete.cantidaddepublicidad >0 ) this.disabledPublic = false;
+            else this.disabledPublic = true;
+          }else{
+            this.disabledPublic = true;
+          }
         }
       } catch (error) {}
     });
