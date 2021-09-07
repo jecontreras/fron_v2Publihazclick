@@ -74,7 +74,14 @@ const NavigationItems = [
         type: 'item',
         url: '/dashboard/amigos',
         icon: 'feather icon-home'
-      }
+      },
+      {
+        id: 'testimonios',
+        title: 'Testimonios',
+        type: 'item',
+        url: '/dashboard/testimonios',
+        icon: 'feather icon-home'
+      },
     ]
   },
   {

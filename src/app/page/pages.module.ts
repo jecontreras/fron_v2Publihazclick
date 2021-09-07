@@ -32,6 +32,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { ToolsModule } from '../tools/tools.module';
 import { AmigosComponent } from './component/amigos/amigos.component';
+import { TestimoniodshComponent } from './component/testimoniodsh/testimoniodsh.component';
 
 @NgModule({
   declarations: [ 
@@ -52,7 +53,7 @@ import { AmigosComponent } from './component/amigos/amigos.component';
     TareaMegaComponent, 
     ViewPerfilComponent, 
     BannerComponent, 
-    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, AmigosComponent
+    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, AmigosComponent, TestimoniodshComponent
   ],
   imports: [
     CommonModule,
@@ -63,7 +64,7 @@ import { AmigosComponent } from './component/amigos/amigos.component';
     NgxCurrencyModule,
     NgxDropzoneModule,
     NgApexchartsModule,
-    ToolsModule,
+    ToolsModule
   ],
   bootstrap: [ PagesComponent ]
 })

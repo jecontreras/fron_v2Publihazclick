@@ -11,6 +11,7 @@ import { NgxCurrencyModule } from 'ngx-currency';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { RouterModule } from '@angular/router';
 import { ListUserComponent } from './list-user/list-user.component';
+import { ToolsTestimoniosComponent } from './tools-testimonios/tools-testimonios.component';
 
 
 @NgModule({
@@ -18,13 +19,15 @@ import { ListUserComponent } from './list-user/list-user.component';
     ToolAdminPublicComponent,
     ToolsPublicacionComponent,
     ComentariosComponent,
-    ListUserComponent
+    ListUserComponent,
+    ToolsTestimoniosComponent
   ],
   exports: [
     ToolAdminPublicComponent,
     ToolsPublicacionComponent,
     ComentariosComponent,
-    ListUserComponent
+    ListUserComponent,
+    ToolsTestimoniosComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +37,7 @@ import { ListUserComponent } from './list-user/list-user.component';
     AngularEditorModule,
     NgxCurrencyModule,
     NgxDropzoneModule,
+    
   ]
 })
 export class ToolsModule { }

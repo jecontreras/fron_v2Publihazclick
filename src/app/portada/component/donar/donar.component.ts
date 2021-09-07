@@ -82,7 +82,8 @@ export class DonarComponent implements OnInit {
         ...this.data
       };
       let alert:any = await this._tools.confirm({ title: "Quieres Registrarte", detalle: "Estas como visitante si deseas registrarte podras recibir ganancias y donar a fundaciones!!"});
-      if( !alert ) this.createDefaultUser();
+      console.log(alert)
+      if( !alert.value ) this.createDefaultUser();
       else {
         let email:any = await this._tools.alertInput( { title: "Email", input: "text"});
         this.data.email = email;

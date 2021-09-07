@@ -23,6 +23,7 @@ import { FormbancosComponent } from './form/formbancos/formbancos.component';
 import { AdminMarketplaceComponent } from 'src/app/page/component/admin-marketplace/admin-marketplace.component';
 import { FormadminMarketplaceComponent } from './form/formadmin-marketplace/formadmin-marketplace.component';
 import { AmigosComponent } from './component/amigos/amigos.component';
+import { TestimoniodshComponent } from './component/testimoniodsh/testimoniodsh.component';
 
 const routes: Routes = [
   {
@@ -136,6 +137,10 @@ const routes: Routes = [
   {
     path: "amigos",
     component: AmigosComponent
+  },
+  {
+    path: "testimonios",
+    component: TestimoniodshComponent
   }
 ];
 

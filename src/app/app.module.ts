@@ -71,7 +71,6 @@ import { AlertasComponent } from './theme/layout/alertas/alertas.component';
     NgbTabsetModule,
     HttpClientModule,
     NgxCurrencyModule,
-    // ChatModule,
     ReactiveFormsModule,
     SocketIoModule.forRoot( environment.socketConfig ),
     //BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./testimonios.component.scss']
 })
 export class TestimoniosComponent implements OnInit {
+  
 
-  constructor() { }
+  constructor(
+  ) { 
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }
