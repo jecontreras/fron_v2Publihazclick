@@ -18,7 +18,8 @@ export class ChatComponent implements OnInit {
       createdAt: new Date(),
       mensaje: "Hola Hp",
       username: "jose contreras",
-      foto: "./assets/imagenes/perfil.png"
+      foto: "./assets/imagenes/perfil.png",
+      vistaDel: false
     }
   ];
 
