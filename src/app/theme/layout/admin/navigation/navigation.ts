@@ -59,6 +59,13 @@ const NavigationItems = [
         type: 'item',
         url: '/dashboard/lider',
         icon: 'feather icon-home'
+      },
+      {
+        id: 'chat',
+        title: 'Chat',
+        type: 'item',
+        url: '/dashboard/chat',
+        icon: 'feather icon-home'
       }
     ]
   },

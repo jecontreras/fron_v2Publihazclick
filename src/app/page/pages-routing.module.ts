@@ -24,6 +24,7 @@ import { AdminMarketplaceComponent } from 'src/app/page/component/admin-marketpl
 import { FormadminMarketplaceComponent } from './form/formadmin-marketplace/formadmin-marketplace.component';
 import { AmigosComponent } from './component/amigos/amigos.component';
 import { TestimoniodshComponent } from './component/testimoniodsh/testimoniodsh.component';
+import { ChatComponent } from './component/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -141,6 +142,10 @@ const routes: Routes = [
   {
     path: "testimonios",
     component: TestimoniodshComponent
+  },
+  {
+    path: "chat",
+    component: ChatComponent
   }
 ];
 

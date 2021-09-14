@@ -33,6 +33,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
 import { ToolsModule } from '../tools/tools.module';
 import { AmigosComponent } from './component/amigos/amigos.component';
 import { TestimoniodshComponent } from './component/testimoniodsh/testimoniodsh.component';
+import { ChatComponent } from './component/chat/chat.component';
 
 @NgModule({
   declarations: [ 
@@ -53,7 +54,7 @@ import { TestimoniodshComponent } from './component/testimoniodsh/testimoniodsh.
     TareaMegaComponent, 
     ViewPerfilComponent, 
     BannerComponent, 
-    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, AmigosComponent, TestimoniodshComponent
+    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, AmigosComponent, TestimoniodshComponent, ChatComponent
   ],
   imports: [
     CommonModule,
