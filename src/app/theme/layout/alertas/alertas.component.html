@@ -1,21 +1,3 @@
-<div class="row">
-    <div class="col-6 p-3 mb-2 bg-primary text-white">
-        <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="puntosGanados"
-            [options]="formatoMoneda" />
-        <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
-            Mis Ganancias
-            <i class="fa fa-retweet" aria-hidden="true"></i>
-        </span>
-    </div>
-    <div class="col-6 p-3 mb-2 bg-success text-white">
-        <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="donaciones"
-            [options]="formatoMoneda" />
-        <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
-            Donaciones
-            <i class="fa fa-retweet" aria-hidden="true"></i>
-        </span>
-    </div>
-</div>
 <ng-image-slider [images]="imageObject2" *ngIf="imageObject2.length > 0" [infinite]="sliderInfinite"
     [imagePopup]="sliderImagePopup" [showArrow]="sliderArrowShow"
     [imageSize]="{width: sliderImageWidth2, height: sliderImageHeight2}" [autoSlide]="sliderAutoSlide ? 1 : 0"

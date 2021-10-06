@@ -22,10 +22,19 @@ export class ChatComponent implements OnInit {
       vistaDel: false
     }
   ];
+  txt:string;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  openChat( item ){
+
+  }
+
+  envioTxt(){
+
   }
 
 }

@@ -48,7 +48,7 @@ const NavigationItems = [
       },
       {
         id: 'referidos',
-        title: 'Referidos',
+        title: 'Tus invitados',
         type: 'item',
         url: '/dashboard/referidos',
         icon: 'feather icon-home'
@@ -84,7 +84,7 @@ const NavigationItems = [
       },
       {
         id: 'testimonios',
-        title: 'Testimonios',
+        title: 'Pagos-testimonios',
         type: 'item',
         url: '/dashboard/testimonios',
         icon: 'feather icon-home'

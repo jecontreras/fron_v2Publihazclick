@@ -46,8 +46,17 @@
                     </div>
                     <div class="card-body ng-tns-c14-24 m-t-15 ng-star-inserted">
                         <h5 class="card-title">
-                            <i class="feather icon-thumbs-up p-1 mouse" [ngClass]="{ colorRed: item.check }" (click)="procesoLikes( item, 'like' )">{{ item.megusta }}</i>
-                            <i class="feather icon-thumbs-down p-1 mouse" [ngClass]="{ colorRed: item.check2 }" (click)="procesoLikes(item, 'nolike')">{{ item.nomegusta }}</i>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <i class="fa fa-bath" aria-hidden="true">$100</i>
+
+                                </div>
+                                <div></div>
+                                <div>
+                                    <i class="feather icon-thumbs-up p-1 mouse" [ngClass]="{ colorRed: item.check }" (click)="procesoLikes( item, 'like' )">{{ item.megusta }}</i>
+                                    <i class="feather icon-thumbs-down p-1 mouse" [ngClass]="{ colorRed: item.check2 }" (click)="procesoLikes(item, 'nolike')">{{ item.nomegusta }}</i>
+                                </div>
+                            </div>
                         </h5>
                         <h5 class="card-title mouse" (click)="openPublic( item )">{{ item.title }}</h5>
                         <p class="card-text" [innerHtml]="item.descripcion | slice: 0: item.oculto || 200"></p>

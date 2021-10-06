@@ -2,6 +2,32 @@
 <app-nav-bar class="navbar pcoded-header navbar-expand-lg navbar-light" (onNavCollapse)="this.navCollapsed = !this.navCollapsed;" (onNavHeaderMobCollapse)="navMobClick()"></app-nav-bar>
 <div class="pcoded-main-container">
   <div class="pcoded-wrapper" [ngClass]="{'container': this.nextConfig.layout === 'horizontal' && this.nextConfig.subLayout === 'horizontal-2'}">
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <div class="mb-2 bg-info text-white">
+          <input type="number" class="form-control form-control-sm" disabled [(ngModel)]="diasFaltantes">
+            <span class="input-group-append search-btn btn btn-primary" (click)="getMiPaquete()">
+              Dias paquete
+            </span>
+        </div>
+        <div class="mb-2 bg-info text-white">
+          <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="puntosGanados"
+              [options]="formatoMoneda" />
+          <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
+              Mis Ganancias
+              <i class="fa fa-retweet" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div class="mb-2 bg-success text-white">
+            <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="donaciones"
+                [options]="formatoMoneda" />
+            <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
+                Haz Donado
+                <i class="fa fa-retweet" aria-hidden="true"></i>
+            </span>
+        </div>
+      </div>
+  </div>
     <div class="pcoded-content">
       <div class="pcoded-inner-content">
         <div class="main-body">
