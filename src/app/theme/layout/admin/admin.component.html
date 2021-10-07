@@ -7,23 +7,21 @@
         <div class="mb-2 bg-info text-white">
           <input type="number" class="form-control form-control-sm" disabled [(ngModel)]="diasFaltantes">
             <span class="input-group-append search-btn btn btn-primary" (click)="getMiPaquete()">
-              Dias paquete
+              <i class="fa fa-star" aria-hidden="true">Dias paquete</i>
             </span>
         </div>
         <div class="mb-2 bg-info text-white">
           <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="puntosGanados"
               [options]="formatoMoneda" />
           <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
-              Mis Ganancias
-              <i class="fa fa-retweet" aria-hidden="true"></i>
+            <i class="fa fa-money" aria-hidden="true">Mis Ganancias</i>
           </span>
         </div>
         <div class="mb-2 bg-success text-white">
             <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="donaciones"
                 [options]="formatoMoneda" />
             <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
-                Haz Donado
-                <i class="fa fa-retweet" aria-hidden="true"></i>
+              <i class="fa fa-university" aria-hidden="true">Haz Donado</i>
             </span>
         </div>
       </div>

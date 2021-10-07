@@ -15,31 +15,32 @@ import { UsuariosService } from 'src/app/servicesComponents/usuarios.service';
 })
 export class DonarComponent implements OnInit {
 
-  public query:any = { 
-    where:{ 
-     prioridad: "tarea-diaria",
-     user: {},
-     create: true
-    }, 
+  public query: any = {
+    where: {
+      prioridad: "tarea-diaria",
+      user: {},
+      create: true
+    },
     sort: "createdAt DESC",
     limit: 5,
     page: 0
-   };
-   dataUser:any = {};
-   config:any = {
+  };
+  dataUser: any = {};
+  config: any = {
     vista: "tareas"
   };
 
-  public query2:any = { where:{ 
-    estado: ['activo', 'consumido'],
-    autocreo: false,
-    type: ['img', 'url', 'publicacion']
-   }, 
-   sort: "createdAt DESC",
-   limit: 30,
-   page: 0
+  public query2: any = {
+    where: {
+      estado: ['activo', 'consumido'],
+      autocreo: false,
+      type: ['img', 'url', 'publicacion']
+    },
+    sort: "createdAt DESC",
+    limit: 30,
+    page: 0
   };
-  config2:any = {
+  config2: any = {
     vista: "publicacion"
   };
 
@@ -68,40 +69,71 @@ export class DonarComponent implements OnInit {
   }
 
   async ngOnInit() {
-    if ( !this.dataUser.id ) {
-      let codigo = this._tools.codigo();
-      this.data = {
-        username: "User Visita "+ codigo,
-        email: codigo+"@gmail.com",
-        celular: "123456",
-        password: "123456",
-        confirpassword: "123456",
-        cabeza: "5cf9556198a1087221cd93ff",
-        name: codigo+"@gmail.com",
-        registroInc: false,
-        ...this.data
-      };
-      let alert:any = await this._tools.confirm({ title: "Quieres Registrarte", detalle: "Estas como visitante si deseas registrarte podras recibir ganancias y donar a fundaciones!!"});
-      console.log(alert)
-      if( !alert.value ) this.createDefaultUser();
+    if (!this.dataUser.id) {
+      let loger: any = await this._tools.confirm({ title: "Quieres Iniciar sesión", detalle: "PubliHazclick!!" });
+      if ( loger.value ) this.nextLogin();
       else {
-        let email:any = await this._tools.alertInput( { title: "Email", input: "text"});
-        this.data.email = email;
-        this.data.username = email;
-        this.data.name = email;
-        this.data.registroInc = true;
-        let pass:any = await this._tools.alertInput( { title: "Contraseña", input: "password"});
-        this.data.password = pass;
-        this.data.confirpassword = pass;
-        this.createDefaultUser();
+        let codigo = this._tools.codigo();
+        this.data = {
+          username: "User Visita " + codigo,
+          email: codigo + "@gmail.com",
+          celular: "123456",
+          password: "123456",
+          confirpassword: "123456",
+          cabeza: "5cf9556198a1087221cd93ff",
+          name: codigo + "@gmail.com",
+          registroInc: false,
+          ...this.data
+        };
+        let alert: any = await this._tools.confirm({ title: "Quieres Registrarte", detalle: "Estas como visitante si deseas registrarte podras recibir ganancias y donar a fundaciones!!" });
+        console.log(alert)
+        if (!alert.value) this.createDefaultUser();
+        else this.nextProceso();
       }
     }
   }
 
-  
+  async nextLogin(){    
+    let data:any = {
+      username: "",
+      password: ""
+    };
+    let email: any = await this._tools.alertInput({ title: "Email", input: "text" });
+    data.username = email;
+    
+    let pass: any = await this._tools.alertInput({ title: "Contraseña", input: "password" });
+    data.password = pass;
+
+    this._user.login( data ).subscribe((res:any)=>{
+      //this._tools.dismisPresent();
+      console.log( res );
+      if(res.success){
+        this.ProcesoStorages( res );
+      }else{
+        this.data.password = "";
+        this._tools.tooast({ title:"Error de "+ res.message ,icon: "error" });
+      }
+    },(error)=>{
+      this._tools.tooast( { title: "Error de servidor", icon: "error" } );
+    });
+  }
+
+  async nextProceso() {
+    let email: any = await this._tools.alertInput({ title: "Email", input: "text" });
+    this.data.email = email;
+    this.data.username = email;
+    this.data.name = email;
+    this.data.registroInc = true;
+    let pass: any = await this._tools.alertInput({ title: "Contraseña", input: "password" });
+    this.data.password = pass;
+    this.data.confirpassword = pass;
+    this.createDefaultUser();
+  }
+
+
 
   createDefaultUser() {
-    if( this.disabled ) return false;
+    if (this.disabled) return false;
     this.disabled = true;
     this._user.create(this.data).subscribe((res: any) => {
       this.disabled = false;
@@ -114,8 +146,8 @@ export class DonarComponent implements OnInit {
     });
   }
 
-  ProcesoStorages( res:any ){
-    let accion:any = new UserAction(res.data, 'post');
+  ProcesoStorages(res: any) {
+    let accion: any = new UserAction(res.data, 'post');
     this._store.dispatch(accion);
     location.reload();
   }

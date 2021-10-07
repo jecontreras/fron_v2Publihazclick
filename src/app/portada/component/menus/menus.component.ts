@@ -14,6 +14,7 @@ import { UserAction } from 'src/app/redux/app.actions';
 export class MenusComponent implements OnInit {
   
   @ViewChild('menus',{ static: false } ) private menus: any;
+  @ViewChild('ulis',{ static: false } ) private ullis: any;
   disabledMenu:boolean = false;
   puntosGanados:number = 0;
   donaciones:number = 0;
@@ -41,11 +42,16 @@ export class MenusComponent implements OnInit {
 
   ngOnInit() {
     this.formatoMoneda = this._tools.formatoMoneda;
+    this.getMisPuntos();
   }
 
   activarMenu(){
     this.disabledMenu = !this.disabledMenu;
-    if( this.disabledMenu ) this.menus.nativeElement.style.display = "flex";
+    if( this.disabledMenu ) {
+      this.menus.nativeElement.style.display = "flex";
+      this.ullis.nativeElement.style.textAlign="end";
+      this.ullis.nativeElement.style.width="100%";
+    }
     else this.menus.nativeElement.style.display = "none";
   }
 

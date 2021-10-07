@@ -7,42 +7,58 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav" #menus>
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto" #ulis>
       <li class="nav-item active">
         <a class="nav-link" href="#" routerLink="/portada/donar">Inicio <span class="sr-only">(current)</span></a>
       </li>
-      <!--<li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/portada/comunidad">Comunidad</a>
-      </li>-->
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/portada/testimonio">Testimonios</a>
+        <a class="nav-link" href="#" routerLink="/portada/publihazclick">que es publihazclick</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/auth/login">login</a>
+        <a class="nav-link" href="#" routerLink="/portada/testimonio">Pagos y testimonios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/dashboard/retiros">Retirar Ganancias</a>
+        <a class="nav-link" href="#" routerLink="/portada/marcas">Marcas anunciantes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/portada/pautas">Pauta con nosotros</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/auth/login">iniciar sesión</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://play.google.com/store/apps/details?id=capacitacion.publihazclick2" target="_link">Descargár app</a>
       </li>
     </ul>
-    <span class="navbar-text">
-      <div class="row">
-        <div class="col">
-          <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="puntosGanados"
-            [options]="formatoMoneda" />
-          <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
-            Este sería el dinero que podrías retirar si te conviertes en Anunciante
-            <i class="fa fa-retweet" aria-hidden="true"></i>
-          </span>
-        </div>
-        <div class="col">
-          <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="donaciones"
-            [options]="formatoMoneda" />
-          <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
-            Mis Donaciones
-            <i class="fa fa-retweet" aria-hidden="true"></i>
-          </span>
-        </div>
-      </div>
-    </span>
   </div>
 </nav>
+<div class="row">
+  <div class="col-12">
+    <div class="d-flex justify-content-center">
+      <div>
+        <span class="navbar-text">
+          <div class="row">
+            <div class="col">
+              <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="puntosGanados"
+                [options]="formatoMoneda" />
+              <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
+                <i class="fa fa-retweet" aria-hidden="true">
+                  Este sería el dinero que podrías retirar si te conviertes en Anunciante
+                </i>
+              </span>
+            </div>
+            <div class="col">
+              <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="donaciones"
+                [options]="formatoMoneda" />
+              <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
+                <i class="fa fa-retweet" aria-hidden="true">
+                  Mis Donaciones
+                </i>
+              </span>
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

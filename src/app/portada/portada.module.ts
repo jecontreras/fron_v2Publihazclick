@@ -10,6 +10,9 @@ import { MenusComponent } from './component/menus/menus.component';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { FormsModule } from '@angular/forms';
+import { MarcasComponent } from './component/marcas/marcas.component';
+import { PublihazclickComponent } from './component/publihazclick/publihazclick.component';
+import { PautasComponent } from './component/pautas/pautas.component';
 
 
 
@@ -19,7 +22,10 @@ import { FormsModule } from '@angular/forms';
     DonarComponent,
     ComunidadComponent,
     TestimoniosComponent,
-    MenusComponent
+    MenusComponent,
+    MarcasComponent,
+    PublihazclickComponent,
+    PautasComponent
   ],
   imports: [
     ToolsModule,
