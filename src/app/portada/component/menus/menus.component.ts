@@ -42,7 +42,7 @@ export class MenusComponent implements OnInit {
 
   ngOnInit() {
     this.formatoMoneda = this._tools.formatoMoneda;
-    this.getMisPuntos();
+    if( this.dataUser.id ) this.getMisPuntos();
   }
 
   activarMenu(){

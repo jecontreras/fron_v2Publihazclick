@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'portada/donar',
+        redirectTo: 'portada/publihazclick',
         pathMatch: 'full'
       },
       {
@@ -29,7 +29,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'portada/donar',
+        redirectTo: 'portada/publihazclick',
         pathMatch: 'full'
       },
       // {
