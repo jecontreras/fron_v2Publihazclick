@@ -93,7 +93,7 @@ export class ToolsPublicacionComponent implements OnInit {
     this.progreses = false;
     res.data = _.map( res.data, row =>{
       if(row.estado == "activo") this.tarea.restante++;
-      else this.tarea.faltante++;
+      else this.tarea.completado++;
       if(!row.publicacion) return {
         fotoUser: row.user.foto,
         userPubli: row.user.id,
@@ -128,6 +128,9 @@ export class ToolsPublicacionComponent implements OnInit {
       if( row.publicacion ) data = row.publicacion;
       this.getLikesUser( data );
     }
+    let interval = setInterval(()=>{
+      if( this.config.vista === 'tareas' ) if( this.listRow.length == 0) { this.refActivadades(); clearInterval( interval ) }
+    }, 2000 );
   }
 
   getLikesUser( row:any ){

@@ -25,13 +25,13 @@
               segundos</button>
             <div class="margin row" *ngIf="!Tools.valoresContador && !disabledCont">
               <div class="row" *ngIf="!disablerealizado">
-                <span class="rounded m" [ngClass]="{
+                <!--<span class="rounded m" [ngClass]="{
                   'orange':siguiente.titulo === 'orange',
                   'red':siguiente.titulo === 'red',
                   'blue':siguiente.titulo === 'blue',
                   'green':siguiente.titulo === 'green'
                }">
-                  <h5 class="p">Seleccione el Color: {{ ' '+siguiente.spanis }} </h5>
+                  <h5 class="p titulos">Seleccione el Color: {{ ' '+siguiente.spanis }} </h5>
                 </span>
                 <div class="row m">
                   <div class="row" *ngFor="let item of colores">
@@ -43,6 +43,25 @@
                            'green':item.titulo === 'green'
                         }">
                         <i class="far fa-eye"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>-->
+                <div class="row">
+                  <div class="col-12">
+                    <h5 class="p titulos">Seleccione el Color: {{ ' '+siguiente.spanis }} </h5>
+                  </div>
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-3" *ngFor="let item of colores">
+                        <div (click)="resolved(item)" class="p margin punter" [ngClass]="{
+                             'orange':item.titulo === 'orange',
+                             'red':item.titulo === 'red',
+                             'blue':item.titulo === 'blue',
+                             'green':item.titulo === 'green'
+                          }">
+                          <i class="far fa-eye"></i>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -74,7 +93,7 @@
     <div class="column container" style="height: 890px; overflow: scroll; overflow-x: hidden">
       <div class="row">
         <div class="col-12">
-          <iframe style="width: 100%; height: -webkit-fill-available;" [src]="url" frameborder="0" width="1499"
+          <iframe style="width: 100%;" [src]="url" frameborder="0" width="1499"
             height="561" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
           </iframe>

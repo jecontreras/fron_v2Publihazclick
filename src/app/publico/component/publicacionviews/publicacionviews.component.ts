@@ -125,6 +125,8 @@ export class PublicacionviewsComponent implements OnInit {
     }).subscribe((res: any) => {
       this.Tools.tooast({ title: "Punto Generado" });
       this.disabledCont = false;
+      this.cerrarVentana();
+      this.disablerealizado = true;
     }, (error: any) => { console.log(error); this.Tools.tooast({ title: error.error, icon: "error" }); this.disabledCont = false; if (error.error) this.disablerealizado = true; });
   }
 
@@ -241,6 +243,10 @@ export class PublicacionviewsComponent implements OnInit {
   imageOnClick(ev: any) {
     // console.log("hey");
     this.openaVenta();
+  }
+
+  cerrarVentana(){
+    setTimeout(()=>window.close(), 2000 );
   }
 
 }
