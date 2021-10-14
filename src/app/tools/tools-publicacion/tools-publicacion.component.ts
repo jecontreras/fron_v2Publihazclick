@@ -34,7 +34,7 @@ export class ToolsPublicacionComponent implements OnInit {
   disabledPublic:boolean = false;
 
   constructor(
-    private _tools: ToolsService,
+    public _tools: ToolsService,
     private _Publicacion: PublicacionService,
     private _store: Store<STORAGES>
   ) { 
@@ -195,7 +195,6 @@ export class ToolsPublicacionComponent implements OnInit {
       clon.megusta = item.megusta;
       clon.nomegusta = item.nomegusta;
       item = clon;
-      // console.log( clon , item);
     }
   }
 
