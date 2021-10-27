@@ -96,7 +96,7 @@ export class FormpublicacionComponent implements OnInit {
       form.append('file', file);
       this._tools.ProcessTime({});
       this._archivo.create(form).subscribe((res: any) => {
-        //console.log(form);
+        //console.log(res);
         this._tools.tooast({ title: "subido exitoso" });
         if (opt == 'imgdefault') this.data.imgdefault = res.files;
         if (opt == 'content') { this.data.content = res.files; this.data.imgdefault = res.files; }

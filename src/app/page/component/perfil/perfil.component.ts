@@ -75,7 +75,7 @@ export class PerfilComponent implements OnInit {
       form.append('file', file);
       this._tools.ProcessTime({});
       this._archivo.create(form).subscribe((res: any) => {
-        //console.log(form);
+        console.log(form);
         this._tools.tooast({ title: "subido exitoso" });
         this.data.foto = res.files;
         this.submit();
@@ -98,7 +98,7 @@ export class PerfilComponent implements OnInit {
 
   update(){
     if( this.data.password ) return this.cambioPassword();
-    this.data = _.omit( this.data, ['rol', 'password', 'confirpassword', 'cabeza','comentarios','publicaciones','referidos','rol','updatedAt','createdAt']);
+    this.data = _.omit( this.data, ['rol', 'password', 'confirpassword', 'cabeza','comentarios','publicaciones','referidos','rol','updatedAt','createdAt','miNivel','miPaquete','cantidadPuntos']);
     this._user.update(this.data).subscribe((res:any)=>{
       console.log(res);
       this.data = res;

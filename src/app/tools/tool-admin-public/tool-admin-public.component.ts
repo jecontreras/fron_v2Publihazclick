@@ -44,7 +44,7 @@ export class ToolAdminPublicComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log( this.config );
+    //console.log( this.config );
     this.getRow();
     if( this.config ) if( this.config.vista == 'banner') this.bloquear = 2;
   }
@@ -56,7 +56,6 @@ export class ToolAdminPublicComponent implements OnInit {
   }
   
   openPublic( item:any ){
-    console.log( item );
     if( !item ) if( this.bloquear == 0 ) return false;
     if( this.config.vista == "publicacion"){
       if( item ) this.Router.navigate( [ "dashboard/formpublicacion", item.id ] );

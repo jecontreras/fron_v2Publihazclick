@@ -95,7 +95,7 @@ export class PublicacionviewsComponent implements OnInit {
     this._actividad.get({ where: { id: this.id } }).subscribe((res: any) => {
       res = res.data[0];
       this.data = res || {};
-      this.Tools.contadorActividad(10);
+      this.Tools.contadorActividad(60);
       this.arraydecolor();
       setInterval(() => {
         if (this.Tools.intervalosContador == 0) this.disablerealizado = true;

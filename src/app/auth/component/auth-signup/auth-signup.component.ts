@@ -47,9 +47,9 @@ export class AuthSignupComponent implements OnInit {
   validandoCabeza(){
     this._user.get( { where: { username: this.cabeza }}).subscribe( ( res:any )=>{
       res = res.data[0];
-      if( !res ) { this._tools.tooast( { title: "Error lider no encontrado", icon:"error" } ); this._router.navigate(["/portada/index"]); return false; }
+      if( !res ) { this._tools.tooast( { title: "Error lider no encontrado", icon:"error" } ); this._router.navigate(["/portada/publihazclick"]); return false; }
       else { this.liderInfo = res; this.data.cabeza = res.id; }
-    },(error)=> { this._tools.tooast( { title: "Error de servidor", icon:"error" } ); this._router.navigate(["/portada/index"]); } );
+    },(error)=> { this._tools.tooast( { title: "Error de servidor", icon:"error" } ); this._router.navigate(["/portada/publihazclick"]); } );
   }
 
   submit(){

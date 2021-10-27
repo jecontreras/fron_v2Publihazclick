@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { PuntosResumenService } from 'src/app/servicesComponents/puntos-resumen.service';
 import * as moment from 'moment';
 import { PuntosService } from 'src/app/servicesComponents/puntos.service';
+import { environment } from 'src/environments/environment';
+declare var ePayco: any;
 
 @Component({
   selector: 'app-paquete',
@@ -28,6 +30,9 @@ export class PaqueteComponent implements OnInit {
   paquete:any = false;
   ocultar:boolean = false;
   disabledB:boolean = false;
+  keyEpayco = environment.keyEpayco;
+  estadoPruebaPagos = environment.estadoPruebaPagos;
+  disabedPn:boolean = false;
   constructor(
     private _paquetes: PaquetesService,
     private _tools: ToolsService,
@@ -142,7 +147,48 @@ export class PaqueteComponent implements OnInit {
   }
 
   openPaquete( item:any ){
-    window.open( item.url );
+    //window.open( item.url );
+    if( this.disabedPn ) return false;
+    this.disabedPn = true;
+    let obj:any = {
+        url: item.url || "https://recaudos.pagosinteligentes.com/CollectForm.aspx?Token=be3c7e95-5c30-47e3-9209-9e88a2e6f57d",
+        otrourl: item.otrourl || "https://publihazclick.s3.amazonaws.com/paquetes/19fd8728-c89b-44c7-951b-79dcbbace3ff.jpg",
+        wester: item.wester || "https://www.google.com.co/",
+        imgwester: item.imgwester || "https://www.viviendocali.com/wp-content/uploads/2017/10/Western-Union-en-bucaramanga.jpg",
+        name: item.title,
+        invoice: this._tools.codigo(),
+        currency: 'cop',
+        amount: item.valorextra,
+        tax_base: '0',
+        tax: '0',
+        country: 'co',
+        test: false,
+        lang: 'eng',
+        external: 'true',
+        extra1: 'extra1',
+        extra2: 'extra2',
+        extra3: 'extra3',
+        name_billing: this.dataUser.name + ' ' + this.dataUser.lastname,
+        email_billing: this.dataUser.email,
+        address_billing: this.dataUser.ciudad || 'cucuta',
+        type_doc_billing: this.dataUser.tipdoc,
+        mobilephone_billing: this.dataUser.celular,
+        number_doc_billing: this.dataUser.celular
+    };
+    //console.log( obj)
+    try {
+      const handler: any = ePayco.checkout.configure({
+        key: this.keyEpayco,
+        test: this.estadoPruebaPagos
+      })
+        ;
+      handler.open(obj);
+    } catch (error) {
+      console.log("************", error)
+      this._tools.tooast("Eror en el proceso de compra");
+    }
+
+    setTimeout(()=>this.disabedPn = true, 3000 );
   }
 
 }

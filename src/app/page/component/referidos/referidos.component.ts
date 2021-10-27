@@ -3,6 +3,8 @@ import { UsuariosService } from 'src/app/servicesComponents/usuarios.service';
 import { ToolsService } from 'src/app/services/tools.service';
 import * as _ from 'lodash';
 import { UserNivelService } from 'src/app/servicesComponents/user-nivel.service';
+import { STORAGES } from 'src/app/interfaces/sotarage';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-referidos',
@@ -32,12 +34,18 @@ export class ReferidosComponent implements OnInit {
     limit: 1000,
     page: 0
   };
-
+  dataUser:any = {};
   constructor(
     private _user: UsuariosService,
     private _tools: ToolsService,
-    private _userNivel: UserNivelService
-  ) { }
+    private _userNivel: UserNivelService,
+    private _store: Store<STORAGES>,
+  ) { 
+    this._store.subscribe((store: any) => {
+      store = store.name;
+      this.dataUser = store.user || {};
+    });
+  }
 
   ngOnInit() {
     this.getRow();
@@ -52,6 +60,7 @@ export class ReferidosComponent implements OnInit {
   }
    
   getRow(){
+    this.query.where.cabeza = this.dataUser.id;
     this.progreses = true;
     this._user.get( this.query ).subscribe( async ( res:any ) =>{
       for( let row of res.data ) {
@@ -72,7 +81,7 @@ export class ReferidosComponent implements OnInit {
       this._userNivel.getDetalles( { user: item.id } ).subscribe(( res:any )=>{
         // console.log( res );
         resolve( res );
-      },( error:any )=> console.error( error ));
+      },( error:any )=> { console.error( error ); resolve( false ); });
     });
   }
 
