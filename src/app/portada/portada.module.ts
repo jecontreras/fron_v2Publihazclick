@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { MarcasComponent } from './component/marcas/marcas.component';
 import { PublihazclickComponent } from './component/publihazclick/publihazclick.component';
 import { PautasComponent } from './component/pautas/pautas.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 
 
@@ -33,6 +34,7 @@ import { PautasComponent } from './component/pautas/pautas.component';
     PortadaRoutingModule,
     NgxCurrencyModule,
     NgxDropzoneModule,
+    NgImageSliderModule,
     FormsModule
   ]
 })

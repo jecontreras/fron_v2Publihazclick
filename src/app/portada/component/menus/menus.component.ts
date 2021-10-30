@@ -30,13 +30,10 @@ export class MenusComponent implements OnInit {
     this._store.subscribe((store: any) => {
       console.log(store);
       store = store.name;
+      if( !store.dataDemo ) store.dataDemo = {};
       this.dataUser = ( _.clone( store.user ) ) || {};
-      try {
-        if( this.dataUser.cantidadPuntos ) {
-          this.puntosGanados = this.dataUser.cantidadPuntos.valorTotal || 0;
-          this.donaciones = this.dataUser.cantidadPuntos.donacion || 0;
-        }
-      } catch (error) { }
+      this.puntosGanados = store.dataDemo.coins || 0;
+      this.donaciones = store.dataDemo.donacion || 0;
     });
   }
 
@@ -68,6 +65,10 @@ export class MenusComponent implements OnInit {
         this._store.dispatch( accion );
       }
     },( error:any )=> { this._tools.presentToast("Error de servidor"); this.disabled = false; } );
+  }
+
+  getRefres(){
+    location.reload();
   }
 
 }

@@ -30,7 +30,7 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   @ViewChild('navbarWrapper', {static: false}) navbarWrapper: ElementRef;
   dataUser:any = {};
   miNivel:string = "JADE";
-
+  rolName:string = "";
   constructor(
     public nav: NavigationItem, 
     private zone: NgZone, 
@@ -44,12 +44,15 @@ export class NavContentComponent implements OnInit, AfterViewInit {
       if(!store) return false;
       this.dataUser = store.user || {};
       if( this.dataUser.miNivel ) if( this.dataUser.miNivel['nivel'] )  this.miNivel = this.dataUser.miNivel['nivel'].title;
+      if( this.dataUser.rol ) this.rolName = this.dataUser.rol.nombre;
     });
 
     this.nextConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
 
     this.navigation = this.nav.get();
+    console.log( this.navigation)
+    if( this.rolName != 'admin')this.navigation = this.navigation.filter( ( item:any )=> item.disabled == this.rolName );
     this.prevDisabled = 'disabled';
     this.nextDisabled = '';
     this.scrollWidth = 0;
@@ -67,7 +70,7 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   }
 
   portapapeles() {
-    const val = `${ URL }/auth/registrate/${ this.dataUser.username }`;
+    const val = `${ URL }/auths/${ this.dataUser.username }`;
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';

@@ -58,7 +58,10 @@ export class PaqueteComponent implements OnInit {
   getPaquetes(){
     this._paquetes.get( this.query ).subscribe(( res:any )=>{
       this.listPaquetes = res.data;
-      for( let row of this.listPaquetes ) row.valorTransaccion = 3000;
+      for( let row of this.listPaquetes ) {
+        if( row.valorextra == 250000) row.valorTransaccion = 12000;
+        else row.valorTransaccion = 3000;
+      }
     });
   }
 

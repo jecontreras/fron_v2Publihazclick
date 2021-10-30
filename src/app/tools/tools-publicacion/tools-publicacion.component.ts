@@ -67,7 +67,7 @@ export class ToolsPublicacionComponent implements OnInit {
   }
   
   openPublic( item ){
-    if( !this.disabledPublic ) return this._tools.tooast( { title: "En estos momento no puedes hacer ninguna actividad hasta que consumas tus publicaciones a crear", icon: "error" } );
+    if( !this.disabledPublic && this.dataUser.id ) return this._tools.tooast( { title: "En estos momento no puedes hacer ninguna actividad hasta que consumas tus publicaciones a crear", icon: "error" } );
     let url:string = item.content;
     if( this.config.vista == "tareas" || this.config.vista == "publicidad"  ) { 
       if( item.estado == "activo" && this.config.vista == "tareas"){
@@ -77,6 +77,8 @@ export class ToolsPublicacionComponent implements OnInit {
       }
       item.estado = "realizado"; url = URL+`/publicacionviews/${ item.id }`;
     }
+
+    if( this.config.vista == 'donar') { url = URL+`/publicacionviews/${ item.id }`; }
     //console.log( url );
     window.open( url );
   }

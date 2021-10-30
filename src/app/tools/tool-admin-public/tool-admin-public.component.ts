@@ -39,14 +39,14 @@ export class ToolAdminPublicComponent implements OnInit {
       if(!store) return false;
       this.dataUser = store.user || {};
       if( this.dataUser.miPaquete ) this.bloquear = this.dataUser.miPaquete.cantidaddepublicidad;
-      if( this.config ) if( this.config.vista == 'banner') this.bloquear = 2;
+      if( this.config ) if( this.config.vista == 'banner' || this.config.vista == 'marcas') this.bloquear = 2;
     });
   }
 
   ngOnInit() {
     //console.log( this.config );
     this.getRow();
-    if( this.config ) if( this.config.vista == 'banner') this.bloquear = 2;
+    if( this.config ) if( this.config.vista == 'banner' || this.config.vista == 'marcas') this.bloquear = 2;
   }
 
 
@@ -56,7 +56,7 @@ export class ToolAdminPublicComponent implements OnInit {
   }
   
   openPublic( item:any ){
-    if( !item ) if( this.bloquear == 0 ) return false;
+    if( !item ) if( this.bloquear == 0 && this.config.vista == 'marcas') return false;
     if( this.config.vista == "publicacion"){
       if( item ) this.Router.navigate( [ "dashboard/formpublicacion", item.id ] );
       else this.Router.navigate( [ "dashboard/formpublicacion" ] );
@@ -64,6 +64,10 @@ export class ToolAdminPublicComponent implements OnInit {
     if( this.config.vista == "banner"){
       if( item ) this.Router.navigate( [ "dashboard/formbanner", item.id ] );
       else this.Router.navigate( [ "dashboard/formbanner" ] );
+    }
+    if( this.config.vista == "marcas"){
+      if( item ) this.Router.navigate( [ "dashboard/formmarcasAnunciantes", item.id ] );
+      else this.Router.navigate( [ "dashboard/formmarcasAnunciantes" ] );
     }
   }
 

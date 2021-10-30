@@ -7,6 +7,7 @@ import { UsuariosService } from 'src/app/servicesComponents/usuarios.service';
 import { STORAGES } from 'src/app/interfaces/sotarage';
 import { Store } from '@ngrx/store';
 import { UserAction } from 'src/app/redux/app.actions';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-auth-signup',
@@ -41,7 +42,18 @@ export class AuthSignupComponent implements OnInit {
 
   ngOnInit() {
     this.cabeza = (this.activate.snapshot.paramMap.get('username'));
+    console.log(this.cabeza)
     this.validandoCabeza();
+  }
+
+  Texts(){
+    try {
+      this.data.username = this.data.username.replace(/ /g, '');
+      this.data.username = _.toLower( this.data.username );
+    } catch (error) {
+      this.data.username = this.data.username;
+    }
+    //console.log("*********hp", this.data.username );
   }
 
   validandoCabeza(){

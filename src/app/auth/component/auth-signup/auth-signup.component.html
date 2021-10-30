@@ -11,7 +11,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="feather icon-user"></i></span>
               </div>
-              <input type="text" class="form-control" [(ngModel)]="data.username" placeholder="Username / avatar">
+              <input type="text" class="form-control" [(ngModel)]="data.username" placeholder="Username / avatar" (keydown)="Texts()">
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">

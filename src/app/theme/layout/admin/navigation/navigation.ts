@@ -30,6 +30,7 @@ const NavigationItems = [
     id: 'navigation',
     title: 'Navegacion',
     type: 'group',
+    disabled: "user",
     icon: 'feather icon-monitor',
     children: [
       {
@@ -60,19 +61,20 @@ const NavigationItems = [
         url: '/dashboard/lider',
         icon: 'feather icon-home'
       },
-      {
+      /*{
         id: 'chat',
         title: 'Chat',
         type: 'item',
         url: '/dashboard/chat',
         icon: 'feather icon-home'
-      }
+      }*/
     ]
   },
   {
     id: 'merkaplace',
     title: 'Comunidad',
     type: 'group',
+    disabled: "user",
     icon: 'feather icon-monitor',
     children: [
       {
@@ -95,13 +97,14 @@ const NavigationItems = [
     id: 'merkaplace',
     title: 'Marketplace',
     type: 'group',
+    disabled: "user",
     icon: 'feather icon-monitor',
     children: [
       {
         id: 'adminMarkeplace',
         title: 'Publicaciones',
         type: 'item',
-        url: '/publico/markeplace',
+        url: '/user/markeplace',
         icon: 'feather icon-home'
       },
       {
@@ -117,6 +120,7 @@ const NavigationItems = [
     id: 'tareas',
     title: 'TAREAS & GANA DINERO',
     type: 'group',
+    disabled: "user",
     icon: 'feather icon-layers',
     children: [
       {
@@ -146,6 +150,7 @@ const NavigationItems = [
     id: 'publicaciones',
     title: 'ADMINISTRACION PUBLICACIONES',
     type: 'group',
+    disabled: "user",
     icon: 'feather icon-layers',
     children: [
       {
@@ -168,6 +173,7 @@ const NavigationItems = [
     id: 'retiros',
     title: 'RETIROS Y DINEROS & BANCOS',
     type: 'group',
+    disabled: "user",
     icon: 'feather icon-layers',
     children: [
       {
@@ -190,6 +196,7 @@ const NavigationItems = [
     id: 'userPaquete',
     title: 'PAQUETES & INFORMACION',
     type: 'group',
+    disabled: "user",
     icon: 'feather icon-layers',
     children: [
       {
@@ -205,6 +212,7 @@ const NavigationItems = [
     id: 'perfilUser',
     title: 'PERFIL & INFORMACION',
     type: 'group',
+    disabled: "user",
     icon: 'feather icon-layers',
     children: [
       {
@@ -220,6 +228,7 @@ const NavigationItems = [
     id: 'ayudas',
     title: 'AYUDA',
     type: 'group',
+    disabled: "user",
     icon: 'feather icon-layers',
     children: [
       {
@@ -234,6 +243,23 @@ const NavigationItems = [
         title: 'Servicio al Cliente',
         type: 'item',
         url: '/dashboard/servicioCliente',
+        icon: 'feather icon-home'
+      },
+    ]
+  },
+
+  {
+    id: 'admin',
+    title: 'Administracion',
+    type: 'group',
+    disabled: "admin",
+    icon: 'feather icon-monitor',
+    children: [
+      {
+        id: 'adminmarcasAnunciantes',
+        title: 'Marcas Anunciantes',
+        type: 'item',
+        url: '/dashboard/marcasAnunciantes',
         icon: 'feather icon-home'
       },
     ]

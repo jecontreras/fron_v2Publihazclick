@@ -1,5 +1,5 @@
 export const INDICATIVO: any = [
-    { "nombre": "Afganistán", "name": "Afghanistan", "nom": "Afghanistan", "iso2": "AF", "iso3": "AFG", "phone_code": "93" },
+    /*{ "nombre": "Afganistán", "name": "Afghanistan", "nom": "Afghanistan", "iso2": "AF", "iso3": "AFG", "phone_code": "93" },
     { "nombre": "Albania", "name": "Albania", "nom": "Albanie", "iso2": "AL", "iso3": "ALB", "phone_code": "355" },
     { "nombre": "Alemania", "name": "Germany", "nom": "Allemagne", "iso2": "DE", "iso3": "DEU", "phone_code": "49" },
     { "nombre": "Algeria", "name": "Algeria", "nom": "Algérie", "iso2": "DZ", "iso3": "DZA", "phone_code": "213" },
@@ -43,7 +43,7 @@ export const INDICATIVO: any = [
     { "nombre": "China", "name": "China", "nom": "Chine", "iso2": "CN", "iso3": "CHN", "phone_code": "86" },
     { "nombre": "Chipre", "name": "Cyprus", "nom": "Chypre", "iso2": "CY", "iso3": "CYP", "phone_code": "357" },
     { "nombre": "Ciudad del Vaticano", "name": "Vatican City State", "nom": "Cité du Vatican", "iso2": "VA", "iso3": "VAT", "phone_code": "39" },
-    { "nombre": "Colombia", "name": "Colombia", "nom": "Colombie", "iso2": "CO", "iso3": "COL", "phone_code": "57" },
+    */{ "nombre": "Colombia", "name": "Colombia", "nom": "Colombie", "iso2": "CO", "iso3": "COL", "phone_code": "57" },/*
     { "nombre": "Comoras", "name": "Comoros", "nom": "Comores", "iso2": "KM", "iso3": "COM", "phone_code": "269" },
     { "nombre": "Congo", "name": "Congo", "nom": "Congo", "iso2": "CG", "iso3": "COG", "phone_code": "242" },
     { "nombre": "Congo", "name": "Congo", "nom": "Congo", "iso2": "CD", "iso3": "COD", "phone_code": "243" },
@@ -238,11 +238,11 @@ export const INDICATIVO: any = [
     { "nombre": "Uruguay", "name": "Uruguay", "nom": "Uruguay", "iso2": "UY", "iso3": "URY", "phone_code": "598" },
     { "nombre": "Uzbekistán", "name": "Uzbekistan", "nom": "L'Ouzbékistan", "iso2": "UZ", "iso3": "UZB", "phone_code": "998" },
     { "nombre": "Vanuatu", "name": "Vanuatu", "nom": "Vanuatu", "iso2": "VU", "iso3": "VUT", "phone_code": "678" },
-    { "nombre": "Venezuela", "name": "Venezuela", "nom": "Venezuela", "iso2": "VE", "iso3": "VEN", "phone_code": "58" },
+    */{ "nombre": "Venezuela", "name": "Venezuela", "nom": "Venezuela", "iso2": "VE", "iso3": "VEN", "phone_code": "58" },/*
     { "nombre": "Vietnam", "name": "Vietnam", "nom": "Vietnam", "iso2": "VN", "iso3": "VNM", "phone_code": "84" },
     { "nombre": "Wallis y Futuna", "name": "Wallis and Futuna", "nom": "Wallis et Futuna", "iso2": "WF", "iso3": "WLF", "phone_code": "681" },
     { "nombre": "Yemen", "name": "Yemen", "nom": "Yémen", "iso2": "YE", "iso3": "YEM", "phone_code": "967" },
     { "nombre": "Yibuti", "name": "Djibouti", "nom": "Djibouti", "iso2": "DJ", "iso3": "DJI", "phone_code": "253" },
     { "nombre": "Zambia", "name": "Zambia", "nom": "Zambie", "iso2": "ZM", "iso3": "ZMB", "phone_code": "260" },
-    { "nombre": "Zimbabue", "name": "Zimbabwe", "nom": "Zimbabwe", "iso2": "ZW", "iso3": "ZWE", "phone_code": "263" }
+    { "nombre": "Zimbabue", "name": "Zimbabwe", "nom": "Zimbabwe", "iso2": "ZW", "iso3": "ZWE", "phone_code": "263" }*/
 ]

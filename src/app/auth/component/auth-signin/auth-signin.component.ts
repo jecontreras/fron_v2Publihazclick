@@ -68,6 +68,10 @@ export class AuthSigninComponent implements OnInit {
     this._router.navigate(['/dashboard/home']);
   }
 
+  advertencia(){
+    this._tools.tooast({ title:"Para poder Registrarse debes pedir link de registro a tu lider",icon: "warning" });
+  }
+
 
 
 }

@@ -14,7 +14,7 @@
     <div class="col-12 content">
         <div class="row mat-elevation-z5 p-2">
             <div class="form-group col-xs-6 col-sm-6 col-12">
-                <label for="exampleInputEmail1">Banco</label>
+                <label for="exampleInputEmail1">Medio de pago</label>
                 <select class="form-control" [(ngModel)]="data.titulo">
                     <option [value]="item.id" *ngFor="let item of listBancos">
                         {{ item.titulo }}</option>
@@ -41,10 +41,14 @@
                     <option value="ahorro">
                         Ahorro
                     </option>
-                    <option value="ahorroalaMano">
+                    <option value="ahorroalaMano" *ngIf="dataUser.pais == '!Colombia'">
                         Ahorro ala mano
                     </option>
                 </select>
+            </div>
+            <div class="form-group col-xs-6 col-sm-6 col-12" *ngIf="data.titulo == 'otro'">
+                <label for="exampleInputEmail1">Escribe el nombre de banco</label>
+                <input type="text" class="form-control" [(ngModel)]="data.descripcion">
             </div>
         </div>
     </div>

@@ -5,15 +5,20 @@ import { AuthComponent } from './theme/layout/auth/auth.component';
 import { AuthService } from './services/auth.service';
 import { PublicoComponent } from './theme/layout/publico/publico.component';
 import { PortadaComponent } from './theme/layout/portada/portada.component';
+import { AuthsComponent } from './component/auths/auths.component';
 
 const routes: Routes = [
+  {
+    path: 'auths/:id',
+    component: AuthsComponent
+  },
   {
     path: "",
     component: PortadaComponent,
     children: [
       {
         path: '',
-        redirectTo: 'portada/publihazclick',
+        redirectTo: 'portada/donar',
         pathMatch: 'full'
       },
       {
@@ -29,7 +34,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'portada/publihazclick',
+        redirectTo: 'portada/donar',
         pathMatch: 'full'
       },
       // {

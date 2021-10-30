@@ -15,20 +15,7 @@ import { UsuariosService } from 'src/app/servicesComponents/usuarios.service';
 })
 export class DonarComponent implements OnInit {
 
-  public query: any = {
-    where: {
-      prioridad: "tarea-diaria",
-      user: {},
-      create: true
-    },
-    sort: "createdAt DESC",
-    limit: 5,
-    page: 0
-  };
   dataUser: any = {};
-  config: any = {
-    vista: "tareas"
-  };
 
   public query2: any = {
     where: {
@@ -41,7 +28,7 @@ export class DonarComponent implements OnInit {
     page: 0
   };
   config2: any = {
-    vista: "publicacion"
+    vista: "donar"
   };
 
   data: any = {
@@ -64,92 +51,11 @@ export class DonarComponent implements OnInit {
       store = store.name;
       if (!store) return false;
       this.dataUser = store.user || {};
-      this.query.where.user = this.dataUser.id;
     });
   }
 
   async ngOnInit() {
-    if (!this.dataUser.id) {
-      let loger: any = await this._tools.confirm({ title: "Quieres Iniciar sesión", detalle: "PubliHazclick!!" });
-      if ( loger.value ) this.nextLogin();
-      else {
-        let codigo = this._tools.codigo();
-        this.data = {
-          username: "User Visita " + codigo,
-          email: codigo + "@gmail.com",
-          celular: "123456",
-          password: "123456",
-          confirpassword: "123456",
-          cabeza: "5cf9556198a1087221cd93ff",
-          name: codigo + "@gmail.com",
-          registroInc: false,
-          ...this.data
-        };
-        let alert: any = await this._tools.confirm({ title: "Quieres Registrarte", detalle: "Estas como visitante si deseas registrarte podras recibir ganancias y donar a fundaciones!!" });
-        console.log(alert)
-        if (!alert.value) this.createDefaultUser();
-        else this.nextProceso();
-      }
-    }
-  }
 
-  async nextLogin(){    
-    let data:any = {
-      username: "",
-      password: ""
-    };
-    let email: any = await this._tools.alertInput({ title: "Email", input: "text" });
-    data.username = email;
-    
-    let pass: any = await this._tools.alertInput({ title: "Contraseña", input: "password" });
-    data.password = pass;
-
-    this._user.login( data ).subscribe((res:any)=>{
-      //this._tools.dismisPresent();
-      console.log( res );
-      if(res.success){
-        this.ProcesoStorages( res );
-      }else{
-        this.data.password = "";
-        this._tools.tooast({ title:"Error de "+ res.message ,icon: "error" });
-      }
-    },(error)=>{
-      this._tools.tooast( { title: "Error de servidor", icon: "error" } );
-    });
-  }
-
-  async nextProceso() {
-    let email: any = await this._tools.alertInput({ title: "Email", input: "text" });
-    this.data.email = email;
-    this.data.username = email;
-    this.data.name = email;
-    this.data.registroInc = true;
-    let pass: any = await this._tools.alertInput({ title: "Contraseña", input: "password" });
-    this.data.password = pass;
-    this.data.confirpassword = pass;
-    this.createDefaultUser();
-  }
-
-
-
-  createDefaultUser() {
-    if (this.disabled) return false;
-    this.disabled = true;
-    this._user.create(this.data).subscribe((res: any) => {
-      this.disabled = false;
-      if (res.status != 200) return this._tools.tooast({ title: "error " + res.data, icon: "error" });
-      else { this._tools.tooast({ title: "Felicitaciones Entraste como usuario de pruebas" }); this.ProcesoStorages(res); }
-    }, (error: any) => {
-      console.log(error);
-      this.disabled = false;
-      this._tools.tooast({ title: "Error de servidor", icon: "error" });
-    });
-  }
-
-  ProcesoStorages(res: any) {
-    let accion: any = new UserAction(res.data, 'post');
-    this._store.dispatch(accion);
-    location.reload();
   }
 
 

@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import * as _ from 'lodash';
 import { NgImageSliderComponent } from 'ng-image-slider';
 import { STORAGES } from 'src/app/interfaces/sotarage';
+import { DataDemoAction } from 'src/app/redux/app.actions';
 import { ToolsService } from 'src/app/services/tools.service';
 import { ActividadService } from 'src/app/servicesComponents/actividad.service';
 import { PublicacionService } from 'src/app/servicesComponents/publicacion.service';
@@ -55,7 +56,9 @@ export class PublicacionviewsComponent implements OnInit {
   dataUser: any = {};
 
   disabledCont: boolean = false;
+  dataDemo:any = {
 
+  };
   constructor(
     public _publicidad: PublicacionService,
     private _actividad: ActividadService,
@@ -77,6 +80,7 @@ export class PublicacionviewsComponent implements OnInit {
       store = store.name;
       if (!store) return false;
       this.dataUser = store.user || {};
+      this.dataDemo = store.dataDemo || { coins: 0, donacion: 0 };
     });
 
   }
@@ -95,18 +99,42 @@ export class PublicacionviewsComponent implements OnInit {
     this._actividad.get({ where: { id: this.id } }).subscribe((res: any) => {
       res = res.data[0];
       this.data = res || {};
-      this.Tools.contadorActividad(60);
+      this.Tools.contadorActividad(5);
       this.arraydecolor();
       setInterval(() => {
         if (this.Tools.intervalosContador == 0) this.disablerealizado = true;
         console.log(this.disablerealizado);
       }, 2000);
+      if (!this.data.id) return this.armandoData();
       try {
         if (this.data.publicacion.type == 'url') this.url = this.Tools.seguridadIfrane(this.data.publicacion.content);
         console.log(this.url)
       } catch (error) { }
       console.log(this.data);
     }, (error: any) => { this.Tools.tooast({ title: "Error al cargar la actividad" }); setTimeout(() => { location.reload(); }, 3000) });
+  }
+
+  armandoData() {
+    this._publicidad.get({ where: { id: this.id }, limit: 1 }).subscribe((res: any) => {
+      res = res.data[0];
+      this.data = {
+        "createdAt": "2021-10-30T08:32:28.795Z",
+        "updatedAt": "2021-10-30T08:32:28.795Z",
+        "id": "617d031ce69d3a0016627973",
+        "regalo": false, "codigo": "DJQLX7LMDRWBWWJ",
+        "prioridad": "tarea-diaria",
+        "estado": "activo",
+        "url": "",
+        "state": 0, "create": "30/10/2021",
+        "valor": 134,
+        "user": {}, 
+        "publicacion": res
+      };
+      try {
+        if (this.data.publicacion.type == 'url') this.url = this.Tools.seguridadIfrane(this.data.publicacion.content);
+        console.log(this.url)
+      } catch (error) { }
+    });
   }
 
   resolved(obj: any) {
@@ -116,6 +144,7 @@ export class PublicacionviewsComponent implements OnInit {
 
   PagarActividad() {
     this.disabledCont = true;
+    if( !this.dataUser.id ) return this.PagarDemo();
     this._puntos.generarPuntos({
       codigo: this.Tools.codigo(),
       valor: this.data.valor,
@@ -128,6 +157,19 @@ export class PublicacionviewsComponent implements OnInit {
       this.cerrarVentana();
       this.disablerealizado = true;
     }, (error: any) => { console.log(error); this.Tools.tooast({ title: error.error, icon: "error" }); this.disabledCont = false; if (error.error) this.disablerealizado = true; });
+  }
+
+
+  PagarDemo(){
+    let data:any = {
+      coins: this.dataDemo.coins + 124,
+      donacion: this.dataDemo.donacion + 10
+    };
+    let accion = new DataDemoAction( data, 'post');
+    this._store.dispatch( accion );
+    this.Tools.tooast({ title: "Punto Generado" });
+    this.disabledCont = false;
+    this.cerrarVentana();
   }
 
 
@@ -245,8 +287,8 @@ export class PublicacionviewsComponent implements OnInit {
     this.openaVenta();
   }
 
-  cerrarVentana(){
-    setTimeout(()=>window.close(), 2000 );
+  cerrarVentana() {
+    setTimeout(() => window.close(), 2000);
   }
 
 }

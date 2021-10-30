@@ -42,13 +42,19 @@ export class FormbancosComponent implements OnInit {
 
   llenandoListaBancos() {
     //llenado de bancos
+    console.log( this.dataUser.pais )
     this.listBancos = [
       {
         titulo: "Efecty",
         id: 'efecty',
-        disabled: true
+        disabled: this.dataUser.pais == 'Venezuela'
       },
       {
+        titulo: "Transferencia Bancaria",
+        id: 'otro',
+        disabled: this.dataUser.pais == 'Venezuela'
+      },
+      /*{
         titulo: "Afex",
         id: "afex",
         disabled: this.dataUser.pais === '!Colombia'
@@ -67,13 +73,23 @@ export class FormbancosComponent implements OnInit {
         titulo: "Ria / Riamoneytransfer",
         disabled: this.dataUser.pais === '!Colombia',
         id: "ria"
+      },*/
+      {
+        titulo: "Bancolombia",
+        disabled: this.dataUser.pais === 'Colombia',
+        id: "bancolombia"
       },
       {
-        titulo: "NEQUI",
-        disabled: true,
+        titulo: "Nequi",
+        disabled: this.dataUser.pais === 'Colombia',
         id: "nequi"
       },
       {
+        titulo: "Daviplata",
+        disabled: this.dataUser.pais === 'Colombia',
+        id: "daviplata"
+      },
+      /*{
         titulo: "BBVA",
         disabled: true,
         id: "bbva"
@@ -122,13 +138,8 @@ export class FormbancosComponent implements OnInit {
         titulo: "Bancóldex",
         disabled: true,
         id: "bancoldex"
-      },
-      {
-        titulo: "Bancolombia",
-        disabled: true,
-        id: "bancolombia"
-      },
-      {
+      },*/
+      /*{
         titulo: "Banco de Bogotá",
         disabled: true,
         id: "banco-de-bogota"
@@ -137,7 +148,7 @@ export class FormbancosComponent implements OnInit {
         titulo: "GNB Sudameris",
         disabled: true,
         id: "gnb-sudameris"
-      }
+      }*/
     ];
     this.listBancos = this.listBancos.filter((row: any) => row.disabled == true);
   }

@@ -34,6 +34,8 @@ import { ToolsModule } from '../tools/tools.module';
 import { AmigosComponent } from './component/amigos/amigos.component';
 import { TestimoniodshComponent } from './component/testimoniodsh/testimoniodsh.component';
 import { ChatComponent } from './component/chat/chat.component';
+import { MarcasAnunciantesComponent } from './admin/marcas-anunciantes/marcas-anunciantes.component';
+import { FormmarcasAnunciantesComponent } from './admin/formmarcas-anunciantes/formmarcas-anunciantes.component';
 
 @NgModule({
   declarations: [ 
@@ -54,7 +56,7 @@ import { ChatComponent } from './component/chat/chat.component';
     TareaMegaComponent, 
     ViewPerfilComponent, 
     BannerComponent, 
-    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, AmigosComponent, TestimoniodshComponent, ChatComponent
+    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, AmigosComponent, TestimoniodshComponent, ChatComponent, MarcasAnunciantesComponent, FormmarcasAnunciantesComponent
   ],
   imports: [
     CommonModule,

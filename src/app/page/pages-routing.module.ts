@@ -25,6 +25,8 @@ import { FormadminMarketplaceComponent } from './form/formadmin-marketplace/form
 import { AmigosComponent } from './component/amigos/amigos.component';
 import { TestimoniodshComponent } from './component/testimoniodsh/testimoniodsh.component';
 import { ChatComponent } from './component/chat/chat.component';
+import { MarcasAnunciantesComponent } from './admin/marcas-anunciantes/marcas-anunciantes.component';
+import { FormmarcasAnunciantesComponent } from './admin/formmarcas-anunciantes/formmarcas-anunciantes.component';
 
 const routes: Routes = [
   {
@@ -146,6 +148,18 @@ const routes: Routes = [
   {
     path: "chat",
     component: ChatComponent
+  },
+  {
+    path: "marcasAnunciantes",
+    component: MarcasAnunciantesComponent
+  },
+  {
+    path: "formmarcasAnunciantes",
+    component: FormmarcasAnunciantesComponent
+  },
+  {
+    path: "formmarcasAnunciantes/:id",
+    component: FormmarcasAnunciantesComponent
   }
 ];
 

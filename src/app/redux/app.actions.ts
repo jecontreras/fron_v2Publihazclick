@@ -6,6 +6,7 @@ export let USERCABEZA    = '[App] UserCabeza';
 export let PRODUCTOHISTORIAL = '[App] Productohistorial';
 export let BUSCADOR      = '[App] Buscador';
 export let SELECCIONCATEGORIA = '[App] SeleccionCategoria';
+export let DATADEMO          = '[App] Datademo';
 
 export class CartAction implements Action {
     readonly type = CART;
@@ -37,9 +38,15 @@ export class SeleccionCategoriaAction implements Action {
     constructor( public payload: object,  public opt: string){}
 }
 
+export class DataDemoAction implements Action {
+    readonly type = DATADEMO;
+    constructor( public payload: object,  public opt: string){}
+}
+
 export type actions = CartAction              |
                       UserAction              |
                       UserCabezaAction        |
                       ProductoHistorialAction |
                       BuscadorAction          |
-                      SeleccionCategoriaAction;
+                      SeleccionCategoriaAction|
+                      DataDemoAction          ;

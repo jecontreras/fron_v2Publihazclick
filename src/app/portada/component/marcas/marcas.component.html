@@ -3,6 +3,19 @@
       <app-menus></app-menus>
     </div>
     <div class="col-12">
-        
+      <div class="d-flex justify-content-center">
+        <div>
+          <h2 class="text-primary">Estos son algunos de nuestros anunciantes</h2>
+        </div>
+      </div>
+      <br><br><br>
+    </div>
+    <div class="col-12">
+      <ng-image-slider [images]="imageObject" *ngIf="imageObject.length > 0" [infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
+        [showArrow]="sliderArrowShow" [imageSize]="{width: sliderImageWidth, height: sliderImageHeight}"
+        [autoSlide]="sliderAutoSlide ? 1 : 0" [slideImage]="sliderSlideImage"
+        [animationSpeed]="sliderAnimationSpeed" (imageClick)="imageOnClick($event)"
+        (arrowClick)="arrowOnClick($event)" (lightboxArrowClick)="lightboxArrowClick($event)" #nav>
+      </ng-image-slider>
     </div>
 </div>

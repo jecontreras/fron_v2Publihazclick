@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { STORAGES } from 'src/app/interfaces/sotarage';
 import { Store } from '@ngrx/store';
+import { STORAGES } from 'src/app/interfaces/sotarage';
 
 @Component({
-  selector: 'app-mis-publicacion',
-  templateUrl: './mis-publicacion.component.html',
-  styleUrls: ['./mis-publicacion.component.scss']
+  selector: 'app-marcas-anunciantes',
+  templateUrl: './marcas-anunciantes.component.html',
+  styleUrls: ['./marcas-anunciantes.component.scss']
 })
-export class MisPublicacionComponent implements OnInit {
+export class MarcasAnunciantesComponent implements OnInit {
 
   query:any = {
     where: {
       autocreo: false,
-      type: ["img", "url" ],
+      type: ["marcas" ],
       estado: "activo"
     },
     sort: "createdAt ASC",
@@ -20,7 +20,7 @@ export class MisPublicacionComponent implements OnInit {
     limit: 10
   };
   config:any = {
-    vista: "publicacion"
+    vista: "marcas"
   };
   dataUser:any = {};
 

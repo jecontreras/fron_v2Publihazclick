@@ -2,10 +2,7 @@
     <div class="col-12">
       <app-menus></app-menus>
     </div>
-    <div class="col-12" *ngIf="dataUser.id">
-        <app-tools-publicacion [_modelo]="_actividad" [query]="query" [config]="config"></app-tools-publicacion>
-    </div>
-    <div class="col-12" *ngIf="!dataUser.id">
-      <app-tools-publicacion [_modelo]="_publicacion" [query]="query2" [config]="config"></app-tools-publicacion>
+    <div class="col-12">
+      <app-tools-publicacion [_modelo]="_publicacion" [query]="query2" [config]="config2"></app-tools-publicacion>
   </div>
 </div>
