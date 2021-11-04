@@ -36,6 +36,9 @@ import { TestimoniodshComponent } from './component/testimoniodsh/testimoniodsh.
 import { ChatComponent } from './component/chat/chat.component';
 import { MarcasAnunciantesComponent } from './admin/marcas-anunciantes/marcas-anunciantes.component';
 import { FormmarcasAnunciantesComponent } from './admin/formmarcas-anunciantes/formmarcas-anunciantes.component';
+import { ActivacionPaqueteComponent } from './admin/activacion-paquete/activacion-paquete.component';
+import { AdminusuarioComponent } from './admin/adminusuario/adminusuario.component';
+import { AdmintestimoniosComponent } from './admin/admintestimonios/admintestimonios.component';
 
 @NgModule({
   declarations: [ 
@@ -56,7 +59,7 @@ import { FormmarcasAnunciantesComponent } from './admin/formmarcas-anunciantes/f
     TareaMegaComponent, 
     ViewPerfilComponent, 
     BannerComponent, 
-    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, AmigosComponent, TestimoniodshComponent, ChatComponent, MarcasAnunciantesComponent, FormmarcasAnunciantesComponent
+    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, AmigosComponent, TestimoniodshComponent, ChatComponent, MarcasAnunciantesComponent, FormmarcasAnunciantesComponent, ActivacionPaqueteComponent, AdminusuarioComponent, AdmintestimoniosComponent
   ],
   imports: [
     CommonModule,

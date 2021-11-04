@@ -30,10 +30,11 @@ export class MenusComponent implements OnInit {
     this._store.subscribe((store: any) => {
       console.log(store);
       store = store.name;
-      if( !store.dataDemo ) store.dataDemo = {};
+      if( !store ) return false;
+      //if( !store.dataDemo ) store.dataDemo = {};
       this.dataUser = ( _.clone( store.user ) ) || {};
-      this.puntosGanados = store.dataDemo.coins || 0;
-      this.donaciones = store.dataDemo.donacion || 0;
+      this.puntosGanados = !store.dataDemo ? 0 : store.dataDemo.coins || 0;
+      this.donaciones = !store.dataDemo ? 0 : store.dataDemo.donacion || 0;
     });
   }
 

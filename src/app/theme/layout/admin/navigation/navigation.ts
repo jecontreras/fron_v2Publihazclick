@@ -35,7 +35,7 @@ const NavigationItems = [
     children: [
       {
         id: 'dashboard',
-        title: 'Home',
+        title: 'Inicio',
         type: 'item',
         url: '/dashboard/home',
         icon: 'feather icon-home'
@@ -155,14 +155,14 @@ const NavigationItems = [
     children: [
       {
         id: 'publicacion',
-        title: 'Mis Publicaciones',
+        title: 'Crea tu publicidad ptc',
         type: 'item',
         url: '/dashboard/mispublicacion',
         icon: 'feather icon-home'
       },
       {
         id: 'banner',
-        title: 'Banner',
+        title: 'Crea tu publicidad Banner',
         type: 'item',
         url: '/dashboard/banner',
         icon: 'feather icon-home'
@@ -201,7 +201,7 @@ const NavigationItems = [
     children: [
       {
         id: 'paquetes',
-        title: 'Paquetes',
+        title: 'Mis Paquetes',
         type: 'item',
         url: '/dashboard/paquetes',
         icon: 'feather icon-home'
@@ -260,6 +260,27 @@ const NavigationItems = [
         title: 'Marcas Anunciantes',
         type: 'item',
         url: '/dashboard/marcasAnunciantes',
+        icon: 'feather icon-home'
+      },
+      {
+        id: 'adminactivacionPaquete',
+        title: 'Activacion Paquete',
+        type: 'item',
+        url: '/dashboard/activacionPaquete',
+        icon: 'feather icon-home'
+      },
+      {
+        id: 'adminusuario',
+        title: 'Admin Usuario',
+        type: 'item',
+        url: '/dashboard/adminusuario',
+        icon: 'feather icon-home'
+      },
+      {
+        id: 'admintestimonios',
+        title: 'Admin Testimonios',
+        type: 'item',
+        url: '/dashboard/admintestimonios',
         icon: 'feather icon-home'
       },
     ]

@@ -5,13 +5,19 @@
         <div class="col-md-12">
           <div class="card-body">
             <!--<img src="assets/images/logo-dark.png" alt="" class="img-fluid mb-4">-->
-            <img src="assets/extra/logo.png" alt="" class="img-fluid mb-4">
+            <img src="assets/extra/logo.jpeg" alt="" class="img-fluid mb-4">
             <h4 class="mb-3 f-w-400">Regístrate Te invito {{ liderInfo.username || 'root' }}</h4>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="feather icon-user"></i></span>
               </div>
-              <input type="text" class="form-control" [(ngModel)]="data.username" placeholder="Username / avatar" (keydown)="Texts()">
+              <input type="text" [(ngModel)]="data.lastname" class="form-control" placeholder="Nombres y apellidos">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="feather icon-user"></i></span>
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="data.username" placeholder="Usuario/Avatar" (keydown)="Texts()">
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">

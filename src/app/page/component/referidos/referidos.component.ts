@@ -35,6 +35,7 @@ export class ReferidosComponent implements OnInit {
     page: 0
   };
   dataUser:any = {};
+  
   constructor(
     private _user: UsuariosService,
     private _tools: ToolsService,

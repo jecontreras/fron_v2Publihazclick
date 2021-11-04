@@ -33,6 +33,7 @@ export class PaqueteComponent implements OnInit {
   keyEpayco = environment.keyEpayco;
   estadoPruebaPagos = environment.estadoPruebaPagos;
   disabedPn:boolean = false;
+  
   constructor(
     private _paquetes: PaquetesService,
     private _tools: ToolsService,
