@@ -8,6 +8,9 @@
       <a (click)="portapapeles()" class="btn btn-success btn-sm text-white m-0 mouse">
         RECOMIENDA Y GANA
       </a>
+      <a (click)="cerrarSesion()" class="btn btn-danger btn-sm text-white m-0 mouse">
+        CERRAR SESIÓN
+      </a>
     </app-card>
     <ul class="nav pcoded-inner-navbar" (clickOutside)="fireOutClick()">
       <ng-container *ngFor="let item of navigation">

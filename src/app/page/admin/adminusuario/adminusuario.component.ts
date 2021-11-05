@@ -32,6 +32,7 @@ export class AdminusuarioComponent implements OnInit {
   notEmptyPost:boolean = true;
   
   dataUser:any = {};
+  seartxt:string;
 
   constructor(
     private _user: UsuariosService,
@@ -100,6 +101,32 @@ export class AdminusuarioComponent implements OnInit {
       console.log(res);
       this._tools.tooast( { title: "Contraseña actualizada", icon:"succes" } );
     },(error)=> this._tools.tooast( { title:error.data ||  "Error de servidor", icon:"error" }));
+  }
+
+  buscar(  ){
+    this.query = {
+      where:{ 
+
+      },
+      page: 0
+    };
+    if( this.seartxt != ''){
+      this.query.where.or = [
+        {
+          username: {
+            contains: this.seartxt || ''
+          }
+        },
+        {
+          email: {
+            contains: this.seartxt || ''
+          }
+        }
+      ];
+    }
+    this.tablet.dataRow = [];
+    this.tablet.count = 0;
+    this.getRow();
   }
 
 }

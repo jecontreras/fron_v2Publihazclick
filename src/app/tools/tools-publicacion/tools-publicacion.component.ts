@@ -132,7 +132,7 @@ export class ToolsPublicacionComponent implements OnInit {
     }
     let interval = setInterval(()=>{
       if( this.config.vista === 'tareas' ) if( this.listRow.length == 0) { this.refActivadades(); clearInterval( interval ) }
-    }, 2000 );
+    }, 6000 );
   }
 
   getLikesUser( row:any ){

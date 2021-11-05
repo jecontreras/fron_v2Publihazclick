@@ -6,6 +6,8 @@ import { STORAGES } from 'src/app/interfaces/sotarage';
 import { Store } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 import { ToolsService } from 'src/app/services/tools.service';
+import { UserAction } from 'src/app/redux/app.actions';
+import { Router } from '@angular/router';
 
 const URL = environment.urlFront;
 
@@ -36,7 +38,8 @@ export class NavContentComponent implements OnInit, AfterViewInit {
     private zone: NgZone, 
     private location: Location,
     private _store: Store<STORAGES>,
-    private _tools: ToolsService
+    private _tools: ToolsService,
+    private Router: Router
   ) {
     this._store.subscribe((store: any) => {
       //console.log(store);
@@ -183,6 +186,16 @@ export class NavContentComponent implements OnInit, AfterViewInit {
         last_parent.classList.add('active');
       }
     }
+  }
+
+ async cerrarSesion(){
+    let accion = new UserAction( this.dataUser, 'drop');
+    this._store.dispatch( accion );
+    await this._tools.ProcessTime( { title: "Cerrando sesion ..." } );
+    this.Router.navigate(['/portada/publihazclick']);
+    setTimeout(()=>{
+      location.reload();
+    },3000)
   }
 
 }

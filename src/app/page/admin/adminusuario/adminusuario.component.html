@@ -8,6 +8,11 @@
                 <br>
             </div>
             <div class="col-12">
+                <input type="text" class="form-control" [(ngModel)]="seartxt" placeholder="Buscador">
+                <button type="button" class="btn btn-primary" (click)="buscar(  )">Buscar</button>
+                <br>
+            </div>
+            <div class="col-12">
                 <div class="card ng-trigger ng-trigger-cardRemove" animatesinitmode="show" style="visibility: visible; opacity: 1;">
 
                     <!---->
@@ -33,10 +38,10 @@
                                                 <img width="30px" height="50px" [src]="item.foto">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" [(ngModel)]="item.username" (change)="update( item )">
+                                                <input type="text" class="form-control" [(ngModel)]="item.username" (blur)="update( item )">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" [(ngModel)]="item.password" (change)="update( item )">
+                                                <input type="text" class="form-control" [(ngModel)]="item.password" (blur)="update( item )">
                                             </td>
                                             <td>{{ ( item.fechadelpack | date:'medium' ) || 'Nunca Compro Paquete' }}</td>
                                             <td>{{ item.celular }}</td>
