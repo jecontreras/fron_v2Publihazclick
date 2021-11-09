@@ -94,6 +94,22 @@ const NavigationItems = [
     ]
   },
   {
+    id: 'userPaquete',
+    title: 'PAQUETES & INFORMACION',
+    type: 'group',
+    disabled: "user",
+    icon: 'feather icon-layers',
+    children: [
+      {
+        id: 'paquetes',
+        title: 'Mis Paquetes',
+        type: 'item',
+        url: '/dashboard/paquetes',
+        icon: 'feather icon-home'
+      }
+    ]
+  },
+  {
     id: 'merkaplace',
     title: 'Marketplace',
     type: 'group',
@@ -190,22 +206,6 @@ const NavigationItems = [
         url: '/dashboard/bancos',
         icon: 'feather icon-home'
       },
-    ]
-  },
-  {
-    id: 'userPaquete',
-    title: 'PAQUETES & INFORMACION',
-    type: 'group',
-    disabled: "user",
-    icon: 'feather icon-layers',
-    children: [
-      {
-        id: 'paquetes',
-        title: 'Mis Paquetes',
-        type: 'item',
-        url: '/dashboard/paquetes',
-        icon: 'feather icon-home'
-      }
     ]
   },
   {
