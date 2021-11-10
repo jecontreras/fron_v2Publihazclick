@@ -283,6 +283,13 @@ const NavigationItems = [
         url: '/dashboard/admintestimonios',
         icon: 'feather icon-home'
       },
+      {
+        id: 'adminpuntos',
+        title: 'Admin Puntos',
+        type: 'item',
+        url: '/dashboard/adminpuntos',
+        icon: 'feather icon-home'
+      },
     ]
   },
 

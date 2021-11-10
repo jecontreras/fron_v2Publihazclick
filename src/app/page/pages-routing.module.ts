@@ -30,6 +30,7 @@ import { FormmarcasAnunciantesComponent } from './admin/formmarcas-anunciantes/f
 import { ActivacionPaqueteComponent } from './admin/activacion-paquete/activacion-paquete.component';
 import { AdminusuarioComponent } from './admin/adminusuario/adminusuario.component';
 import { AdmintestimoniosComponent } from './admin/admintestimonios/admintestimonios.component';
+import { AdminPuntosComponent } from './admin/admin-puntos/admin-puntos.component';
 
 const routes: Routes = [
   {
@@ -175,6 +176,10 @@ const routes: Routes = [
   {
     path: "admintestimonios",
     component: AdmintestimoniosComponent
+  },
+  {
+    path: "adminpuntos",
+    component: AdminPuntosComponent
   }
 ];
 

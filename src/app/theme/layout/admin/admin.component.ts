@@ -70,6 +70,7 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.formatoMoneda = this._tools.formatoMoneda;
     if (this.windowWidth < 992) {
       this.nextConfig.layout = 'vertical';
       setTimeout(() => {

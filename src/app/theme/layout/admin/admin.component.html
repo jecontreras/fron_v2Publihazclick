@@ -14,7 +14,8 @@
           <input currencyMask class="form-control form-control-sm" disabled [(ngModel)]="puntosGanados"
               [options]="formatoMoneda" />
           <span class="input-group-append search-btn btn btn-primary" (click)="getMisPuntos()">
-            <i class="fa fa-money" aria-hidden="true">Mis Ganancias</i>
+            <i class="fa fa-money" aria-hidden="true" *ngIf="diasFaltantes > 0">Mis Ganancias</i>
+            <i class="fa fa-money" aria-hidden="true" *ngIf="diasFaltantes < 0">Este sería el dinero que podrías retirar si compraras un paquete </i>
           </span>
         </div>
         <div class="mb-2 bg-success text-white">
