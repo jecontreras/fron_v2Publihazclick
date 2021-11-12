@@ -16,6 +16,7 @@ export class ToolsTestimoniosComponent implements OnInit {
       estado: 0
     },
     page: 0,
+    sort: 'fecha DESC',
     limit: 15
   };
   dataUser:any = {};

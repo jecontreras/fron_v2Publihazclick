@@ -110,24 +110,24 @@ const NavigationItems = [
     ]
   },
   {
-    id: 'merkaplace',
-    title: 'Marketplace',
+    id: 'publicaciones',
+    title: 'ADMINISTRACION PUBLICACIONES',
     type: 'group',
     disabled: "user",
-    icon: 'feather icon-monitor',
+    icon: 'feather icon-layers',
     children: [
       {
-        id: 'adminMarkeplace',
-        title: 'Publicaciones',
+        id: 'publicacion',
+        title: 'Crea tu publicidad ptc',
         type: 'item',
-        url: '/user/markeplace',
+        url: '/dashboard/mispublicacion',
         icon: 'feather icon-home'
       },
       {
-        id: 'tablero',
-        title: 'Tus Publicaciones',
+        id: 'banner',
+        title: 'Crea tu publicidad Banner',
         type: 'item',
-        url: '/dashboard/TusPublicaciones',
+        url: '/dashboard/banner',
         icon: 'feather icon-home'
       }
     ]
@@ -163,24 +163,24 @@ const NavigationItems = [
     ]
   },
   {
-    id: 'publicaciones',
-    title: 'ADMINISTRACION PUBLICACIONES',
+    id: 'merkaplace',
+    title: 'Marketplace',
     type: 'group',
     disabled: "user",
-    icon: 'feather icon-layers',
+    icon: 'feather icon-monitor',
     children: [
       {
-        id: 'publicacion',
-        title: 'Crea tu publicidad ptc',
+        id: 'adminMarkeplace',
+        title: 'Publicaciones',
         type: 'item',
-        url: '/dashboard/mispublicacion',
+        url: '/user/markeplace',
         icon: 'feather icon-home'
       },
       {
-        id: 'banner',
-        title: 'Crea tu publicidad Banner',
+        id: 'tablero',
+        title: 'Tus Publicaciones',
         type: 'item',
-        url: '/dashboard/banner',
+        url: '/dashboard/TusPublicaciones',
         icon: 'feather icon-home'
       }
     ]

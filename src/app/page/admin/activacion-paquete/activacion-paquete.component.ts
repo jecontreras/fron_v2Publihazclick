@@ -56,7 +56,7 @@ export class ActivacionPaqueteComponent implements OnInit {
       }
     ).subscribe(( res:any )=>{
       res = res.data[0];
-      this.data = res;
+      this.data = res || {};
       this._tools.tooast( { title: "Usuario buscado", icon:"succes" } );
     });
   }

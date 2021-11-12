@@ -113,37 +113,42 @@
                             <div class="testimony">
                                 <div class="photo">
         
-                                    <img [src]="item.usuario.usu_imagen || './assets/noimagen.jpg'" />
+                                    <img class="photo" [src]="item.foto || './assets/noimagen.jpg'" />
         
                                 </div>
         
                                 <div class="details">
                                     <p>
-                                        <span class="name">{{ item.usuario.usu_nombre  }}</span>
+                                        <span class="name">{{ item.usuario.username  }}</span>
                                     </p>
         
                                     <p>
-                                        <span class="label">WhatsApp</span> <span
-                                            class="value">+{{ item.usuario.usu_indicativo }}
+                                        <span class="label">WhatsApp: </span> <span
+                                            class="value">+{{ item.usuario.celular }}
                                             {{ item.usuario.usu_telefono }}</span>
                                     </p>
         
         
                                     <p>
-                                        <span class="label">Ciudad</span> <span
-                                            class="value">{{ item.usuario.usu_ciudad }}</span>
+                                        <span class="label">Ciudad: </span> <span
+                                            class="value">{{ item.usuario.ciudad }}</span>
                                     </p>
         
                                     <p>
-                                        <span class="label">Link</span> <span class="value"><a
-                                                [href]="urlRegistro+item.usuario.id">{{ urlRegistro+item.usuario.id }}</a></span>
+                                        <span class="label">Link: </span> <span class="value"><a
+                                                [href]="urlRegistro+item.usuario.username" target="_link">{{ urlRegistro+item.usuario.username }}</a></span>
+                                    </p>
+
+                                    <p>
+                                        <span class="label">Fecha: </span> <span
+                                            class="value">{{ item.fecha | date:"medium" }}</span>
                                     </p>
                                 </div>
         
                                 <div class="message">
                                     <p *ngIf="item.descripcion" [innerHtml]="item.descripcion"></p>
                                     <p *ngIf="!item.descripcion">
-                                        La verad esta página es muy buena, entré con algunas dudas pero al pasar poco tiempo
+                                        La verda esta página es muy buena, entré con algunas dudas pero al pasar poco tiempo
                                         quedé muy sastifecho con los resultados, y eso que no tengo mucha experiencia en
                                         marquetin digital ni nada por el estilo. Es una manera sencilla de conseguir dinero y
                                         que lo podes hacer desde la comodidad de tu casa sin arriesgarte a ser estafado o caer

@@ -31,8 +31,8 @@ export class AlertasComponent implements OnInit {
   sliderImagePopup: Boolean = true;
   sliderAutoSlide: Number = 1;
   sliderSlideImage: Number = 1;
-  sliderAnimationSpeed: any = 2.4;
-  sliderAnimationSpeed2:any = 3.4;
+  sliderAnimationSpeed: any = 3.2;
+  sliderAnimationSpeed2:any = 4.9;
   imageObject: any = [];
   imageObject2: any = [];
 
