@@ -12,7 +12,7 @@ export class MarcasAnunciantesComponent implements OnInit {
   query:any = {
     where: {
       autocreo: false,
-      type: ["marcas" ],
+      type: "marcas",
       estado: "activo"
     },
     sort: "createdAt ASC",
@@ -32,7 +32,6 @@ export class MarcasAnunciantesComponent implements OnInit {
       store = store.name;
       if(!store) return false;
       this.dataUser = store.user || {};
-      this.query.where.user = this.dataUser.id;
     });
 
   }

@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-12 col-sm-12 col-xs-12 content">
+        <div class="row">
+            <div class="col-12">
+                <div class="p-3 mb-2 bg-primary text-white rounded">
+                    Retiros de Dinero
+                </div>
+                <br>
+            </div>
+            <div class="col-12">
+                <input type="text" class="form-control" [(ngModel)]="seartxt" placeholder="Buscador">
+                <button type="button" class="btn btn-primary" (click)="buscar(  )">Buscar</button>
+                <br>
+            </div>
+            <div class="col-12">
+                <div class="card ng-trigger ng-trigger-cardRemove" animatesinitmode="show" style="visibility: visible; opacity: 1;">
+
+                    <!---->
+                    <div class="ng-tns-c14-92 ng-trigger ng-trigger-collapsedCard ng-star-inserted" style="overflow: hidden;"
+                        *ngIf="vista == 'home'" infiniteScroll [infiniteScrollDistance]="3" [infiniteScrollThrottle]="50"
+                        (scrolled)="onScroll()" >
+                        <!---->
+                        <div class="card-body ng-tns-c14-92 table-border-style ng-star-inserted">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th *ngFor="let item of tablet.dataHeader">{{ item }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of tablet.dataRow">
+                                            <td>
+                                                {{ item['user']?.username }}
+                                            </td>
+                                            <td>
+                                                <select class="form-control" [(ngModel)]="item.estado" style="width: 100px;" (blur)="update( item )">
+                                                    <option value="activo">Activo </option>
+                                                    <option value="inactivo">Inactivo </option>
+                                                    <option value="pendiente">Pendiente </option>
+                                                    <option value="completado">Completado </option>
+                                                    <option value="rechazado">Rechazado </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input style="width: 100px;" currencyMask class="form-control form-control-sm" [(ngModel)]="item.cantidad" [options]="formatoMoneda" (blur)="update( item )"/>
+                                            </td>
+                                            <td>{{ item['user']?.documento }}</td>
+                                            <td>{{ item['user']?.celular }}</td>
+                                            <td>{{ item['tipoBanco']?.titulo }}</td>
+                                            <td>{{ item['tipoBanco']?.tipoCuenta }}</td>
+                                            <td>{{ item['tipoBanco']?.nCuenta }}</td>
+                                            <td>{{ item.descripcion }}</td>
+                                            <td>
+                                                <img width="30px" height="50px" [src]="item.foto" (click)="openFoto( item.foto)" *ngIf="item.foto">
+                                                <input type="file" placeholder="Imagenes" (ngModelChange)="datafiles($event)" (blur)="datafiles($event)">
+                                                <button type="button" class="btn btn-success" *ngIf="!file.foto1[0]">Probar Foto</button>
+                                                <button type="button" class="btn btn-success" *ngIf="file.foto1[0]" [disabled]="disableFile" (click)="submitFile( item )">Subir Foto</button>
+                                            </td>
+                                            <td>{{ ( item.createdAt | date:'medium' ) }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

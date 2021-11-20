@@ -20,7 +20,7 @@ export class MarcasComponent implements OnInit {
   sliderArrowShow: Boolean = true;
   sliderInfinite: Boolean = true;
   sliderImagePopup: Boolean = false;
-  sliderAutoSlide: Number = 0;
+  sliderAutoSlide: Number = 1;
   sliderSlideImage: Number = 1;
   sliderAnimationSpeed: any = 1;
 
@@ -34,7 +34,12 @@ export class MarcasComponent implements OnInit {
   }
 
   getRow(){
-    this._publicacion.get( { where: { type: 'marcas' }, limit: 100 } ).subscribe( ( res:any ) =>{
+    this._publicacion.get( { where: {
+      autocreo: false,
+      type: "marcas",
+      estado: "activo"
+    },
+    sort: "createdAt ASC", limit: 100 } ).subscribe( ( res:any ) =>{
       res = res.data;
       for( let row of res ) this.imageObject.push(
         {

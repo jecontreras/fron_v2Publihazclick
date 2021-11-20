@@ -91,6 +91,13 @@ const NavigationItems = [
         url: '/dashboard/testimonios',
         icon: 'feather icon-home'
       },
+      {
+        id: 'proyectos',
+        title: 'Proyectos Donaciones',
+        type: 'item',
+        url: '/dashboard/proyectos',
+        icon: 'feather icon-home'
+      },
     ]
   },
   {
@@ -288,6 +295,13 @@ const NavigationItems = [
         title: 'Admin Puntos',
         type: 'item',
         url: '/dashboard/adminpuntos',
+        icon: 'feather icon-home'
+      },
+      {
+        id: 'adminretiros',
+        title: 'Admin Retiros',
+        type: 'item',
+        url: '/dashboard/adminretiros',
         icon: 'feather icon-home'
       },
     ]
