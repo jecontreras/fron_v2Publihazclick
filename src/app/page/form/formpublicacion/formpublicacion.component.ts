@@ -168,6 +168,7 @@ export class FormpublicacionComponent implements OnInit {
       this.data = res;
       this.ProbarUrl();
       this.probarLink();
+      setTimeout(()=> this.guardar(),3000 );
     }, error => { this._tools.tooast( { title: "Error de servidor", icon:"error" } ); this.disableFile = false; } );
   }
 

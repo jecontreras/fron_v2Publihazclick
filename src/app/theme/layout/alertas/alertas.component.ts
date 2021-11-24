@@ -140,6 +140,16 @@ export class AlertasComponent implements OnInit {
         }
         else formatiado.push( row );
       }
+      if( Object.keys( this.dataUser.miPaquete ).length > 0 ) {
+        if( this.dataUser.miPaquete.cantidaddepublicidad != 0 ) 
+        formatiado.push( 
+          {
+            titulo: "Primero debes consumir tus publicaciones",
+            descripcion: "En estos momento no puedes hacer ninguna actividad hasta que consumas tus publicaciones",
+            id: this._tools.codigo()
+          }
+        );
+      }
       // console.log( formatiado );
       this.listAlertas = formatiado;
       // console.log( this.listAlertas );

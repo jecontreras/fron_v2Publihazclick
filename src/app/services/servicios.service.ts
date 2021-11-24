@@ -48,6 +48,7 @@ export class ServiciosService {
       this.querys('user/querys',{
         where:{
           id: this.dataUser.id
+          //id: "619beb34df969a00161c6fb6"
         }
       }, 'post').subscribe((res:any)=>{
         res = res.data[0];
@@ -59,6 +60,9 @@ export class ServiciosService {
           this._tools.presentToast("Tu sesión ha expirado")
           this.Router.navigate(['/login']);
           setTimeout(function(){ location.reload(); }, 3000);
+        }else{
+          let accion = new UserAction( data1,'post')
+          this._store.dispatch(accion);
         }
 
         let andador = setTimeout( () =>{

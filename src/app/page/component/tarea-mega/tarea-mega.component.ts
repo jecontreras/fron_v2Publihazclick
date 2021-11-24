@@ -14,7 +14,7 @@ export class TareaMegaComponent implements OnInit {
    where:{ 
     prioridad: "tarea-referidos",
     user: {},
-    create: true
+    create: false
    }, 
    sort: "createdAt DESC",
    limit: 1000,
