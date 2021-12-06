@@ -84,6 +84,7 @@ export class ToolsPublicacionComponent implements OnInit {
   }
 
   onScroll(){
+    if( this.query.where.prioridad == 'tarea-diaria' ) return false;
     if (this.notscrolly && this.notEmptyPost) {
        this.notscrolly = false;
        this.query.page++;

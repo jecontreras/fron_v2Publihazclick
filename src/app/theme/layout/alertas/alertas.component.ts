@@ -145,7 +145,7 @@ export class AlertasComponent implements OnInit {
         formatiado.push( 
           {
             titulo: "Primero debes consumir tus publicaciones",
-            descripcion: "En estos momento no puedes hacer ninguna actividad hasta que consumas tus publicaciones",
+            descripcion: "En estos momento no puedes hacer ninguna actividad hasta que consumas tus publicaciones cantidad faltantes "+ this.dataUser.miPaquete.cantidaddepublicidad || 0,
             id: this._tools.codigo()
           }
         );

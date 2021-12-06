@@ -33,6 +33,7 @@ import { AdmintestimoniosComponent } from './admin/admintestimonios/admintestimo
 import { AdminPuntosComponent } from './admin/admin-puntos/admin-puntos.component';
 import { ProyectosDonacionesComponent } from './component/proyectos-donaciones/proyectos-donaciones.component';
 import { AdminretirosComponent } from './admin/adminretiros/adminretiros.component';
+import { AdminactividadComponent } from './admin/adminactividad/adminactividad.component';
 
 const routes: Routes = [
   {
@@ -190,6 +191,10 @@ const routes: Routes = [
   {
     path: "adminretiros",
     component: AdminretirosComponent
+  },
+  {
+    path: "admingeneradoractividades",
+    component: AdminactividadComponent
   },
 ];
 

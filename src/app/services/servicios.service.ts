@@ -48,7 +48,7 @@ export class ServiciosService {
       this.querys('user/querys',{
         where:{
           id: this.dataUser.id
-          //id: "619beb34df969a00161c6fb6"
+          //id: "619e49fbb564a8001695b9f3"
         }
       }, 'post').subscribe((res:any)=>{
         res = res.data[0];

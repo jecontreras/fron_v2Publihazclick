@@ -25,4 +25,7 @@ export class ActividadService {
   generarActividad(query:any){
     return this._model.querys('actividad/generador', query, 'post');
   }
+  generarMiniActividad(query:any){
+    return this._model.querys('actividad/generadormini', query, 'post');
+  }
 }

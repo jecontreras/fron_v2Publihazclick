@@ -304,6 +304,13 @@ const NavigationItems = [
         url: '/dashboard/adminretiros',
         icon: 'feather icon-home'
       },
+      {
+        id: 'admingeneradoractividades',
+        title: 'Admin Generador de Actividades',
+        type: 'item',
+        url: '/dashboard/admingeneradoractividades',
+        icon: 'feather icon-home'
+      },
     ]
   },
 
