@@ -48,6 +48,16 @@ export class AdmintestimoniosComponent implements OnInit {
 
   ngOnInit() {
     this.getTestimonio();
+    this.dataDefault();
+  }
+
+  dataDefault(){
+    this.data = {
+      username: "usp" + this._tools.codigo(),
+      email: this._tools.codigo() + "@gmail.com",
+      lastname: this._tools.codigo(),
+      ciudad: "Cucuta"
+    }
   }
 
   getTestimonio(){
@@ -113,12 +123,14 @@ export class AdmintestimoniosComponent implements OnInit {
   }
 
   async submit(){
+    this.disabled = true;
     let result:any;
+    if( !this.data.foto ) { this.disabled = false; return this._tools.tooast({ title: "Error Foto de testimonio no subida", icon: "error" });}
     if( !this.data.id ) {
       result = await this.crearUsuario();
-      if( !result ) return this._tools.tooast({ title: "Error Completar datos", icon: "error" });
+      if( !result ) { this.disabled = false; return this._tools.tooast({ title: "Error Completar datos", icon: "error" }); }
     }
-    if( !this.data.id || !this.data.foto ) return this._tools.tooast({ title: "Error Completar datos", icon: "error" });
+    if( !this.data.id || !this.data.foto ) { this.disabled = false; return this._tools.tooast({ title: "Error Completar datos", icon: "error" }); }
     let data:any = {
       usuario: this.data.id,
       descripcion: this.data.descripcion,
@@ -128,7 +140,8 @@ export class AdmintestimoniosComponent implements OnInit {
     this._testimonios.create( data ).subscribe(( res:any )=>{
       this._tools.tooast({ title: "Guardado exitoso" });
       this.data = {};
-    }, error => { this._tools.tooast({ title: "Error", icon: "error" }); } )
+      this.disabled = false;
+    }, error => { this._tools.tooast({ title: "Error", icon: "error" }); this.disabled = false;} )
   }
 
   dropTestimonio( item:any ){

@@ -16,7 +16,7 @@ export class TareaMiniComponent implements OnInit {
      user: {},
      create: true
     }, 
-    sort: "createdAt DESC",
+    sort: "state DESC",
     limit: 1000,
     page: 0
    };

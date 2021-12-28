@@ -129,19 +129,19 @@ export class AlertasComponent implements OnInit {
       for( let row of res.data){
         if( row.titulo == 'Paquete Activo Vigente' ) {
           // console.log("entre", this.dataUser );
-          try {
+          /*try {
             if( Object.keys( this.dataUser.miPaquete ).length > 0 ) {
               if( this.dataUser.miPaquete.diasFaltantes == 0 ) formatiado.push( row );
             }
             else formatiado.push( row ); 
           } catch (error) {
             formatiado.push( row ); 
-          }
+          }*/
         }
         else formatiado.push( row );
       }
       if( Object.keys( this.dataUser.miPaquete ).length > 0 ) {
-        if( this.dataUser.miPaquete.cantidaddepublicidad != 0 ) 
+        if( this.dataUser.miPaquete.cantidaddepublicidad != 0 && this.dataUser.miPaquete.cantidaddepublicidad != undefined) 
         formatiado.push( 
           {
             titulo: "Primero debes consumir tus publicaciones",

@@ -71,7 +71,7 @@ const NavigationItems = [
     ]
   },
   {
-    id: 'merkaplace',
+    id: 'merkaplaces',
     title: 'Comunidad',
     type: 'group',
     disabled: "user",
@@ -180,7 +180,7 @@ const NavigationItems = [
         id: 'adminMarkeplace',
         title: 'Publicaciones',
         type: 'item',
-        url: '/user/markeplace',
+        url: '/publico/markeplace',
         icon: 'feather icon-home'
       },
       {

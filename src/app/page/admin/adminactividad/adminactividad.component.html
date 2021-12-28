@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="p-3 mb-2 bg-primary text-white rounded">
-                    Formulario de Generar de mini actividades de $100
+                    Formulario de Generar de mini actividades
                 </div>
                 <br>
             </div>
@@ -29,6 +29,12 @@
                     Cantidad de mini anuncion
                 </div>
                 <br>
+            </div>
+            <div class="form-group col-xs-4 col-sm-4 col-6">
+                <label for="exampleInputEmail1">Tipo Actividad</label>
+                <select class="form-control" [(ngModel)]="data.tipoActividad" (change)="selecciono()">
+                    <option [value]="item.id" *ngFor="let item of listTipo">{{ item.title }}</option>
+                </select>
             </div>
             <div class="form-group col-xs-4 col-sm-4 col-6">
                 <label for="exampleInputEmail1">Valor</label>

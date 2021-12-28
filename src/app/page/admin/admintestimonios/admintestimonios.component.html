@@ -3,11 +3,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="p-3 mb-2 bg-primary text-white rounded">
-                    Administracion de Puntos
+                    Administracion de Testimonios
                 </div>
                 <br>
             </div>
-            <div class="form-group col-xs-12 col-sm-12 col-12">
+            <!--<div class="form-group col-xs-12 col-sm-12 col-12">
                 <label for="exampleInputEmail1">Username / Email</label>
                 <input type="text" class="form-control" [(ngModel)]="data.username" (change)="buscarUsuario()">
                 <button type="button" class="btn btn-primary" (click)="buscarUsuario()">Buscar Usuario</button>
@@ -23,7 +23,7 @@
             <div class="form-group col-xs-4 col-sm-4 col-6">
                 <label for="exampleInputEmail1">Ciudad</label>
                 <input type="text" class="form-control" [(ngModel)]="data.ciudad">
-            </div>
+            </div>-->
             <div class="col-12">
                 <div class="p-3 mb-2 bg-primary text-white rounded">
                     Descripcion
@@ -48,7 +48,7 @@
             <div class="col-12">
                 <div class="d-flex justify-content-center">
                     <div>
-                        <button type="button" class="btn btn-success" (click)="submit()">Crear testimonio</button>
+                        <button type="button" class="btn btn-success" [disabled]="disabled" (click)="submit()">Crear testimonio</button>
                     </div>
                 </div>
                 <br>

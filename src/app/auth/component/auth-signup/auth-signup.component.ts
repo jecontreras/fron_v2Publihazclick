@@ -26,7 +26,9 @@ export class AuthSignupComponent implements OnInit {
   disabled:boolean = false;
   cabeza:any;
   liderInfo:any = {};
-  
+  disabledusername:boolean = true;
+  disabledemail:boolean = true;
+
   constructor(
     private _authSrvice: AuthService,
     private _store: Store<STORAGES>,
@@ -54,6 +56,39 @@ export class AuthSignupComponent implements OnInit {
       this.data.username = this.data.username;
     }
     //console.log("*********hp", this.data.username );
+  }
+
+  validadEmail() {
+    this.disabledemail = true;
+     if (this.data.email) {
+       const
+         filtro: any = this.data.email.split('@', '2')
+         ;
+        console.log(filtro);
+       if ( filtro[1] == 'gmail.com' || filtro[1] == 'gmail.es'|| filtro[1] == 'hotmail.com'|| filtro[1] == 'outlook.com'|| filtro[1] == 'outlook.es') {
+         this.disabledemail = true;
+       }else this.disabledemail = false;
+     }
+  }
+
+  validadUsername() {
+
+    this.disabledusername = true;
+    if (this.data.username) {
+      // console.log(this.data.username.replace(/ /g, ""));
+      this.data.username = this.data.username.replace(/ /g, '');
+      this._user.get({ where: { username: this.data.username }})
+        .subscribe(
+          (res: any) => {
+            res = res.data[0];
+            // console.log(res);
+            if (res) {
+              this.disabledusername = false;
+            }
+          }
+        )
+        ;
+    }
   }
 
   validandoCabeza(){
@@ -95,6 +130,7 @@ export class AuthSignupComponent implements OnInit {
     if( !this.data.password ) { this._tools.tooast({ title:"Ingresar su Contreseña",icon: "warning" }); return false; }
     if( !this.data.confirpassword ) { this._tools.tooast({ title:"Ingresar Confirmar contraseña",icon: "warning" }); return false; }
     if( this.data.password != this.data.confirpassword ) { this._tools.tooast({ title:"Error las constraseñas no son iguales",icon: "warning" }); return false; }
+    if( !this.disabledemail || !this.disabledusername ) { this._tools.tooast({ title:"Error Por Favor mirar que errores tiene el formulario",icon: "warning" }); return false; }
     return true;
   }
 

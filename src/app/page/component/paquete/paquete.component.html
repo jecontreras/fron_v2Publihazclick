@@ -36,9 +36,12 @@
                 <div>
                     <h4>
                         <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-light" (click)="openPaquete( item )">
-                                <img src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png" alt="none" width="215px">
-                            </button>
+                            <div>
+                                <h4 class="text-success" style="text-align: center;">ACTIVACIÓN AUTOMÁTICA DE MANERA INMEDIATA</h4>
+                                <button style="width: 100%;" type="button" class="btn btn-light" (click)="openPaquete( item )">
+                                    <img src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png" alt="none" width="215px">
+                                </button>
+                            </div>
                         </div>
                     </h4>
                     <h1 *ngIf="paquete && paquete > 0 ">
@@ -56,14 +59,21 @@
     <div class="card">
         <img src="./assets/extra/nequi.jpeg" alt="none" height="250px">
         <div class="card-body">
-            <h5 class="card-title">Otros Medios</h5>
+            <h5 class="card-title" style="text-align: center;">Otros Medios</h5>
         </div>
         <div class="card-footer">
-            <h4>Pagos Manual Sin Costo de Transaccion Acreditados en 1-2 Horas</h4>
+            <h4 style="text-align: center;">Pagos Manual Sin Costo de Transaccion Acreditados en 1-2 Horas</h4>
         </div>
     </div>
     <div class="card">
-        
+        <img src="./assets/extra/otros.jpeg" alt="none" height="250px">
+        <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">COMPRAR TU PUBLICIDAD FUERA DE COLOMBIA</h5>
+        </div>
+        <div class="card-footer">
+            <h4 style="text-align: center;">Pagos Manual Sin Costo de Transaccion Acreditados en 1-2 Horas</h4>
+            <button type="button" class="btn btn-success" (click)="copiar()">COPIA LA DIRECCIÓN DE NUESTRA BILLETERA THETER</button>
+        </div>
     </div>
     <!--<div class="card">
         <img src="./assets/extra/nequi.jpeg" alt="none" height="250px">

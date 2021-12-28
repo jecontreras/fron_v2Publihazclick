@@ -85,6 +85,17 @@ export class ProductosViewComponent implements OnInit {
 
   getGaleria(){
     console.log( this.data )
+    if( !this.data.galeria ){
+      this.data.galeria = [];
+      this.listGaleria.push(
+        {
+          image: this.data.foto,
+          thumbImage: this.data.foto,
+          alt: this.data.foto,
+          check: true,
+        }
+      );
+    }
     for( let row of this.data.galeria ){
       this.listGaleria.push(
         {

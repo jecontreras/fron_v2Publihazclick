@@ -14,10 +14,27 @@ import { UsuariosService } from 'src/app/servicesComponents/usuarios.service';
 export class AdminactividadComponent implements OnInit {
 
   data:any = {
-    valor: 100
+    tipoActividad: "tarea-diaria"
   };
   listPaquetes:any = [];
   dataUser:any = {};
+  listTipo:any = [
+    {
+      id: "tarea-diaria",
+      title: "Tarea Diaria",
+      valor: 134
+    },
+    {
+      id: "tarea-extra",
+      title: "Tarea Mini anuncios",
+      valor: 100
+    },
+    {
+      id: "tarea-referidos",
+      title: "Tarea Mega Anuncios",
+      valor: 2000
+    },
+  ];
 
   constructor(
     private _user: UsuariosService,
@@ -35,7 +52,7 @@ export class AdminactividadComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.selecciono();
   }
 
   buscarUsuario(){
@@ -60,9 +77,16 @@ export class AdminactividadComponent implements OnInit {
     ).subscribe(( res:any )=>{
       res = res.data[0];
       this.data = res || {};
-      this.data.valor = 100;
+      //this.data.valor = 100;
       this._tools.tooast( { title: "Usuario buscado", icon:"succes" } );
     });
+  }
+
+  selecciono(){
+    console.log( this.data.tipoActividad)
+    let filtro:any = this.listTipo.find( ( item:any )=> item.id == this.data.tipoActividad );
+    if( !filtro ) return false;
+    this.data.valor = filtro.valor;
   }
 
   generador(){

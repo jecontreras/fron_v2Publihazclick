@@ -15,7 +15,7 @@ import { UserAction } from 'src/app/redux/app.actions';
 export class AdminusuarioComponent implements OnInit {
   
   tablet:any = {
-    dataHeader: ["Opciones","Foto","Username","Clave","Fecha del Paquete","Celular","Nivel"],
+    dataHeader: ["Opciones","Foto","Username","Clave","Email","Fecha del Paquete","Celular","Nivel"],
     dataRow: [],
     count: 0
   };

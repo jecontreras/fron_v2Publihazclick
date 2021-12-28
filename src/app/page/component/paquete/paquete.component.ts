@@ -195,4 +195,20 @@ export class PaqueteComponent implements OnInit {
     setTimeout(()=>this.disabedPn = true, 3000 );
   }
 
+  copiar(){
+    const val = `0x16ee3B7D6eB35b644400ed6a36887380B84BeDC4`;
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    this._tools.basicIcons({ header: "Recomendando", subheader: 'Copiado:' + ' ' + val });
+  }
+
 }

@@ -67,7 +67,7 @@ export class ToolsPublicacionComponent implements OnInit {
   }
   
   openPublic( item ){
-    if( !this.disabledPublic && this.dataUser.id ) return this._tools.tooast( { title: "En estos momento no puedes hacer ninguna actividad hasta que consumas tus publicaciones a crear", icon: "error" } );
+    if( !this.disabledPublic && this.dataUser.id ) this._tools.tooast( { title: "Recuerda que debes consumir tus publicaciones o crear o clonar", icon: "error" } );
     let url:string = item.content;
     if( this.config.vista == "tareas" || this.config.vista == "publicidad"  ) { 
       if( item.estado == "activo" && this.config.vista == "tareas"){

@@ -43,6 +43,7 @@
                                             <td>
                                                 <input type="text" class="form-control" [(ngModel)]="item.password" (blur)="update( item )">
                                             </td>
+                                            <td>{{ item.email }}</td>
                                             <td>{{ ( item.fechadelpack | date:'medium' ) || 'Nunca Compro Paquete' }}</td>
                                             <td>{{ item.celular }}</td>
                                             <td>{{ item.nivel }}</td>

@@ -69,6 +69,10 @@ export class UsuariosService {
     return this._model.querys('useramigos',query, 'post');
   }
 
+  olvidoPass( query:any ){
+    return this._model.querys('user/olvidopass',query, 'post');
+  }
+
   putAmigos(query:any){
     return this._model.querys('useramigos/'+query.id, query, 'put');
   }

@@ -17,13 +17,20 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="feather icon-user"></i></span>
               </div>
-              <input type="text" class="form-control" [(ngModel)]="data.username" placeholder="Usuario/Avatar" (keydown)="Texts()">
+              <input type="text" class="form-control" [(ngModel)]="data.username" placeholder="Usuario/Avatar" (keydown)="Texts()" (blur)="validadUsername()" (change)="validadUsername()">
+              <div *ngIf="!disabledusername">
+                <span class="bg-danger text-white rounded">El Username Ya Se Encuentra Registrado Por Favor Utilizar
+                  Otro</span>
+              </div>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="feather icon-mail"></i></span>
               </div>
-              <input type="email" [(ngModel)]="data.email" class="form-control" placeholder="Email">
+              <input type="email" [(ngModel)]="data.email" class="form-control" placeholder="Email" (change)="validadEmail()" (blur)="validadEmail()">
+              <div *ngIf="!disabledemail">
+                <span class="bg-danger text-white rounded">El Email Solo Seran Correos Con Dominio Gmail o hotmail o outlook</span>
+              </div>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">

@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    if( Object.keys( this.dataUser ).length > 0) this._Actividad.generarActividad({ user: this.dataUser.id }).subscribe((res:any)=> console.log(res));
+    //if( Object.keys( this.dataUser ).length > 0) this._Actividad.generarActividad({ user: this.dataUser.id }).subscribe((res:any)=> console.log(res));
   }
 
   async crearComentario(){
