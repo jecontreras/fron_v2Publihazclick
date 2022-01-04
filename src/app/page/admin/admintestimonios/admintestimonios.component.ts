@@ -97,6 +97,7 @@ export class AdmintestimoniosComponent implements OnInit {
     this.file.foto1 = [];
     try {
       this.file.foto1 = ev.target.files;
+      this.data.imgdefault = await this._archivo.getBase64(this.file.foto1[0]);
     } catch (error) { }
   }
 

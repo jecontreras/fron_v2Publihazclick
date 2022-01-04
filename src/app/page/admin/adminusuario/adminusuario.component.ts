@@ -5,7 +5,6 @@ import { ToolsService } from 'src/app/services/tools.service';
 import { UserNivelService } from 'src/app/servicesComponents/user-nivel.service';
 import { UsuariosService } from 'src/app/servicesComponents/usuarios.service';
 import * as _ from 'lodash';
-import { UserAction } from 'src/app/redux/app.actions';
 
 @Component({
   selector: 'app-adminusuario',

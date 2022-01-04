@@ -3,6 +3,7 @@ import { ToolsService } from 'src/app/services/tools.service';
 import { RetirosService } from 'src/app/servicesComponents/retiros.service';
 import * as _ from 'lodash';
 import { ArchivosService } from 'src/app/servicesComponents/archivos.service';
+import { TestimoniosService } from 'src/app/servicesComponents/testimonios.service';
 
 @Component({
   selector: 'app-adminretiros',
@@ -40,7 +41,8 @@ export class AdminretirosComponent implements OnInit {
   constructor(
     private _tools: ToolsService,
     private _retiros: RetirosService,
-    private _archivo: ArchivosService
+    private _archivo: ArchivosService,
+    private _testimonios: TestimoniosService
   ) { }
 
   ngOnInit() {
@@ -85,7 +87,9 @@ export class AdminretirosComponent implements OnInit {
     this.disableFile = true;
     await this.procesoSubidaImagen(this.file.foto1[0]);
     this.update( false );
+    item.foto = this.data.foto;
     this.disableFile = false;
+    this.creacionTestimonio( item );
   }
 
   procesoSubidaImagen(file: any) {
@@ -109,6 +113,19 @@ export class AdminretirosComponent implements OnInit {
     this._retiros.update( { id: this.data.id, foto: this.data.foto, estado: this.data.estado, cantidad: this.data.cantidad } ).subscribe(( res:any )=>{
       this._tools.tooast({ title: "Actualizado exitoso" });
     });
+  }
+
+  creacionTestimonio( item:any ){
+    let data:any = {
+      usuario: item.user.id,
+      descripcion: item.descripcion || "Mi primer retiro gracias publihazclik",
+      foto: item.foto,
+      fecha: item.createdAt
+    };
+    this._testimonios.create( data ).subscribe(( res:any )=>{
+      this._tools.tooast({ title: "Guardado exitoso" });
+      this.data = {};
+    }, error => { this._tools.tooast({ title: "Error", icon: "error" }); } )
   }
 
   openFoto( url:string ){

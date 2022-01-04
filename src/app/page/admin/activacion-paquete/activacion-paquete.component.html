@@ -57,6 +57,68 @@
                 </div>
                 <br>
             </div>
+            <div class="col-12">
+                <div class="p-3 mb-2 bg-primary text-white rounded">
+                    Lista de Paquetes
+                </div>
+                <br>
+            </div>
+            <div class="col-12">
+                <input type="text" class="form-control" [(ngModel)]="data.username" placeholder="Buscador por username" (change)="buscar()">
+                <button type="button" class="btn btn-primary" (click)="buscar(  )">Buscar</button>
+                <br>
+            </div>
+            <div class="col-12">
+                <div class="col-12">
+                    <div class="card ng-trigger ng-trigger-cardRemove" animatesinitmode="show" style="visibility: visible; opacity: 1;">
+    
+                        <!---->
+                        <div class="ng-tns-c14-92 ng-trigger ng-trigger-collapsedCard ng-star-inserted" style="overflow: hidden;"
+                            infiniteScroll [infiniteScrollDistance]="3" [infiniteScrollThrottle]="50"
+                            (scrolled)="onScroll()" >
+                            <!---->
+                            <div class="card-body ng-tns-c14-92 table-border-style ng-star-inserted">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th *ngFor="let item of tablet.dataHeader">{{ item }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of tablet.dataRow">
+                                                <td>
+                                                    <button (click)="eliminar( item )" class="btn btn-icon btn-primary" type="button"><i
+                                                            class="fa fa-eye" aria-hidden="true"></i></button>
+                                                </td>
+                                                <td>
+                                                    {{ item['user']?.username }}
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" [(ngModel)]="item.cantidaddepublicidad" [disabled]="progreses" (change)="updatePaquete( item )">
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input" [(ngModel)]="item.disableretiro" [disabled]="progreses" (change)="updatePaquete( item )">
+                                                    <label class="form-check-label" for="exampleCheck1">Retiro</label>
+                                                </td>
+                                                <td>
+                                                    {{ item.createdAt | date:'medium' }}
+                                                </td>
+                                                <td>
+                                                    {{ item['user']?.celular }}
+                                                </td>
+                                                <td>
+                                                    {{ item['paquete']?.title }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

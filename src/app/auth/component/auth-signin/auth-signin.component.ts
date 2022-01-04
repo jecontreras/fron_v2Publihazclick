@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { UserAction } from 'src/app/redux/app.actions';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserNivelService } from 'src/app/servicesComponents/user-nivel.service';
 
 @Component({
   selector: 'app-auth-signin',
@@ -16,13 +17,15 @@ export class AuthSigninComponent implements OnInit {
   
   data:any = {};
   btnDisabled:boolean = false;
-  
+  dataUser:any = {};
+
   constructor(
     private _user: UsuariosService,
     private _tools: ToolsService,
     private _store: Store<STORAGES>,
     private _router: Router,
-    private _authSrvice: AuthService
+    private _authSrvice: AuthService,
+    private _userNivel: UserNivelService
   ) { 
     if (this._authSrvice.isLoggedIn()) {
       this._router.navigate(['/dashboard/home']);
@@ -62,14 +65,27 @@ export class AuthSigninComponent implements OnInit {
     return true;
   }
 
-  ProcesoStorages( res:any ){
-    let accion:any = new UserAction(res.data, 'post');
+  async ProcesoStorages( res:any ){
+    this.dataUser = res.data;
+    await this.getMiPaquete();
+    let accion:any = new UserAction( this.dataUser, 'post' );
     this._store.dispatch(accion);
     this._router.navigate(['/dashboard/home']);
   }
 
   advertencia(){
     this._tools.tooast({ title:"Para poder Registrarse debes pedir link de registro a tu lider",icon: "warning" });
+  }
+
+  async getMiPaquete(){
+    return new Promise(async (promesa) => {
+      this._userNivel.getMiNivel( { user: this.dataUser.id }).subscribe(( res:any )=>{
+        try {
+          this.dataUser.miNivel = res.resultado.miNivel;
+          promesa( true );
+        } catch (error) { promesa( false );}
+      },()=> { this._tools.tooast( { title: "Error", icon: "error" } ); promesa( false );} );
+    });
   }
 
 

@@ -45,7 +45,7 @@ export class ServiciosService {
     });
     if(Object.keys(this.dataUser).length >0 ){
       let idUser = this.dataUser.id;
-      //if( !environment.production ) idUser = "619c1c3c530b960016737fd0";
+      //if( !environment.production ) idUser = "619e54f3b564a8001695ba01";
       let data1:any = {};
       this.querys('user/querys',{
         where:{

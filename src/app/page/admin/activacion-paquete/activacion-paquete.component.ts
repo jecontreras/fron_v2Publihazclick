@@ -5,6 +5,8 @@ import { ToolsService } from 'src/app/services/tools.service';
 import { PaquetesService } from 'src/app/servicesComponents/paquetes.service';
 import { UsuariosService } from 'src/app/servicesComponents/usuarios.service';
 import * as moment from 'moment';
+import * as _ from 'lodash';
+import { UserPaqueteService } from 'src/app/servicesComponents/user-paquete.service';
 
 @Component({
   selector: 'app-activacion-paquete',
@@ -16,12 +18,30 @@ export class ActivacionPaqueteComponent implements OnInit {
   data:any = {};
   listPaquetes:any = [];
   dataUser:any = {};
+  seartxt:string;
+
+  progreses:boolean = false;
+  public count: number = 0;
+  
+  notscrolly:boolean=true;
+  notEmptyPost:boolean = true;
+
+  tablet:any = {
+    dataHeader: ["Opciones","Username","Cantidad Publicidad","Retiro","Fecha del Paquete","Celular","Titulo Paquete"],
+    dataRow: [],
+    count: 0
+  };
+  query:any = {
+    where:{ },
+    page: 0
+  };
 
   constructor(
     private _user: UsuariosService,
     private _paquetes: PaquetesService,
     private _tools: ToolsService,
     private _store: Store<STORAGES>,
+    private _userPaquete: UserPaqueteService
   ) { 
     this._store.subscribe((store: any) => {
       //console.log(store);
@@ -33,31 +53,35 @@ export class ActivacionPaqueteComponent implements OnInit {
 
   ngOnInit() {
     this.getPaquetes();
+    this.getRow();
   }
 
   buscarUsuario(){
-    if( !this.data.username ) return false;
-    this._user.get( 
-      {
-        where:{
-          or: [
-            {
-              username: {
-                contains: this.data.username || ''
-              }
-            },
-            {
-              email: {
-                contains: this.data.username || ''
-              }
-            },
-          ]
+    return new Promise( resolve =>{
+      if( !this.data.username ) return false;
+      this._user.get( 
+        {
+          where:{
+            or: [
+              {
+                username: {
+                  contains: this.data.username || ''
+                }
+              },
+              {
+                email: {
+                  contains: this.data.username || ''
+                }
+              },
+            ]
+          }
         }
-      }
-    ).subscribe(( res:any )=>{
-      res = res.data[0];
-      this.data = res || {};
-      this._tools.tooast( { title: "Usuario buscado", icon:"succes" } );
+      ).subscribe(( res:any )=>{
+        res = res.data[0];
+        this.data = res || {};
+        resolve( true );
+        this._tools.tooast( { title: "Usuario buscado", icon:"succes" } );
+      },( )=> resolve( false ) );
     });
   }
 
@@ -145,6 +169,64 @@ export class ActivacionPaqueteComponent implements OnInit {
       "app": "publihazclickrootadmin",
       "estado": "visto",
     }
+  }
+
+  async buscar(  ){
+    this.query = {
+      where:{ 
+
+      },
+      page: 0
+    };
+    await this.buscarUsuario();
+    if( this.data.id != ''){
+      this.query.where.user = this.data.id;
+      /*this.query.where.or = [
+        {
+          username: {
+            contains: this.data.id
+          }
+        },
+      ];*/
+    }
+    this.tablet.dataRow = [];
+    this.tablet.count = 0;
+    this.getRow();
+  }
+
+  onScroll(){
+    if (this.notscrolly && this.notEmptyPost) {
+       this.notscrolly = false;
+       this.query.page++;
+       this.getRow();
+     }
+  }
+   
+  getRow(){
+    this.progreses = true;
+    this.query.sort = "createdAt DESC";
+    this._userPaquete.get( this.query ).subscribe( async ( res:any ) =>{
+      this.tablet.dataRow = _.unionBy( this.tablet.dataRow || [], res.data, 'id');
+      this.tablet.count = res.count;
+      this.progreses = false;
+      // console.log( res );
+    },( error:any )=> { this._tools.tooast( { title: "Error de servidor",icon: "error"}); this.progreses = false; });
+  }
+
+  updatePaquete( item:any ){
+    this.progreses = true;
+    this._userPaquete.update( { 
+      id: item.id, 
+      cantidaddepublicidad:item.cantidaddepublicidad, 
+      disableretiro:item.disableretiro 
+    } ).subscribe(( res:any )=>{
+      this._tools.tooast({ title: "Actualizado"});
+      this.progreses = false;
+    },( error:any )=> { this._tools.tooast( { title: "Error de servidor",icon: "error"}); this.progreses = false; });
+  }
+
+  eliminar( item ){
+
   }
 
 

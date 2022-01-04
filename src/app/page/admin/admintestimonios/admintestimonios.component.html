@@ -39,6 +39,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="data.descripcion"></textarea>
             </div>
             <div class="col-12">
+                <img [src]="data.imgdefault" style="width: 30%;" alt="none" *ngIf="data.imgdefault">
                 <input type="file" placeholder="Imagenes" (ngModelChange)="datafiles($event)" (blur)="datafiles($event)">
             </div>
             <div class="col-12">
