@@ -242,4 +242,10 @@ export class AlertasComponent implements OnInit {
     this.openaVenta();
   }
 
+  imageOnClick2(ev:any){
+    console.log("hey", ev, this.imageObject2);
+    let url: string = this.imageObject2[ev].alt || `https://lamejorfabricadeca.wixsite.com/misitio-1`;
+    window.open(url);
+  }
+
 }

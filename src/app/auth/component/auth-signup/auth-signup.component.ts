@@ -77,6 +77,7 @@ export class AuthSignupComponent implements OnInit {
     if (this.data.username) {
       // console.log(this.data.username.replace(/ /g, ""));
       this.data.username = this.data.username.replace(/ /g, '');
+      this.data.username = this.data.username.replace(/[^a-zA-Z ]/g, "");
       this._user.get({ where: { username: this.data.username }})
         .subscribe(
           (res: any) => {

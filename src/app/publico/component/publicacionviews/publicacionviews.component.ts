@@ -151,7 +151,8 @@ export class PublicacionviewsComponent implements OnInit {
       valor: this.data.valor,
       prioridad: this.data.prioridad,
       user: this.dataUser,
-      actividad: this.data.id
+      actividad: this.data.id,
+      publicacion: this.data.publicacion.id
     }).subscribe((res: any) => {
       this.Tools.tooast({ title: "Punto Generado" });
       this.disabledCont = false;

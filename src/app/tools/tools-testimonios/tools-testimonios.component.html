@@ -66,7 +66,7 @@
             </style>
         
             <div class="whatsapp-green-bar">
-                <i class="fa fa-whatsapp" aria-hidden="true"></i> Contáctenos por WhatsApp: +57 3148487506 (sólo mensajes)
+                <i class="fa fa-whatsapp" aria-hidden="true"></i> Contáctenos por WhatsApp: +57 3205141638 (sólo mensajes)
             </div>
         
             <div class="container">
@@ -74,7 +74,7 @@
                     <div class="col-xs-12 text-center f-bold" style="padding-bottom:20px;">
                         <div style="border:1px solid #ddd;padding:20px;">
                             <span style="font-size:1.65em;color:#000;">Video muestra la estrategia EXACTA que utilicé para ganar.</span><br />
-                            <a href="https://www.youtube.com/watch?v=stBQMhA3Rxo" target="_blank" class="btn btn-success"
+                            <a href="https://youtu.be/hp-Pjo_DIaE" target="_blank" class="btn btn-success"
                                 style="margin-top:10px;">CLIC AQUÍ PARA VER LA PRESENTACIÓN</a>
                         </div>
                     </div>
@@ -106,46 +106,53 @@
         
         
             <div class="container">
-                <div class="wrapper-testimonial">
+                <div class="wrapper-testimonial"
+                    infiniteScroll [infiniteScrollDistance]="3" [infiniteScrollThrottle]="50"
+                    (scrolled)="onScroll()"
+                >
         
                     <div class="row">
-                        <div class="col-sm-6 col-testimony" *ngFor="let item of listRow">
+                        <div 
+                            class="col-sm-6 col-testimony mat-elevation-z5" 
+                            style="padding: 11px;" 
+                            *ngFor="let item of listRow"
+                        >
                             <div class="testimony">
                                 <div class="photo">
         
-                                    <img class="photo" [src]="item.foto || './assets/noimagen.jpg'" />
+                                    <img class="photo" (click)="openFoto( item.foto)" [src]="item.foto || './assets/noimagen.jpg'" />
         
                                 </div>
         
-                                <div class="details">
+                                <div class="details" style="margin-left: 10%;">
                                     <p>
-                                        <span class="name">{{ item.usuario.username  }}</span>
+                                        <span class="name font-weight-bold">{{ item.usuario.username  }}</span>
                                     </p>
         
-                                    <p>
-                                        <span class="label">WhatsApp: </span> <span
-                                            class="value">+{{ item.usuario.celular }}
+                                    <!--<p>
+                                        <span class="label font-weight-bold">WhatsApp: </span> <span
+                                            class="value">{{ item.usuario.celular }}
                                             {{ item.usuario.usu_telefono }}</span>
-                                    </p>
+                                    </p>-->
         
         
-                                    <p>
+                                    <!--<p>
                                         <span class="label">Ciudad: </span> <span
                                             class="value">{{ item.usuario.ciudad }}</span>
-                                    </p>
+                                    </p>-->
         
-                                    <p>
+                                    <!--<p>
                                         <span class="label">Link: </span> <span class="value"><a
                                                 [href]="urlRegistro+item.usuario.username" target="_link">{{ urlRegistro+item.usuario.username }}</a></span>
-                                    </p>
+                                    </p>-->
 
                                     <p>
-                                        <span class="label">Fecha: </span> <span
-                                            class="value">{{ item.fecha | date:"medium" }}</span>
+                                        <span class="label font-weight-bold">Fecha: </span> <span
+                                            class="value">{{ item.fecha | date:"mediumDate" }}</span>
                                     </p>
                                 </div>
         
-                                <div class="message">
+                                <div class="message" style="margin-left: 10%;">
                                     <p *ngIf="item.descripcion" [innerHtml]="item.descripcion"></p>
                                     <p *ngIf="!item.descripcion">
                                         La verda esta página es muy buena, entré con algunas dudas pero al pasar poco tiempo

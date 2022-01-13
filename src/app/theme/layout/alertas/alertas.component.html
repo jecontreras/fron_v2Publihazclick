@@ -1,7 +1,7 @@
 <ng-image-slider [images]="imageObject2" *ngIf="imageObject2.length > 0" [infinite]="sliderInfinite"
     [imagePopup]="sliderImagePopup" [showArrow]="sliderArrowShow"
     [imageSize]="{width: sliderImageWidth2, height: sliderImageHeight2}" [autoSlide]="sliderAutoSlide ? 1 : 0"
-    [slideImage]="sliderSlideImage" [animationSpeed]="sliderAnimationSpeed" (imageClick)="imageOnClick($event)"
+    [slideImage]="sliderSlideImage" [animationSpeed]="sliderAnimationSpeed" (imageClick)="imageOnClick2($event)"
     (arrowClick)="arrowOnClick($event)" (lightboxArrowClick)="lightboxArrowClick($event)" #nav1>
 </ng-image-slider>
 

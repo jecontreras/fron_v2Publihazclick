@@ -61,6 +61,13 @@ const NavigationItems = [
         url: '/dashboard/lider',
         icon: 'feather icon-home'
       },
+      {
+        id: 'calculadora',
+        title: 'Calculadora',
+        type: 'item',
+        url: '/dashboard/calculadora',
+        icon: 'feather icon-home'
+      },
       /*{
         id: 'chat',
         title: 'Chat',

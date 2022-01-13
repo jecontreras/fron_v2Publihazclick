@@ -43,6 +43,7 @@ import { AdminPuntosComponent } from './admin/admin-puntos/admin-puntos.componen
 import { ProyectosDonacionesComponent } from './component/proyectos-donaciones/proyectos-donaciones.component';
 import { AdminretirosComponent } from './admin/adminretiros/adminretiros.component';
 import { AdminactividadComponent } from './admin/adminactividad/adminactividad.component';
+import { CalculadoraComponent } from './component/calculadora/calculadora.component';
 
 @NgModule({
   declarations: [ 
@@ -63,7 +64,25 @@ import { AdminactividadComponent } from './admin/adminactividad/adminactividad.c
     TareaMegaComponent, 
     ViewPerfilComponent, 
     BannerComponent, 
-    FormpublicacionComponent, FormbannerComponent, FormretirosComponent, FormbancosComponent, AdminMarketplaceComponent, FormadminMarketplaceComponent, AmigosComponent, TestimoniodshComponent, ChatComponent, MarcasAnunciantesComponent, FormmarcasAnunciantesComponent, ActivacionPaqueteComponent, AdminusuarioComponent, AdmintestimoniosComponent, AdminPuntosComponent, ProyectosDonacionesComponent, AdminretirosComponent, AdminactividadComponent
+    FormpublicacionComponent, 
+    FormbannerComponent, 
+    FormretirosComponent, 
+    FormbancosComponent, 
+    AdminMarketplaceComponent, 
+    FormadminMarketplaceComponent, 
+    AmigosComponent, 
+    TestimoniodshComponent, 
+    ChatComponent, 
+    MarcasAnunciantesComponent, 
+    FormmarcasAnunciantesComponent, 
+    ActivacionPaqueteComponent, 
+    AdminusuarioComponent, 
+    AdmintestimoniosComponent, 
+    AdminPuntosComponent, 
+    ProyectosDonacionesComponent, 
+    AdminretirosComponent, 
+    AdminactividadComponent,
+    CalculadoraComponent
   ],
   imports: [
     CommonModule,

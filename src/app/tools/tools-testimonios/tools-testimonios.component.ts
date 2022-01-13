@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TestimoniosService } from 'src/app/servicesComponents/testimonios.service';
 import { environment } from 'src/environments/environment';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-tools-testimonios',
@@ -20,6 +21,8 @@ export class ToolsTestimoniosComponent implements OnInit {
     limit: 15
   };
   dataUser:any = {};
+  notscrolly:boolean=true;
+  notEmptyPost:boolean = true;
 
   constructor(
     private _testimonios: TestimoniosService
@@ -30,10 +33,22 @@ export class ToolsTestimoniosComponent implements OnInit {
     this.getRow();
   }
 
+  onScroll(){
+    if (this.notscrolly && this.notEmptyPost) {
+       this.notscrolly = false;
+       this.query.page++;
+       this.getRow();
+     }
+  }
+
   getRow(){
     this._testimonios.get( this.query ).subscribe(( res:any )=>{
-      this.listRow = res.data;
+      this.listRow = _.unionBy( this.listRow || [], res.data, 'id');
     });
+  }
+
+  openFoto( url:string ){
+    window.open(url);
   }
 
 }

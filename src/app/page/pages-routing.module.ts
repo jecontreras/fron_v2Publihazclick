@@ -34,6 +34,7 @@ import { AdminPuntosComponent } from './admin/admin-puntos/admin-puntos.componen
 import { ProyectosDonacionesComponent } from './component/proyectos-donaciones/proyectos-donaciones.component';
 import { AdminretirosComponent } from './admin/adminretiros/adminretiros.component';
 import { AdminactividadComponent } from './admin/adminactividad/adminactividad.component';
+import { CalculadoraComponent } from './component/calculadora/calculadora.component';
 
 const routes: Routes = [
   {
@@ -155,6 +156,10 @@ const routes: Routes = [
   {
     path: "chat",
     component: ChatComponent
+  },
+  {
+    path: "calculadora",
+    component: CalculadoraComponent
   },
   {
     path: "marcasAnunciantes",

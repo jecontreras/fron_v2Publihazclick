@@ -23,7 +23,7 @@ export class RetirosComponent implements OnInit {
   };
   query:any = {
     where:{ 
-      estado: "pendiente"
+      //estado: "pendiente"
     },
     sort: "createdAt DESC",
     page: 0

@@ -13,13 +13,13 @@ import { TestimoniosService } from 'src/app/servicesComponents/testimonios.servi
 export class AdminretirosComponent implements OnInit {
 
   tablet:any = {
-    dataHeader: ["Usuario","Estado","Cantidad","Cedula","Celular","Banco",'Tipo Cuenta','Numero Cuenta','Descripcion','Evidencia','Creado'],
+    dataHeader: ["Opciones", "Usuario","Estado","Cantidad","Cedula","Celular","Banco",'Tipo Cuenta','Numero Cuenta','Descripcion','Evidencia','Creado'],
     dataRow: [],
     count: 0
   };
   query:any = {
     where:{ },
-    sort: "createdAt ASC",
+    sort: "createdAt DESC",
     page: 0
   };
   vista:string = "home";
