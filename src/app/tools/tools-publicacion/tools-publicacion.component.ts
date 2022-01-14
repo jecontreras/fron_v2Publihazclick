@@ -63,6 +63,10 @@ export class ToolsPublicacionComponent implements OnInit {
 
   getRow(){
     this.progreses = true;
+    this.tarea = {
+      completado: 0,
+      restante: 0
+    };
     this._modelo.get(this.query).subscribe((res:any)=> this.procesoGet( res ), (error)=> { this.progreses = false; this._tools.tooast( { title: "Error de servidor", icon: "error" } )} );
   }
   
@@ -152,6 +156,10 @@ export class ToolsPublicacionComponent implements OnInit {
 
   refActivadades(){
     this.btnDisabled = true;
+    this.tarea = {
+      completado: 0,
+      restante: 0
+    };
     this._modelo.generarActividad({ user: this.query.where.user }).subscribe((res:any)=> { console.log(res); this.btnDisabled = false; this.getRow();  }, ()=> this.btnDisabled = false );
   }
 

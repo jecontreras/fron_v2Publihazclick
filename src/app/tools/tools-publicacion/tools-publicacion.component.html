@@ -36,7 +36,7 @@
                             </span>
                             <br>
                             <span>
-                                {{ item.createdAt }}
+                                {{ item.createdAt | date:'mediumDate' }}
                             </span>
                         </p>
                     </div>
@@ -68,7 +68,7 @@
                             <span (click)="item.oculto = 5000" *ngIf="item.oculto !== 5000">Leer más!</span>
                             <span (click)="item.oculto = 150" *ngIf="item.oculto == 5000">Ver Menos!</span>
                         </label>
-                        <p class="card-text"><small class="text-muted">{{ item.createdAt }}</small></p>
+                        <p class="card-text"><small class="text-muted">{{ item.createdAt | date:'mediumDate' }}</small></p>
                         <app-comentarios *ngIf="dataUser.id" [data]="item"></app-comentarios>
                     </div>
                 </div>

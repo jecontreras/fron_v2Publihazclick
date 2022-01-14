@@ -35,7 +35,7 @@ export class ServiciosService {
   ) { 
     this.conectionSocket();
     this.createsocket("emitir", {mensaje:"inicial"}); 
-    this.privateDataUser();
+    setTimeout(()=>this.privateDataUser(), 5000 );
   }
   privateDataUser(){
     this._store.subscribe((store: any) => {
@@ -45,7 +45,7 @@ export class ServiciosService {
     });
     if(Object.keys(this.dataUser).length >0 ){
       let idUser = this.dataUser.id;
-      //if( !environment.production ) idUser = "619e54f3b564a8001695ba01";
+      //if( !environment.production ) idUser = "619beb34df969a00161c6fb6";
       let data1:any = {};
       this.querys('user/querys',{
         where:{
@@ -53,7 +53,7 @@ export class ServiciosService {
           //id: "619e49fbb564a8001695b9f3"
           //id: "619c1c3c530b960016737fd0"
         }
-      }, 'post').subscribe((res:any)=>{
+      }, 'post').subscribe(async (res:any)=>{
         res = res.data[0];
         data1 = res || {};
         if(!res) {
@@ -64,6 +64,8 @@ export class ServiciosService {
           this.Router.navigate(['/login']);
           setTimeout(function(){ location.reload(); }, 3000);
         }else{
+          this.dataUser = data1;
+          await this.getMiPaquete();
           let accion = new UserAction( data1,'post')
           this._store.dispatch(accion);
         }
@@ -77,6 +79,18 @@ export class ServiciosService {
       });
     }
   }
+
+  async getMiPaquete(){
+    return new Promise(async (promesa) => {
+      this.querys('usernivel/lodearMiNivel',{ user: this.dataUser.id },'post').subscribe(( res:any )=>{
+        try {
+          this.dataUser.miNivel = res.resultado.miNivel;
+          promesa( true );
+        } catch (error) { promesa( false );}
+      },()=> { this._tools.tooast( { title: "Error", icon: "error" } ); promesa( false );} );
+    });
+  }
+
   private ejecutarQuery(url: string, data, METODO){
     return this.http[METODO]( url, data );
   }

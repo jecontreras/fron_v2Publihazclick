@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container" infiniteScroll [infiniteScrollDistance]="3" [infiniteScrollThrottle]="50"
+(scrolled)="onScroll()">
     <ul class="list-unstyled">
-        <li class="media" *ngFor="let item of lista">
-            <img [src]="item.foto" class="mr-3" alt="...">
+        <li class="media" *ngFor="let item of lista" >
+            <img [src]="item.foto" style="width: 30%;" class="mr-3" alt="...">
             <div class="media-body">
                 <h5 class="mt-0 mb-1">{{ item.username }}</h5>
                 {{ item.describes }}
@@ -30,7 +31,7 @@
         <div class="d-flex justify-content-center row">
             <div role="alert" class="alert alert-primary">
                 No Hay Datos Para Mostrar
-                <button *ngIf="config.vista == 'tareas' || config.vista == 'publicidad'" type="button" class="btn btn-primary" (click)="refActivadades()" [disabled]="btnDisabled">Volver a intentar</button>
+                <button *ngIf="config.vista == 'tareas' || config.vista == 'publicidad'" type="button" class="btn btn-primary" (click)="getRow()">Volver a intentar</button>
             </div>
         </div>
     </div>

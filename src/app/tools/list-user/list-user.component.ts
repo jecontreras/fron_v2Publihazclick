@@ -68,6 +68,7 @@ export class ListUserComponent implements OnInit {
   }
 
   onScroll(){
+    console.log("Entre........")
     if (this.notscrolly && this.notEmptyPost) {
        this.notscrolly = false;
        this.querys.page++;
@@ -81,12 +82,14 @@ export class ListUserComponent implements OnInit {
       this._user.buscarAmigos( this.querys ).subscribe((res: any) => {
         this.lista = _.unionBy( this.lista || [], res.data, 'id' );
         this.progreses = false;
+        this.notscrolly = true;
       },( error:any )=> this.progreses = false );
     }
     else{
       this._user.getAmigos( this.querys ).subscribe((res: any) => {
         this.lista = _.unionBy( this.lista || [], res.data, 'id' );
         this.progreses = false;
+        this.notscrolly = true;
       },( error:any )=> this.progreses = false );
     }
   }

@@ -140,16 +140,18 @@ export class AlertasComponent implements OnInit {
         }
         else formatiado.push( row );
       }
-      if( Object.keys( this.dataUser.miPaquete ).length > 0 ) {
-        if( this.dataUser.miPaquete.cantidaddepublicidad != 0 && this.dataUser.miPaquete.cantidaddepublicidad != undefined) 
-        formatiado.push( 
-          {
-            titulo: "Primero debes consumir tus publicaciones",
-            descripcion: "En estos momento no puedes hacer ninguna actividad hasta que consumas tus publicaciones cantidad faltantes "+ this.dataUser.miPaquete.cantidaddepublicidad || 0,
-            id: this._tools.codigo()
-          }
-        );
-      }
+      try {
+        if( Object.keys( this.dataUser.miPaquete ).length > 0 ) {
+          if( this.dataUser.miPaquete.cantidaddepublicidad != 0 && this.dataUser.miPaquete.cantidaddepublicidad != undefined) 
+          formatiado.push( 
+            {
+              titulo: "Primero debes consumir tus publicaciones",
+              descripcion: "En estos momento no puedes hacer ninguna actividad hasta que consumas tus publicaciones cantidad faltantes "+ this.dataUser.miPaquete.cantidaddepublicidad || 0,
+              id: this._tools.codigo()
+            }
+          );
+        }
+      } catch (error) { }
       // console.log( formatiado );
       this.listAlertas = formatiado;
       // console.log( this.listAlertas );
@@ -200,6 +202,11 @@ export class AlertasComponent implements OnInit {
 
   eliminar( item:any ){
     this.listAlertas = this.listAlertas.filter( ( row:any )=> row.id !== item.id );
+    let data = {
+      id: item.id,
+      estado: "visto"
+    };
+    this.cambiarState( data );
   }
 
   listaBanner() {
