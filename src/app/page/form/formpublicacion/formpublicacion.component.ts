@@ -64,6 +64,8 @@ export class FormpublicacionComponent implements OnInit {
   procesoEdit(res: any) {
     //console.log(res);
     this.data = res;
+    this.data.imgdefault2 = this.data.imgdefault;
+    this.data.content2 = this.data.content;
     this.ProbarUrl();
     this.probarLink();
   }
@@ -73,21 +75,25 @@ export class FormpublicacionComponent implements OnInit {
     try {
       this.file.foto1 = ev.target.files;
       if (this.file.foto1[0]) {
-        if (this.data.type == "url") this.data.imgdefault = await this._archivo.getBase64(this.file.foto1[0]);
+        if (this.data.type == "url") this.data.imgdefault2 = await this._archivo.getBase64(this.file.foto1[0]);
         else {
-          this.data.imgdefault = await this._archivo.getBase64(this.file.foto1[0]);
-          this.data.content = await this._archivo.getBase64(this.file.foto1[0]);
+          this.data.imgdefault2 = await this._archivo.getBase64(this.file.foto1[0]);
+          this.data.content2 = await this._archivo.getBase64(this.file.foto1[0]);
         }
       }
     } catch (error) { }
   }
 
   async submitFile() {
-    if( !this.file.foto1[0] ) return false;
-    this.disableFile = true;
-    if (this.data.type == "url") await this.procesoSubidaImagen(this.file.foto1[0], 'imgdefault');
-    else await this.procesoSubidaImagen( this.file.foto1[0], 'content');
-    this.disableFile = false;
+    return new Promise( async ( resolve) =>{
+      console.log( this.file )
+      if( !this.file.foto1[0] ) return resolve( false );
+      this.disableFile = true;
+      if (this.data.type == "url") await this.procesoSubidaImagen(this.file.foto1[0], 'imgdefault');
+      else await this.procesoSubidaImagen( this.file.foto1[0], 'content');
+      this.disableFile = false;
+      resolve( true );
+    });
   }
 
   procesoSubidaImagen(file: any, opt: string) {
@@ -108,6 +114,8 @@ export class FormpublicacionComponent implements OnInit {
   }
 
   async submit() {
+    if( this.data.type == "url" ) { if( !this.data.imgdefault ) await this.submitFile(); }
+    else if( !this.data.content ) await this.submitFile();
     let validando = this.validador();
     if( !validando ) return false;
     this.disableFile = true;
@@ -125,7 +133,7 @@ export class FormpublicacionComponent implements OnInit {
     return true;
   }
 
-  guardar() {
+  async guardar() {
     this.data.user = this.dataUser.id;
     this.data.autocreo = false;
     this._publicacion.create(this.data).subscribe((res: any) => {

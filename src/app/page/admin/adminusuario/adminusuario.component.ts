@@ -67,6 +67,7 @@ export class AdminusuarioComponent implements OnInit {
       this.tablet.dataRow = _.unionBy( this.tablet.dataRow || [], res.data, 'id');
       this.tablet.count = res.count;
       this.progreses = false;
+      this.notscrolly = true;
       // console.log( res );
     },( error:any )=> { this._tools.tooast("Error de servidor"); this.progreses = false; });
   }

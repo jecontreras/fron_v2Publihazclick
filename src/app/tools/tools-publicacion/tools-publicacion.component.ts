@@ -67,7 +67,8 @@ export class ToolsPublicacionComponent implements OnInit {
       completado: 0,
       restante: 0
     };
-    this._modelo.get(this.query).subscribe((res:any)=> this.procesoGet( res ), (error)=> { this.progreses = false; this._tools.tooast( { title: "Error de servidor", icon: "error" } )} );
+    this.btnDisabled = true;
+    this._modelo.get(this.query).subscribe((res:any)=> this.procesoGet( res ), (error)=> { this.progreses = false; this.btnDisabled = false; this._tools.tooast( { title: "Error de servidor", icon: "error" } )} );
   }
   
   openPublic( item ){
@@ -129,6 +130,7 @@ export class ToolsPublicacionComponent implements OnInit {
       this.notEmptyPost =  false;
     }
     this.notscrolly = true;
+    this.btnDisabled = false;
     let data:any = {};
     for( let row of this.listRow ){
       data = row;

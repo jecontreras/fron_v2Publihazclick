@@ -112,13 +112,14 @@ export class AdminComponent implements OnInit {
     if( this.disabled ) return false;
     this.disabled = true;
     this._userNivel.getMiNivel( { user: this.dataUser.id }).subscribe(( res:any )=>{
+      res = res[0];
       this._tools.tooast( { title: "Completado" });
       this.disabled = false;
       try {
-        this.dataUser.miNivel = res.resultado.miNivel;
+        this.dataUser.miNivel = res.miNivel;
         let accion:any = new UserAction( this.dataUser, 'post');
         this._store.dispatch( accion );
-      } catch (error) { }
+      } catch (error) {  }
     },()=> { this._tools.tooast( { title: "Error", icon: "error" } ); this.disabled = false; } );
   }
 

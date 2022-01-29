@@ -4,7 +4,11 @@
       <!-- <i class="feather icon-sunset f-40"></i> -->
       <img [src]="dataUser.foto" class="perfil" alt="">
       <h6 class="mt-3">{{ dataUser.username }}</h6>
-      <p>Mi nivel: {{ miNivel }}</p>
+      <p>Mi nivel: {{ miNivel }} 
+        <a (click)="getMiPaquete()" class="btn btn-success btn-sm text-white m-0 mouse">
+          <i class="fa fa-spinner" aria-hidden="true"></i>
+        </a> 
+      </p>
       <a (click)="portapapeles()" class="btn btn-success btn-sm text-white m-0 mouse">
         RECOMIENDA Y GANA
       </a>

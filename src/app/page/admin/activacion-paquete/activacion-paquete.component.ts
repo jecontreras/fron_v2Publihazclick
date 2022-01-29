@@ -209,6 +209,7 @@ export class ActivacionPaqueteComponent implements OnInit {
       this.tablet.dataRow = _.unionBy( this.tablet.dataRow || [], res.data, 'id');
       this.tablet.count = res.count;
       this.progreses = false;
+      this.notscrolly = true;
       // console.log( res );
     },( error:any )=> { this._tools.tooast( { title: "Error de servidor",icon: "error"}); this.progreses = false; });
   }

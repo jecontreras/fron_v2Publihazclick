@@ -57,7 +57,7 @@ export class CalculadoraComponent implements OnInit {
           categoria: row.title,
           recompActivacionInvitados: ( row.recompActivacionInvitados * 5 ) * this.cantidadReferidos,
           gananciasDiariasClick: (( row.cantidadminianuncios * 100 ) * row.cantidadminianunciosdiarios)+(134*5*30),
-          cantidadMiniAnunciosNumeroInvitados: gruporeferidos + ` Actividades a $ ${ row.coinclickreferido } Total al Mes $ ${ this._tools.monedaChange( 3, 2, (( gruporeferidos * row.coinclickreferido ) * 30) || 0) }`,
+          cantidadMiniAnunciosNumeroInvitados: gruporeferidos + ` Actividades a $ ${ row.coinclickreferido } Total al Mes ${ this._tools.monedaChange( 3, 2, (( gruporeferidos * row.coinclickreferido ) * 30) || 0) }`,
           gananciasMensualMinianuncios: ((row.coinclickreferido * 5) * 30) * this.cantidadReferidos,
           valorPagarClickReferidos: row.coinclickreferido,
           recomPensaDiariaInvitado: row.coinclickreferido * 5,

@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { ToolsService } from 'src/app/services/tools.service';
 import { UserAction } from 'src/app/redux/app.actions';
 import { Router } from '@angular/router';
+import { UserNivelService } from 'src/app/servicesComponents/user-nivel.service';
 
 const URL = environment.urlFront;
 
@@ -33,13 +34,17 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   dataUser:any = {};
   miNivel:string = "JADE";
   rolName:string = "";
+
+  disabled:boolean = false;
+
   constructor(
     public nav: NavigationItem, 
     private zone: NgZone, 
     private location: Location,
     private _store: Store<STORAGES>,
     private _tools: ToolsService,
-    private Router: Router
+    private Router: Router,
+    private _userNivel: UserNivelService
   ) {
     this._store.subscribe((store: any) => {
       //console.log(store);
@@ -196,6 +201,21 @@ export class NavContentComponent implements OnInit, AfterViewInit {
     setTimeout(()=>{
       location.reload();
     },3000)
+  }
+
+  getMiPaquete(){
+    if( this.disabled ) return false;
+    this.disabled = true;
+    this._userNivel.getMiNivel( { user: this.dataUser.id }).subscribe(( res:any )=>{
+      res = res[0];
+      this._tools.tooast( { title: "Completado" });
+      this.disabled = false;
+      try {
+        this.dataUser.miNivel = res.miNivel;
+        let accion:any = new UserAction( this.dataUser, 'post');
+        this._store.dispatch( accion );
+      } catch (error) {  }
+    },()=> { this._tools.tooast( { title: "Error", icon: "error" } ); this.disabled = false; } );
   }
 
 }

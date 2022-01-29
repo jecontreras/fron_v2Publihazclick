@@ -60,6 +60,7 @@ export class FormbannerComponent implements OnInit {
   procesoEdit(res: any) {
     //console.log(res);
     this.data = res;
+    this.data.imgdefault2 = this.data.imgdefault;
     this.ProbarUrl();
     this.probarLink();
   }
@@ -69,7 +70,8 @@ export class FormbannerComponent implements OnInit {
     try {
       this.file.foto1 = ev.target.files;
       if (this.file.foto1[0]) {
-        this.data.imgdefault = await this._archivo.getBase64(this.file.foto1[0]);
+        this.data.imgdefault2 = await this._archivo.getBase64(this.file.foto1[0]);
+        setTimeout(()=> this.submitFile(), 5000 );
       }
     } catch (error) { }
   }

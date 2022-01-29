@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-12">
                             <div class="d-flex justify-content-center">
-                                <img class="fotoPulib" [src]="data.imgdefault"><br>
+                                <img class="fotoPulib" [src]="data.imgdefault2"><br>
                             </div>
                         </div>
                         <div class="col-12">
@@ -105,9 +105,9 @@
                     allowfullscreen>
                 </iframe><br>
             </div>
-            <div class="col-xs-12 col-sm-12 col-12" *ngIf="data.viewlive && data.type == 'img'">
+            <div class="col-xs-12 col-sm-12 col-12" *ngIf="!data.viewlive && data.type == 'img'">
                 <div class="d-flex justify-content-center">
-                    <img [src]="data.imgdefault" class="anchosFoto"><br>
+                    <img [src]="data.imgdefault2" class="anchosFoto"><br>
                 </div>
             </div>
             <div class="col-12" *ngIf="data.descripcion">

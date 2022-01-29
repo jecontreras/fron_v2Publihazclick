@@ -15,7 +15,7 @@ export class MisPublicacionComponent implements OnInit {
       type: ["img", "url" ],
       estado: "activo"
     },
-    sort: "createdAt ASC",
+    sort: "createdAt DESC",
     page: 0,
     limit: 10
   };

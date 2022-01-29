@@ -45,6 +45,7 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit() {
     this.data = _.clone( this.dataUser );
+    this.data.foto2 = this.data.foto;
     this.blurdepartamento();
   }
 
@@ -54,10 +55,8 @@ export class PerfilComponent implements OnInit {
     try {
       this.file.foto1 = ev.target.files;
       if (this.file.foto1[0]) {
-        if (this.data.type == "url") this.data.foto = await this._archivo.getBase64(this.file.foto1[0]);
-        else {
-          this.data.foto = await this._archivo.getBase64(this.file.foto1[0]);
-        }
+        this.data.foto2 = await this._archivo.getBase64(this.file.foto1[0]);
+        setTimeout(()=> this.submitFile(), 5000 );
       }
     } catch (error) { }
   }
@@ -102,6 +101,7 @@ export class PerfilComponent implements OnInit {
     this._user.update(this.data).subscribe((res:any)=>{
       console.log(res);
       this.data = res;
+      this.data.foto2 = res.data.foto;
       let accion = new UserAction( res, 'put');
       this._store.dispatch(accion);
       this._tools.tooast({ title:"Perfil Actualizado correctamente" });
