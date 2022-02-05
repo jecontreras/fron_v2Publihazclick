@@ -32,6 +32,7 @@ export type ChartOptions2 = {
   labels: any;
 };
 
+
 @Component({
   selector: 'app-tablero',
   templateUrl: './tablero.component.html',
@@ -48,6 +49,12 @@ export class TableroComponent implements OnInit {
   public cantidadPaquetes: Partial<ChartOptions2>;
   dataUser:any = {};
   progreses: boolean = false;
+  tablet:any = {
+    dataHeader: ["Foto","Username", "foto","dia","dia",'dia','dia','dia'],
+    dataRow: [],
+    count: 0
+  };
+
   constructor(
     private _estadisticas: EstadisticasService,
     private _store: Store<STORAGES>,
@@ -299,8 +306,14 @@ export class TableroComponent implements OnInit {
         ... this.cantidadPaquetes,
         ... res.cantidadPaquetes,
       };
+      this.tablet.dataRow = res.diasActividad.list;
+      this.tablet.dataHeader[3] = this.tablet.dataHeader[3] + res.diasActividad.detaFecha[0];
+      this.tablet.dataHeader[4] = this.tablet.dataHeader[4] + res.diasActividad.detaFecha[1];
+      this.tablet.dataHeader[5] = this.tablet.dataHeader[5] + res.diasActividad.detaFecha[2];
+      this.tablet.dataHeader[6] = this.tablet.dataHeader[6] + res.diasActividad.detaFecha[3];
+      this.tablet.dataHeader[7] = this.tablet.dataHeader[7] + res.diasActividad.detaFecha[4];
       this.progreses = false;
-      console.log( this.cantidadRef );
+      console.log( this.cantidadRef,this.tablet);
     },()=> this.progreses = false );
   }
 

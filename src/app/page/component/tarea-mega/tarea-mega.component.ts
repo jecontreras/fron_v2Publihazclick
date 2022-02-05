@@ -17,7 +17,7 @@ export class TareaMegaComponent implements OnInit {
     create: false
    }, 
    sort: "state DESC",
-   limit: 1000,
+   limit: 10,
    page: 0
   };
   dataUser:any = {};

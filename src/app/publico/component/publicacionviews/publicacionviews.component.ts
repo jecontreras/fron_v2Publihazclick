@@ -9,6 +9,7 @@ import { ToolsService } from 'src/app/services/tools.service';
 import { ActividadService } from 'src/app/servicesComponents/actividad.service';
 import { PublicacionService } from 'src/app/servicesComponents/publicacion.service';
 import { PuntosService } from 'src/app/servicesComponents/puntos.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-publicacionviews',
@@ -29,6 +30,7 @@ export class PublicacionviewsComponent implements OnInit {
   breakpoint: number;
   // url de la publicidad
   url: any;
+  urlVentas:any;
   // disableActividadrealizada
   disablerealizado: boolean = false;
 
@@ -88,6 +90,7 @@ export class PublicacionviewsComponent implements OnInit {
   ngOnInit() {
     this.id = (this.activate.snapshot.paramMap.get('id'));
     this.ids = (this.activate.snapshot.paramMap.get('ids'));
+    this.urlVentas = this.Tools.seguridadIfrane( environment.urlFront+"/publico/markeplace" );
     if (this.ids) { }
     else if (this.id) this.getActividad();
     this.getBanner();

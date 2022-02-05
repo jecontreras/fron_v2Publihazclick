@@ -52,7 +52,7 @@ export class AdminComponent implements OnInit {
     this.navCollapsedMob = false;
 
     this._store.subscribe((store: any) => {
-      console.log(store);
+      //console.log(store);
       store = store.name;
       this.dataUser = ( _.clone( store.user ) ) || {};
       try {

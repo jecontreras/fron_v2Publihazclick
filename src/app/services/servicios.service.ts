@@ -66,6 +66,7 @@ export class ServiciosService {
         }else{
           this.dataUser = data1;
           await this.getMiPaquete();
+          this.createVista();
           let accion = new UserAction( data1,'post')
           this._store.dispatch(accion);
         }
@@ -89,6 +90,12 @@ export class ServiciosService {
         } catch (error) { promesa( false );}
       },()=> { this._tools.tooast( { title: "Error", icon: "error" } ); promesa( false );} );
     });
+  }
+
+  createVista(){
+    this.querys( 'estadisticas', {
+      user: this.dataUser.id,
+    }, 'post' ).subscribe( ( res:any )=>{ });
   }
 
   private ejecutarQuery(url: string, data, METODO){

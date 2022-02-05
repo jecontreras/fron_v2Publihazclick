@@ -48,7 +48,9 @@ export class ProductosComponent implements OnInit {
       store = store.name;
       if(!store) return false;
       this.listProductosHistorial = _.orderBy(store.productoHistorial, ['createdAt'], ['DESC']);
-      this.tiendaInfo = store.configuracion || {};
+      this.tiendaInfo = store.configuracion || {
+        portada2: "./assets/imagenes/pago.png"
+      };
       if( store.buscador ) if( Object.keys(store.buscador).length > 0 ) {  if( store.buscador.search ) { this.seartxt = store.buscador.search; this.buscar(); this.borrarBusqueda(); this.dataSeleccionda = store.buscador.search } }
     });
   }

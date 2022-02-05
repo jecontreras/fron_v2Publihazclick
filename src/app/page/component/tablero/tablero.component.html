@@ -54,6 +54,40 @@
           [labels]="cantidadPaquetes.labels" [responsive]="cantidadPaquetes.responsive"></apx-chart>
       </div>
     </div>
+    <div class="col-12">
+      <div _ngcontent-muc-c22="" class="shadow p-3 mb-5 bg-white rounded">
+        <h5>Tareas de referidos</h5>
+      </div>
+      <div id="chart">
+        <div class="card-body ng-tns-c14-92 table-border-style ng-star-inserted">
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th *ngFor="let item of tablet.dataHeader">{{ item}}</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let item of tablet.dataRow">
+                          <td>
+
+                          </td>
+                          <td>
+                              <img width="30px" height="50px" [src]="item.foto">
+                          </td>
+                          <td>{{ item.user }}</td>
+                          <td>Realizadas: {{ ( item.actividades[0]?.realizadas || 0 ) }} <br> No Realizadas: {{ ( item.actividades[0]?.noRealizadas || 0 ) }}</td>
+                          <td>Realizadas: {{ ( item.actividades[1]?.realizadas || 0 ) }} <br> No Realizadas: {{ ( item.actividades[1]?.noRealizadas || 0 ) }}</td>
+                          <td>Realizadas: {{ ( item.actividades[2]?.realizadas || 0 ) }} <br> No Realizadas: {{ ( item.actividades[2]?.noRealizadas || 0 ) }}</td>
+                          <td>Realizadas: {{ ( item.actividades[3]?.realizadas || 0 ) }} <br> No Realizadas: {{ ( item.actividades[3]?.noRealizadas || 0 ) }}</td>
+                          <td>Realizadas: {{ ( item.actividades[4]?.realizadas || 0 ) }} <br> No Realizadas: {{ ( item.actividades[4]?.noRealizadas || 0 ) }}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="row" *ngIf="progreses">

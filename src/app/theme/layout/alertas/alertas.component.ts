@@ -50,11 +50,12 @@ export class AlertasComponent implements OnInit {
     private _puntosResumen: PuntosResumenService
   ) { 
     this._store.subscribe((store: any) => {
-      console.log(store);
+      //console.log(store);
       store = store.name;
       this.dataUser = ( _.clone( store.user ) ) || {};
       try {
         if( this.dataUser.cantidadPuntos ) {
+          if( this.puntosGanados != this.dataUser.cantidadPuntos.valorTotal ) this._tools.tooast({ title: "Felicitaciónes Ganando Dinero... " + ( _tools.monedaChange( 3, 2, this.dataUser.cantidadPuntos.valorTotal - this.puntosGanados) ) });
           this.puntosGanados = this.dataUser.cantidadPuntos.valorTotal || 0;
           this.donaciones = this.dataUser.cantidadPuntos.donacion || 0;
         }
@@ -76,6 +77,7 @@ export class AlertasComponent implements OnInit {
     this.listaBanner();
     this.getNotas();
     this.getBanner();
+    setInterval(()=> this.getMisPuntos() ,4000 );
   }
 
   getBanner(){

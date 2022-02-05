@@ -100,8 +100,6 @@ export class ToolsPublicacionComponent implements OnInit {
   procesoGet( res:any ){
     this.progreses = false;
     res.data = _.map( res.data, row =>{
-      if(row.estado == "activo") this.tarea.restante++;
-      else this.tarea.completado++;
       if(!row.publicacion) return {
         fotoUser: row.user.foto,
         userPubli: row.user.id,
@@ -132,9 +130,11 @@ export class ToolsPublicacionComponent implements OnInit {
     this.notscrolly = true;
     this.btnDisabled = false;
     let data:any = {};
+    this.tarea.restante = res.count || 0;
     for( let row of this.listRow ){
       data = row;
       if( row.publicacion ) data = row.publicacion;
+      if(row.estado != "activo") { this.tarea.completado++; this.tarea.restante--; }
       this.getLikesUser( data );
     }
     let interval = setInterval(()=>{

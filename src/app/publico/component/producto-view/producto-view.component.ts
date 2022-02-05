@@ -70,7 +70,9 @@ export class ProductosViewComponent implements OnInit {
       this.userId = store.usercabeza || {};
       this.dataUser = store.user || {};
       this.listProductosHistorial = _.orderBy(store.productoHistorial, ['createdAt'], ['DESC']);
-      this.tiendaInfo = store.configuracion || {};
+      this.tiendaInfo = store.configuracion || {
+        portada3: "./assets/imagenes/pago.png"
+      };
     });
   }
 

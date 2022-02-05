@@ -30,7 +30,7 @@ export class NavSearchComponent implements OnInit {
     private _userNivel: UserNivelService
   ) { 
     this._store.subscribe((store: any) => {
-      console.log(store);
+      //console.log(store);
       store = store.name;
       this.dataUser = ( _.clone( store.user ) ) || {};
       try {
