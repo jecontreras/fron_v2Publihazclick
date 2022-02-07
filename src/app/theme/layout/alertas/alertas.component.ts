@@ -100,6 +100,7 @@ export class AlertasComponent implements OnInit {
   }
 
   getMisPuntos(){
+    if( Object.keys(this.dataUser).length == 0 ) return false;
     if( this.disabled ) return false;
     this.disabled = true;
     this._puntosResumen.get( { where: { user: this.dataUser.id, state: "valido" } } ).subscribe( ( res:any )=>{

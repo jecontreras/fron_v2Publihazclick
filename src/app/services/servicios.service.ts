@@ -4,10 +4,11 @@ import { environment } from 'src/environments/environment';
 import { USER } from '../interfaces/sotarage';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { UserAction } from '../redux/app.actions';
+import { BuscadorAction, UserAction } from '../redux/app.actions';
 import { ToolsService } from './tools.service';
 import { catchError } from 'rxjs/operators';
 import * as _ from 'lodash';
+import * as moment from 'moment';
 
 declare var io: any;
 const headers = new HttpHeaders({
@@ -26,6 +27,7 @@ export class ServiciosService {
   public interval:any;
   public dataUser:any = {};
   private handleError: any;
+  private datafecha:any = {};
 
   constructor(
     private http: HttpClient,
@@ -33,17 +35,46 @@ export class ServiciosService {
     private Router: Router,
     private _tools: ToolsService
   ) { 
-    this.conectionSocket();
-    this.createsocket("emitir", {mensaje:"inicial"}); 
-    setTimeout(()=>this.privateDataUser(), 5000 );
-  }
-  privateDataUser(){
     this._store.subscribe((store: any) => {
       store = store.name;
       if(!store) return false;
       this.dataUser = store.user || {};
+      this.datafecha = store.buscador || {};
     });
+    this.conectionSocket();
+    this.createsocket("emitir", {mensaje:"inicial"}); 
+    setTimeout(()=>this.privateDataUser(), 5000 );
+  }
+
+  initFecha(){
+    if( !this.datafecha.create ) return this.createInitFecha();
+    if( this.datafecha.create != moment().format("DD/MM/YYYY") ) this.seguridad();
+    else this.updateInitFecha();
+    
+  }
+
+  createInitFecha(){
+    let accion = new BuscadorAction( { init: true, create: moment().format("DD/MM/YYYY") }, 'post' );
+    this._store.dispatch( accion );
+  }
+
+  updateInitFecha(){
+    let accion = new BuscadorAction( { init: true, create: moment().format("DD/MM/YYYY") }, 'put' );
+    this._store.dispatch( accion );
+  }
+  
+  seguridad(){
+    let accion = new UserAction( this.dataUser,'delete' )
+    this._store.dispatch(accion);
+    localStorage.removeItem('user');
+    this._tools.presentToast("Tu sesión ha expirado")
+    this.Router.navigate(['/login']);
+    setTimeout(function(){ location.reload(); }, 3000);
+  }
+
+  privateDataUser(){
     if(Object.keys(this.dataUser).length >0 ){
+      this.initFecha();
       let idUser = this.dataUser.id;
       //if( !environment.production ) idUser = "61e61c9b586ce6001674f0cb";
       let data1:any = {};
