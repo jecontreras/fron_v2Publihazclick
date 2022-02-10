@@ -74,9 +74,9 @@ export class ServiciosService {
 
   privateDataUser(){
     if(Object.keys(this.dataUser).length >0 ){
-      this.initFecha();
       let idUser = this.dataUser.id;
-      //if( !environment.production ) idUser = "61e61c9b586ce6001674f0cb";
+      //this.initFecha();
+      //if( !environment.production ) idUser = "61fd8dabd3eb8b00167d3e72";
       let data1:any = {};
       this.querys('user/querys',{
         where:{

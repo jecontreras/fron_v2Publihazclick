@@ -77,7 +77,7 @@ export class AlertasComponent implements OnInit {
     this.listaBanner();
     this.getNotas();
     this.getBanner();
-    setInterval(()=> this.getMisPuntos() ,4000 );
+    //setInterval(()=> this.getMisPuntos() ,4000 );
   }
 
   getBanner(){

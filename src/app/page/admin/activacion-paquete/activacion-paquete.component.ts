@@ -62,7 +62,8 @@ export class ActivacionPaqueteComponent implements OnInit {
       this._user.get( 
         {
           where:{
-            or: [
+            email: this.data.username || ''
+            /*or: [
               {
                 username: {
                   contains: this.data.username || ''
@@ -73,7 +74,7 @@ export class ActivacionPaqueteComponent implements OnInit {
                   contains: this.data.username || ''
                 }
               },
-            ]
+            ]*/
           }
         }
       ).subscribe(( res:any )=>{

@@ -4,7 +4,7 @@
             <button type="button" class="btn btn-warning m-l-0" [routerLink]="['/dashboard/banner']" >
                 ATRAS
             </button>
-            <button type="button" class="btn btn-primary m-l-0" (click)="submit()">
+            <button type="button" class="btn btn-primary m-l-0" (click)="submit()" [disabled]="disableFile">
                 <span *ngIf="data.id">ACTUALIZAR</span>
                 <span *ngIf="!data.id">CREAR</span>
             </button>

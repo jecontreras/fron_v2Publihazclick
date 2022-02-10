@@ -162,6 +162,7 @@ export class ToolsPublicacionComponent implements OnInit {
       completado: 0,
       restante: 0
     };
+    this.query.page = 0;
     this._modelo.generarActividad({ user: this.query.where.user }).subscribe((res:any)=> { console.log(res); this.btnDisabled = false; this.getRow();  }, ()=> this.btnDisabled = false );
   }
 

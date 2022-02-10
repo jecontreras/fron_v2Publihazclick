@@ -35,6 +35,7 @@ import { ProyectosDonacionesComponent } from './component/proyectos-donaciones/p
 import { AdminretirosComponent } from './admin/adminretiros/adminretiros.component';
 import { AdminactividadComponent } from './admin/adminactividad/adminactividad.component';
 import { CalculadoraComponent } from './component/calculadora/calculadora.component';
+import { TerminosCondicionesComponent } from './component/terminos-condiciones/terminos-condiciones.component';
 
 const routes: Routes = [
   {
@@ -200,6 +201,10 @@ const routes: Routes = [
   {
     path: "admingeneradoractividades",
     component: AdminactividadComponent
+  },
+  {
+    path: "terminos",
+    component: TerminosCondicionesComponent
   },
 ];
 

@@ -101,6 +101,7 @@ export class FormbannerComponent implements OnInit {
   }
 
   async submit() {
+    if( !this.data.imgdefault ) await this.submitFile();
     this.data.type = "banner";
     let validando = this.validador();
     if( !validando ) return false;
@@ -118,6 +119,7 @@ export class FormbannerComponent implements OnInit {
   }
 
   guardar() {
+    this.data = _.omit(this.data, [ 'imgdefault2','content2' ] );
     this._publicacion.create(this.data).subscribe((res: any) => {
       this._tools.tooast({ title: "Publicacion Creada" });
       this.btnDisabled = false;

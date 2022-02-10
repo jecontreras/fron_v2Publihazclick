@@ -136,6 +136,7 @@ export class FormpublicacionComponent implements OnInit {
   async guardar() {
     this.data.user = this.dataUser.id;
     this.data.autocreo = false;
+    this.data = _.omit(this.data, [ 'imgdefault2','content2' ] );
     this._publicacion.create(this.data).subscribe((res: any) => {
       this._tools.tooast({ title: "Publicacion Creada" });
       this.disableFile = false;

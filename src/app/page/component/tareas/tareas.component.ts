@@ -17,7 +17,7 @@ export class TareasComponent implements OnInit {
      create: true
     }, 
     sort: "state DESC",
-    limit: 10000,
+    limit: 10,
     page: 0
    };
    dataUser:any = {};
