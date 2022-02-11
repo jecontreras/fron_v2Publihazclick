@@ -5,6 +5,7 @@ export interface STORAGES {
     productoHistorial?: PRODUCTOHISTORIAL;
     buscador?: BUSCADOR;
     dataDemo?: DATADEMO;
+    token?: TOKEN;
 };
 
 export interface DATADEMO{
@@ -13,6 +14,10 @@ export interface DATADEMO{
 
 export interface BUSCADOR{
 
+}
+
+export interface TOKEN {
+    
 }
 
 export interface PRODUCTOHISTORIAL{

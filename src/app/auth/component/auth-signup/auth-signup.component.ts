@@ -6,7 +6,7 @@ import { ToolsService } from 'src/app/services/tools.service';
 import { UsuariosService } from 'src/app/servicesComponents/usuarios.service';
 import { STORAGES } from 'src/app/interfaces/sotarage';
 import { Store } from '@ngrx/store';
-import { UserAction } from 'src/app/redux/app.actions';
+import { TokenAction, UserAction } from 'src/app/redux/app.actions';
 import * as _ from 'lodash';
 
 @Component({
@@ -65,7 +65,8 @@ export class AuthSignupComponent implements OnInit {
          filtro: any = this.data.email.split('@', '2')
          ;
         console.log(filtro);
-       if ( filtro[1] == 'gmail.com' || filtro[1] == 'gmail.es'|| filtro[1] == 'hotmail.com'|| filtro[1] == 'outlook.com'|| filtro[1] == 'outlook.es') {
+       //if ( filtro[1] == 'gmail.com' || filtro[1] == 'gmail.es'|| filtro[1] == 'hotmail.com'|| filtro[1] == 'outlook.com'|| filtro[1] == 'outlook.es') {
+        if ( filtro[1] == 'gmail.com' || filtro[1] == 'gmail.es' ) {
          this.disabledemail = true;
        }else this.disabledemail = false;
      }
@@ -119,6 +120,8 @@ export class AuthSignupComponent implements OnInit {
   ProcesoStorages( res:any ){
     let accion:any = new UserAction(res.data, 'post');
     this._store.dispatch(accion);
+    accion = new TokenAction( { token: res.data.tokens }, 'post');
+    this._store.dispatch( accion );
     this._router.navigate(['/dashboard/home']);
   }
 

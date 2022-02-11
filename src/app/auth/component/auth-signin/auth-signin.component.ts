@@ -4,7 +4,7 @@ import { ToolsService } from 'src/app/services/tools.service';
 import { STORAGES } from 'src/app/interfaces/sotarage';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { UserAction } from 'src/app/redux/app.actions';
+import { TokenAction, UserAction } from 'src/app/redux/app.actions';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserNivelService } from 'src/app/servicesComponents/user-nivel.service';
 
@@ -70,6 +70,8 @@ export class AuthSigninComponent implements OnInit {
     await this.getMiPaquete();
     let accion:any = new UserAction( this.dataUser, 'post' );
     this._store.dispatch(accion);
+    accion = new TokenAction( { token: res.data.tokens }, 'post');
+    this._store.dispatch( accion );
     this._router.navigate(['/dashboard/home']);
   }
 

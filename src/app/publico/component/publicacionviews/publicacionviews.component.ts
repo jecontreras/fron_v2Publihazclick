@@ -98,18 +98,18 @@ export class PublicacionviewsComponent implements OnInit {
     setInterval(() => { this.breakpoint = (window.innerWidth <= 600) ? 1 : 6; if (this.breakpoint == 1) this.disabled = false; else this.disabled = true; }, 1000);
   }
 
-  getActividad() {
-    this._actividad.get({ where: { id: this.id } }).subscribe((res: any) => {
+  async getActividad() {
+    this._actividad.get({ where: { id: this.id } }).subscribe(async (res: any) => {
       res = res.data[0];
       this.data = res || {};
-      if( res.prioridad == "tarea-diaria" || res.prioridad == "tarea-referidos" ) this.Tools.contadorActividad( 60 );
+      if (!this.data.id)  await this.armandoData();
+      if( this.data.prioridad == "tarea-diaria" || this.data.prioridad == "tarea-referidos" ) this.Tools.contadorActividad( 60 );
       else this.Tools.contadorActividad( 10 );
       this.arraydecolor();
       setInterval(() => {
         if (this.Tools.intervalosContador == 0) this.disablerealizado = true;
         console.log(this.disablerealizado);
       }, 2000);
-      if (!this.data.id) return this.armandoData();
       try {
         if (this.data.publicacion.type == 'url') this.url = this.Tools.seguridadIfrane(this.data.publicacion.content);
         console.log(this.url)
@@ -119,25 +119,24 @@ export class PublicacionviewsComponent implements OnInit {
   }
 
   armandoData() {
-    this._publicidad.get({ where: { id: this.id }, limit: 1 }).subscribe((res: any) => {
-      res = res.data[0];
-      this.data = {
-        "createdAt": "2021-10-30T08:32:28.795Z",
-        "updatedAt": "2021-10-30T08:32:28.795Z",
-        "id": "617d031ce69d3a0016627973",
-        "regalo": false, "codigo": "DJQLX7LMDRWBWWJ",
-        "prioridad": "tarea-diaria",
-        "estado": "activo",
-        "url": "",
-        "state": 0, "create": "30/10/2021",
-        "valor": 134,
-        "user": {}, 
-        "publicacion": res
-      };
-      try {
-        if (this.data.publicacion.type == 'url') this.url = this.Tools.seguridadIfrane(this.data.publicacion.content);
-        console.log(this.url)
-      } catch (error) { }
+    return new Promise( resolve =>{
+      this._publicidad.get({ where: { id: this.id }, limit: 1 }).subscribe((res: any) => {
+        res = res.data[0];
+        this.data = {
+          "createdAt": "2021-10-30T08:32:28.795Z",
+          "updatedAt": "2021-10-30T08:32:28.795Z",
+          "id": "617d031ce69d3a0016627973",
+          "regalo": false, "codigo": "DJQLX7LMDRWBWWJ",
+          "prioridad": "tarea-diaria",
+          "estado": "activo",
+          "url": "",
+          "state": 0, "create": "30/10/2021",
+          "valor": 134,
+          "user": {}, 
+          "publicacion": res
+        };
+        resolve( true )
+      },()=>resolve( false ));
     });
   }
 

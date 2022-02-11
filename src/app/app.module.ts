@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './theme/shared/shared.module';
@@ -29,7 +29,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducer } from './redux/app';
 import { environment } from 'src/environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxCurrencyModule } from "ngx-currency";
 import { PublicoComponent } from './theme/layout/publico/publico.component';
@@ -47,6 +47,8 @@ import { registerLocaleData } from '@angular/common';
     import localePt from '@angular/common/locales/pt';
     import localeEn from '@angular/common/locales/en';
     import localeEsAr from '@angular/common/locales/es-AR';
+import { AuthInterceptor } from './services/authInterceptor';
+import { GlobalErrorHandler } from './services/globalErrorHandler';
 
     // registrar los locales con el nombre que quieras utilizar a la hora de proveer
     registerLocaleData(localePy, 'es');
@@ -97,7 +99,17 @@ import { registerLocaleData } from '@angular/common';
     }),
     NgImageSliderModule
   ],
-  providers: [ NavigationItem, { provide: LOCALE_ID, useValue: 'es-Co' } ],
+  providers: [ NavigationItem, { provide: LOCALE_ID, useValue: 'es-Co', },
+  {
+    provide : HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi   : true,
+  },
+  {
+    provide: ErrorHandler, 
+    useClass: GlobalErrorHandler
+  }
+ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

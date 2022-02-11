@@ -7,6 +7,7 @@ export let PRODUCTOHISTORIAL = '[App] Productohistorial';
 export let BUSCADOR      = '[App] Buscador';
 export let SELECCIONCATEGORIA = '[App] SeleccionCategoria';
 export let DATADEMO          = '[App] Datademo';
+export let TOKEN         = '[App] Token';
 
 export class CartAction implements Action {
     readonly type = CART;
@@ -43,10 +44,16 @@ export class DataDemoAction implements Action {
     constructor( public payload: object,  public opt: string){}
 }
 
+export class TokenAction implements Action {
+    readonly type = TOKEN;
+    constructor( public payload: object,  public opt: string){}
+}
+
 export type actions = CartAction              |
                       UserAction              |
                       UserCabezaAction        |
                       ProductoHistorialAction |
                       BuscadorAction          |
                       SeleccionCategoriaAction|
-                      DataDemoAction          ;
+                      DataDemoAction          |
+                      TokenAction             ;

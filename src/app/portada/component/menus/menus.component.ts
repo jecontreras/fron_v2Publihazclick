@@ -41,6 +41,10 @@ export class MenusComponent implements OnInit {
   ngOnInit() {
     this.formatoMoneda = this._tools.formatoMoneda;
     if( this.dataUser.id ) this.getMisPuntos();
+    else {
+      this.puntosGanados = 10000;
+      this.donaciones = 5000;
+    }
   }
 
   activarMenu(){

@@ -97,7 +97,7 @@ export class PerfilComponent implements OnInit {
 
   update(){
     if( this.data.password ) return this.cambioPassword();
-    this.data = _.omit( this.data, ['rol', 'password', 'confirpassword', 'cabeza','comentarios','publicaciones','referidos','rol','updatedAt','createdAt','miNivel','miPaquete','cantidadPuntos']);
+    this.data = _.omit( this.data, ['rol', 'foto2', 'password', 'confirpassword', 'cabeza','comentarios','publicaciones','referidos','rol','updatedAt','createdAt','miNivel','miPaquete','cantidadPuntos']);
     this._user.update(this.data).subscribe((res:any)=>{
       console.log(res);
       this.data = res;

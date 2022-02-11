@@ -21,7 +21,7 @@ export class DonarComponent implements OnInit {
     where: {
       estado: ['activo', 'consumido'],
       autocreo: false,
-      type: ['img', 'url', 'publicacion']
+      type: ['url']
     },
     sort: "createdAt DESC",
     limit: 30,
