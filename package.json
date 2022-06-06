@@ -25,7 +25,7 @@
     "@ngrx/store": "^9.2.0",
     "@ngrx/store-devtools": "^9.2.0",
     "@types/memory-cache": "^0.2.1",
-    "apexcharts": "3.19.3",
+    "apexcharts": "3.24.0",
     "bootstrap": "^4.3.1",
     "css-animator": "^2.3.1",
     "jquery": "^3.4.1",
