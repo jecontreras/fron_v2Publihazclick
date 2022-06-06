@@ -10,7 +10,7 @@ export const environment = {
   urlSocket: "http://localhost:3000",
   socketConfig: config,
   //url: "https://backpublihazclick.herokuapp.com",
-  url: 'http://localhost:1337',
+  url: 'http://localhost:1339',
   urlFront: "http://localhost:4200",
   keyEpayco: "fd1fee1f6f008ddf010440f8c092a2cb",
   URLFILE: "https://backlocompro.herokuapp.com",
