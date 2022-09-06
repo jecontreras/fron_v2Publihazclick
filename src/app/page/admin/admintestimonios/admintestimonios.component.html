@@ -7,7 +7,7 @@
                 </div>
                 <br>
             </div>
-            <!--<div class="form-group col-xs-12 col-sm-12 col-12">
+            <div class="form-group col-xs-12 col-sm-12 col-12">
                 <label for="exampleInputEmail1">Username / Email</label>
                 <input type="text" class="form-control" [(ngModel)]="data.username" (change)="buscarUsuario()">
                 <button type="button" class="btn btn-primary" (click)="buscarUsuario()">Buscar Usuario</button>
@@ -23,7 +23,7 @@
             <div class="form-group col-xs-4 col-sm-4 col-6">
                 <label for="exampleInputEmail1">Ciudad</label>
                 <input type="text" class="form-control" [(ngModel)]="data.ciudad">
-            </div>-->
+            </div>
             <div class="col-12">
                 <div class="p-3 mb-2 bg-primary text-white rounded">
                     Descripcion
@@ -36,42 +36,50 @@
             </div>
             <div class="form-group col-xs-4 col-sm-4 col-6">
                 <label for="exampleInputEmail1">Descripcion del testimonio</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="data.descripcion"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    [(ngModel)]="data.descripcion"></textarea>
             </div>
             <div class="col-12">
                 <img [src]="data.imgdefault" style="width: 30%;" alt="none" *ngIf="data.imgdefault">
-                <input type="file" placeholder="Imagenes" (ngModelChange)="datafiles($event)" (blur)="datafiles($event)">
+                <input type="file" placeholder="Imagenes" (ngModelChange)="datafiles($event)"
+                    (blur)="datafiles($event)">
             </div>
             <div class="col-12">
                 <button type="button" class="btn btn-success" *ngIf="!file.foto1[0]">Probar Foto</button>
-                <button type="button" class="btn btn-success" *ngIf="file.foto1[0]" [disabled]="disableFile" (click)="submitFile()">Subir Foto</button>
+                <button type="button" class="btn btn-success" *ngIf="file.foto1[0]" [disabled]="disableFile"
+                    (click)="submitFile()">Subir Foto</button>
             </div>
             <div class="col-12">
                 <div class="d-flex justify-content-center">
                     <div>
-                        <button type="button" class="btn btn-success" [disabled]="disabled" (click)="submit()">Crear testimonio</button>
+                        <button type="button" class="btn btn-success" [disabled]="disabled" (click)="submit()">Crear
+                            testimonio</button>
                     </div>
                 </div>
                 <br>
             </div>
             <div class="col-12">
                 <div class="card-deck row">
-                    <div class="card mouse col-3" *ngFor="let item of lisTestimonios" [ngClass]="{
+                    <div class="col-12 row">
+                        <div *ngFor="let item of lisTestimonios" [ngClass]="{
                         'disable':item.check == true
-                     }">
-                        <img alt="Card image cap" class="card-img-top" [src]="item.foto || './assets/imagenes/paquetes.png'">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ item['usuario']?.username }}</h5>
-                            <p class="card-text">{{ item.descripcion | slice: 0: item.oculto || 100 }}</p>
-                            <label class="text-primary">
-                                <span (click)="item.oculto = 5000" *ngIf="item.oculto !== 5000">Leer más!</span>
-                                <span (click)="item.oculto = 150" *ngIf="item.oculto == 5000">Ver Menos!</span>
-                            </label>
-                        </div>
-                        <div class="card-footer">
-                            <div class="d-flex justify-content-center">
-                                <div>
-                                    <button type="button" class="btn btn-danger" [disabled]="disabled" (click)="dropTestimonio( item )">Borrar testimonio</button>
+                     }" class="col-3">
+                            <img alt="Card image cap" class="card-img-top"
+                                [src]="item.foto || './assets/imagenes/paquetes.png'">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item['usuario']?.username }}</h5>
+                                <p class="card-text">{{ item.descripcion | slice: 0: item.oculto || 100 }}</p>
+                                <label class="text-primary">
+                                    <span (click)="item.oculto = 5000" *ngIf="item.oculto !== 5000">Leer más!</span>
+                                    <span (click)="item.oculto = 150" *ngIf="item.oculto == 5000">Ver Menos!</span>
+                                </label>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <button type="button" class="btn btn-danger" [disabled]="disabled"
+                                            (click)="dropTestimonio( item )">Borrar testimonio</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -26,10 +26,10 @@ export class AdmintestimoniosComponent implements OnInit {
   lisTestimonios:any = [];
   query:any = {
     where:{
-      estado: 0
+      estado: 0,
     },
     limit: 100,
-    sort: "createdAt ASC"
+    sort: "createdAt DESC"
   };
 
   constructor(
@@ -104,8 +104,9 @@ export class AdmintestimoniosComponent implements OnInit {
   async submitFile() {
     if( !this.file.foto1[0] ) return false;
     this.disableFile = true;
-    this.procesoSubidaImagen(this.file.foto1[0]);
+    await this.procesoSubidaImagen(this.file.foto1[0]);
     this.disableFile = false;
+    return true;
   }
 
   procesoSubidaImagen(file: any) {
@@ -126,7 +127,7 @@ export class AdmintestimoniosComponent implements OnInit {
   async submit(){
     this.disabled = true;
     let result:any;
-    if( !this.data.foto ) { this.disabled = false; return this._tools.tooast({ title: "Error Foto de testimonio no subida", icon: "error" });}
+    if( !this.data.foto ) await this.submitFile();
     if( !this.data.id ) {
       result = await this.crearUsuario();
       if( !result ) { this.disabled = false; return this._tools.tooast({ title: "Error Completar datos", icon: "error" }); }
