@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,EAAE,CAAC;EACC,OAAO,EAAE,EAAE;CACZ;;AACD,AAAA,EAAE,CAAC;EACD,MAAM,EAAE,EAAE;CACX;;AACD,AAAA,OAAO,CAAC;EACN,MAAM,EAAE,IAAI;CACb;;AACD,AAAA,KAAK,CAAC;EACJ,WAAW,EAAE,IAAI;CAClB",
+    "sources": [
+        "referidos.component.scss"
+    ],
+    "names": [],
+    "file": "referidos.component.css"
+}

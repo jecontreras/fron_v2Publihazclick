@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACE,AAAA,IAAI,CAAC;EACH,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;EACX,iBAAiB,EAAE,SAAS;EAC5B,eAAe,EAAE,KAAK;CACvB;;AACD,AAAA,KAAK,CAAC;EACJ,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;EACX,iBAAiB,EAAE,SAAS;EAC5B,eAAe,EAAE,KAAK;CACvB;;AACD,AAAA,KAAK,CAAC;EACJ,SAAS,EAAE,IAAI;CAChB",
+    "sources": [
+        "comentarios.component.scss"
+    ],
+    "names": [],
+    "file": "comentarios.component.css"
+}

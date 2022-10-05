@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,aAAa,EAAE,IAAI;EACnB,SAAS,EAAE,KAAK;CACnB;;AAED,AAAA,WAAW,CAAA;EACP,SAAS,EAAE,GAAG;EACd,SAAS,EAAE,GAAG;EACd,UAAU,EAAE,KAAK;EACjB,UAAU,EAAE,KAAK;CACpB;;AAED,AAAA,cAAc,CAAA;EACV,MAAM,EAAE,KAAK;EACb,aAAa,EAAE,IAAI;CACtB",
+    "sources": [
+        "formadmin-marketplace.component.scss"
+    ],
+    "names": [],
+    "file": "formadmin-marketplace.component.css"
+}

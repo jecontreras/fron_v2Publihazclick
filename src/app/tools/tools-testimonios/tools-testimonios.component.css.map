@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAA;EACF,KAAK,EAAE,GAAG;EACV,UAAU,EAAE,MAAM;EAClB,aAAa,EAAE,IAAI;CACtB",
+    "sources": [
+        "tools-testimonios.component.scss"
+    ],
+    "names": [],
+    "file": "tools-testimonios.component.css"
+}

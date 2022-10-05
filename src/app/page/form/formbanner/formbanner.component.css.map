@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,aAAa,EAAE,IAAI;EACnB,KAAK,EAAE,GAAG;CACb;;AAED,AAAA,WAAW,CAAA;EACP,SAAS,EAAE,GAAG;EACd,SAAS,EAAE,GAAG;EACd,UAAU,EAAE,KAAK;EACjB,UAAU,EAAE,KAAK;CACpB",
+    "sources": [
+        "formbanner.component.scss"
+    ],
+    "names": [],
+    "file": "formbanner.component.css"
+}

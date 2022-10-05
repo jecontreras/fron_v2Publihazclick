@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAA;EACP,UAAU,EAAE,KAAK;CAClB;;AAED,AAAA,SAAS,CAAA;EACP,KAAK,EAAE,GAAG;CACX;;AAED,AAAA,QAAQ,CAAC;EACP,OAAO,EAAE,GAAG;CACb",
+    "sources": [
+        "tools-publicacion.component.scss"
+    ],
+    "names": [],
+    "file": "tools-publicacion.component.css"
+}
