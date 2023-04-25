@@ -33,7 +33,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxCurrencyModule } from "ngx-currency";
 import { PublicoComponent } from './theme/layout/publico/publico.component';
-import { SocketIoModule } from 'ng-socket-io';
+//import { SocketIoModule } from 'ng-socket-io';
 //import { ChatModule } from './chat/chat.module';
 import { PortadaComponent } from './theme/layout/portada/portada.component';
 import { NgImageSliderModule } from 'ng-image-slider';
@@ -49,6 +49,7 @@ import { registerLocaleData } from '@angular/common';
     import localeEsAr from '@angular/common/locales/es-AR';
 import { AuthInterceptor } from './services/authInterceptor';
 import { GlobalErrorHandler } from './services/globalErrorHandler';
+import { TradeModule } from './trade/trade.module';
 
     // registrar los locales con el nombre que quieras utilizar a la hora de proveer
     registerLocaleData(localePy, 'es');
@@ -90,7 +91,8 @@ import { GlobalErrorHandler } from './services/globalErrorHandler';
     HttpClientModule,
     NgxCurrencyModule,
     ReactiveFormsModule,
-    SocketIoModule.forRoot( environment.socketConfig ),
+    TradeModule,
+    //SocketIoModule.forRoot( environment.socketConfig ),
     //BrowserModule.withServerTransition({ appId: 'serverApp' }),
     StoreModule.forRoot({ name: appReducer }),
     StoreDevtoolsModule.instrument({
@@ -106,7 +108,7 @@ import { GlobalErrorHandler } from './services/globalErrorHandler';
     multi   : true,
   },
   {
-    provide: ErrorHandler, 
+    provide: ErrorHandler,
     useClass: GlobalErrorHandler
   }
  ],

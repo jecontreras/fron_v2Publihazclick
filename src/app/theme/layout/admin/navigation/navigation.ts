@@ -320,6 +320,22 @@ const NavigationItems = [
       },
     ]
   },
+  {
+    id: 'subadmin',
+    title: 'Sub Administracion',
+    type: 'group',
+    disabled: "subadmin",
+    icon: 'feather icon-monitor',
+    children: [
+      {
+        id: 'subadminusuario',
+        title: 'sub Admin Usuario',
+        type: 'item',
+        url: '/dashboard/adminusuario',
+        icon: 'feather icon-home'
+      },
+    ]
+  }
 
   // {
   //   id: 'ui-element',
