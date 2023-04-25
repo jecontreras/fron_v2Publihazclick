@@ -34,7 +34,7 @@ export class ServiciosService {
     private _store: Store<USER>,
     private Router: Router,
     private _tools: ToolsService
-  ) { 
+  ) {
     this._store.subscribe((store: any) => {
       store = store.name;
       if(!store) return false;
@@ -42,7 +42,7 @@ export class ServiciosService {
       this.datafecha = store.buscador || {};
     });
     this.conectionSocket();
-    this.createsocket("emitir", {mensaje:"inicial"}); 
+    this.createsocket("emitir", {mensaje:"inicial"});
     setTimeout(()=>this.privateDataUser(), 5000 );
   }
 
@@ -50,7 +50,7 @@ export class ServiciosService {
     if( !this.datafecha.create ) return this.createInitFecha();
     if( this.datafecha.create != moment().format("DD/MM/YYYY") ) this.seguridad();
     else this.updateInitFecha();
-    
+
   }
 
   createInitFecha(){
@@ -62,7 +62,7 @@ export class ServiciosService {
     let accion = new BuscadorAction( { init: true, create: moment().format("DD/MM/YYYY") }, 'put' );
     this._store.dispatch( accion );
   }
-  
+
   seguridad(){
     let accion = new UserAction( this.dataUser,'delete' )
     this._store.dispatch(accion);
@@ -131,6 +131,16 @@ export class ServiciosService {
 
   private ejecutarQuery(url: string, data, METODO){
     return this.http[METODO]( url, data );
+  }
+
+  trade(query:string, datas:any, METODO:string){
+    let data = datas;
+    if(!datas.where) datas.where = {};
+    data.skip = datas.page ? datas.page : 0;
+    data.limit = datas.limit ? datas.limit : 10;
+    query = `${query}`;
+    delete data.where.app;
+    return this.ejecutarQuery(query, data, METODO);
   }
 
   querys(query:string, datas:any, METODO:string){

@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TradeComponent } from './component/trade/trade.component';
+import { PortalComponent } from './component/portal/portal.component';
 
 const routes: Routes = [
   {
-    path: "trade",
-    component: TradeComponent
-  }
+    path: "",
+    component: PortalComponent
+  },
+  {
+    path: "portal",
+    component: PortalComponent
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class TradeRoutingModule { }

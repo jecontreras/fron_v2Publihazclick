@@ -36,6 +36,7 @@ import { AdminretirosComponent } from './admin/adminretiros/adminretiros.compone
 import { AdminactividadComponent } from './admin/adminactividad/adminactividad.component';
 import { CalculadoraComponent } from './component/calculadora/calculadora.component';
 import { TerminosCondicionesComponent } from './component/terminos-condiciones/terminos-condiciones.component';
+import { TradeComponent } from '../theme/layout/trade/trade.component';
 
 const routes: Routes = [
   {
@@ -205,6 +206,21 @@ const routes: Routes = [
   {
     path: "terminos",
     component: TerminosCondicionesComponent
+  },
+  {
+    path: '',
+    component: TradeComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'trade/portal',
+        pathMatch: 'full'
+      },
+      {
+        path: 'trade',
+        loadChildren: () => import('./../trade/trade.module').then(module => module.TradeModule)
+      }
+    ]
   },
 ];
 

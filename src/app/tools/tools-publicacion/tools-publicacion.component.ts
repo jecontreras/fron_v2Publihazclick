@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { PublicacionService } from 'src/app/servicesComponents/publicacion.service';
 import { STORAGES } from 'src/app/interfaces/sotarage';
 import { Store } from '@ngrx/store';
-const URL = environment.urlFront;
+const URL = window.location.origin;
 
 @Component({
   selector: 'app-tools-publicacion',
@@ -13,10 +13,10 @@ const URL = environment.urlFront;
   styleUrls: ['./tools-publicacion.component.scss']
 })
 export class ToolsPublicacionComponent implements OnInit {
-  
+
   public listRow: any = [];
   public count: number = 0;
-  
+
   notscrolly:boolean=true;
   notEmptyPost:boolean = true;
   @Input() _modelo: any;
@@ -37,7 +37,7 @@ export class ToolsPublicacionComponent implements OnInit {
     public _tools: ToolsService,
     private _Publicacion: PublicacionService,
     private _store: Store<STORAGES>
-  ) { 
+  ) {
     this._store.subscribe((store: any) => {
       //console.log(store);
       store = store.name;
@@ -70,11 +70,11 @@ export class ToolsPublicacionComponent implements OnInit {
     this.btnDisabled = true;
     this._modelo.get(this.query).subscribe((res:any)=> this.procesoGet( res ), (error)=> { this.progreses = false; this.btnDisabled = false; this._tools.tooast( { title: "Error de servidor", icon: "error" } )} );
   }
-  
+
   openPublic( item ){
     if( !this.disabledPublic && this.dataUser.id ) this._tools.tooast( { title: "Recuerda que debes consumir tus publicaciones o crear o clonar", icon: "error" } );
     let url:string = item.content;
-    if( this.config.vista == "tareas" || this.config.vista == "publicidad"  ) { 
+    if( this.config.vista == "tareas" || this.config.vista == "publicidad"  ) {
       if( item.estado == "activo" && this.config.vista == "tareas"){
         this.tarea.completado++;
         this.tarea.restante--;
@@ -123,7 +123,7 @@ export class ToolsPublicacionComponent implements OnInit {
     });
     this.listRow = _.unionBy(this.listRow || [], res.data, 'id');
     this.count = res.count;
-        
+
     if (res.data.length === 0 ) {
       this.notEmptyPost =  false;
     }
@@ -178,7 +178,7 @@ export class ToolsPublicacionComponent implements OnInit {
     let result:any = await this.getPublicacion( { where: { id: item.id } } );
     console.log( result );
     if( !result ) return false;
-    if( opt == 'like' ) { 
+    if( opt == 'like' ) {
       if( item.check ) result.megusta = result.megusta-1;
       if( item.check2 ) { data.nomegusta--; item.nomegusta--; result.nomegusta = result.nomegusta-1;}
       item.check = true;
@@ -200,7 +200,7 @@ export class ToolsPublicacionComponent implements OnInit {
     }
     if( !data.megusta ) data.megusta = 0;
     if( !data.nomegusta ) data.nomegusta = 0;
-    
+
     await this.nextlikes( data );
     this.btnDisabled = false;
     if( clon.publicacion ) {

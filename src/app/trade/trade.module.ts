@@ -1,15 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TradeComponent } from './component/trade/trade.component';
 import { TradeRoutingModule } from './trade-routing.module';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ToolsModule } from '../tools/tools.module';
+import { NgxCurrencyModule } from 'ngx-currency';
+import { FormsModule } from '@angular/forms';
+import { PortalComponent } from './component/portal/portal.component';
+import { CardModule } from '../theme/shared/components';
 
 
 
 @NgModule({
-  declarations: [TradeComponent],
+  declarations: [
+    PortalComponent
+  ],
   imports: [
     CommonModule,
-    TradeRoutingModule
+    TradeRoutingModule,
+    FormsModule,
+    NgImageSliderModule,
+    InfiniteScrollModule,
+    ToolsModule,
+    NgxCurrencyModule,
+    CommonModule,
+    CardModule
   ]
 })
 export class TradeModule { }

@@ -1,0 +1,80 @@
+<app-card cardTitle="Monedas Virtuales" blockClass="table-border-style">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Monedas</th>
+        <th>Precio</th>
+        <th>1H</th>
+        <th>24H</th>
+        <th>7D</th>
+        <th>Volumne en 24H</th>
+        <th>Cap. de mercado</th>
+        <th>Ultimo 7 Dias</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="table-active" *ngFor="let item of listRow">
+        <td ># </td>
+        <td > {{ item.name }} </td>
+        <td > {{ item.current_price }} </td>
+        <td >1 </td>
+        <td >{{ item.price_change_24h }} </td>
+        <td >1 </td>
+        <td >{{ item.high_24h }} </td>
+        <td >{{ item.low_24h }} </td>
+        <td >{{ item.fully_diluted_valuation }} </td>
+      </tr>
+      <!--<tr>
+        <td>2</td>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr class="table-success">
+        <td>3</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      <tr class="table-warning">
+        <td>5</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      <tr class="table-danger">
+        <td>7</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      <tr class="table-info">
+        <td>9</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>-->
+      </tbody>
+    </table>
+  </div>
+</app-card>

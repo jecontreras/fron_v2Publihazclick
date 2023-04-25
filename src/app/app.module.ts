@@ -49,7 +49,6 @@ import { registerLocaleData } from '@angular/common';
     import localeEsAr from '@angular/common/locales/es-AR';
 import { AuthInterceptor } from './services/authInterceptor';
 import { GlobalErrorHandler } from './services/globalErrorHandler';
-import { TradeModule } from './trade/trade.module';
 
     // registrar los locales con el nombre que quieras utilizar a la hora de proveer
     registerLocaleData(localePy, 'es');
@@ -91,7 +90,6 @@ import { TradeModule } from './trade/trade.module';
     HttpClientModule,
     NgxCurrencyModule,
     ReactiveFormsModule,
-    TradeModule,
     //SocketIoModule.forRoot( environment.socketConfig ),
     //BrowserModule.withServerTransition({ appId: 'serverApp' }),
     StoreModule.forRoot({ name: appReducer }),
