@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "tool-admin-public.component.scss"
+    ],
+    "names": [],
+    "file": "tool-admin-public.component.css"
+}

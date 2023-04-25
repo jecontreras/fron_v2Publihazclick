@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAA;EACF,UAAU,EAAE,OAAO;CACtB",
+    "sources": [
+        "amigos.component.scss"
+    ],
+    "names": [],
+    "file": "amigos.component.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAA;EACH,MAAM,EAAE,GAAG;CACd;;AAED,AAAA,WAAW,CAAC;EACR,UAAU,EAAE,OAAO;CACtB",
+    "sources": [
+        "producto-view.component.scss"
+    ],
+    "names": [],
+    "file": "producto-view.component.css"
+}

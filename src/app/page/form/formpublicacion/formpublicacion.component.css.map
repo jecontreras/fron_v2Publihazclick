@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,aAAa,EAAE,IAAI;EACnB,SAAS,EAAE,KAAK;CACnB;;AAED,AAAA,WAAW,CAAA;EACP,SAAS,EAAE,GAAG;EACd,SAAS,EAAE,GAAG;EACd,UAAU,EAAE,KAAK;EACjB,UAAU,EAAE,KAAK;CACpB",
+    "sources": [
+        "formpublicacion.component.scss"
+    ],
+    "names": [],
+    "file": "formpublicacion.component.css"
+}
