@@ -8,12 +8,14 @@ import { NgxCurrencyModule } from 'ngx-currency';
 import { FormsModule } from '@angular/forms';
 import { PortalComponent } from './component/portal/portal.component';
 import { CardModule } from '../theme/shared/components';
+import { DetailCryptocurrencyComponent } from './component/detail-cryptocurrency/detail-cryptocurrency.component';
 
 
 
 @NgModule({
   declarations: [
-    PortalComponent
+    PortalComponent,
+    DetailCryptocurrencyComponent
   ],
   imports: [
     CommonModule,

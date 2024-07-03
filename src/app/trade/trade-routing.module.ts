@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PortalComponent } from './component/portal/portal.component';
+import { DetailCryptocurrencyComponent } from './component/detail-cryptocurrency/detail-cryptocurrency.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
     path: "portal",
     component: PortalComponent
   },
+  {
+    path: "detailcryptocurrency",
+    component: DetailCryptocurrencyComponent
+  }
 ];
 
 @NgModule({

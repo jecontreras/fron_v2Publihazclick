@@ -15,9 +15,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr class="table-active" *ngFor="let item of listRow">
-        <td ># </td>
-        <td > {{ item.name }} </td>
+      <tr class="table-active" *ngFor="let item of listRow; index as l" (click)="openView( item )">
+        <td >{{ l + 1 }}</td>
+        <td > 
+          <img [src]="item.image" alt="none" style="width: 20px;">
+          <span>{{ item.name }} ( {{ item.symbol }})</span>
+        </td>
         <td > {{ item.current_price }} </td>
         <td >1 </td>
         <td >{{ item.price_change_24h }} </td>
